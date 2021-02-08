@@ -7,11 +7,11 @@ const Equipements = () => {
     return ( 
         <Card className="border-0 col-6">
             <Card.Body>
-                <Card.Title>Equipements</Card.Title>
-                <Card.Text>
-                    <FontAwesomeIcon icon={faWifi} className="mr-2" /> Wifi <br />
-                    <FontAwesomeIcon icon={faTv} className="mr-2" /> Télévision <br />
-                    <FontAwesomeIcon icon={faWind} className="mr-2" /> Air conditionné
+                <Card.Title className="card-title-footer">Equipements</Card.Title>
+                <Card.Text className="card-text-footer">
+                    <FontAwesomeIcon icon={faWifi} color="black" className="mr-2" /> Wifi <br />
+                    <FontAwesomeIcon icon={faTv} color="black" className="mr-2" /> Télévision <br />
+                    <FontAwesomeIcon icon={faWind} color="black" className="mr-2" /> Air conditionné
                 </Card.Text>
             </Card.Body>
         </Card>
