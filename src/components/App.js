@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Footer from './Footer/Footer';
 
 function App() {
   return (
@@ -7,7 +8,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path='/'>
-            
+            <Footer />
           </Route>
         </Switch>
       </BrowserRouter>
