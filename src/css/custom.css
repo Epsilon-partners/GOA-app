@@ -12,6 +12,39 @@
     color: #707070;
 }
 
+#footer a {
+    color: #707070;
+}
+
+#footer a:hover {
+    color: #707070;
+    text-decoration: none;
+}
+
 /* Footer style */
 
+
+/* Modals */
+
+.modal-content {
+    border-radius: 33px;
+    padding: 20px;
+}
+
+label a {
+    color: black;
+    font-weight: bold;
+}
+
+label a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 12px;
+    background-color: #E5E3E3;
+}
+
+/* Modals */
 
