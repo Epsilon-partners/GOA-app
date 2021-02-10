@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
 import { useAuth } from './contexts/AuthContext';
+import { useHistory }from 'react-router-dom';
 
 const SignUp = () => {
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(false);
     const [passwordEqual, setPasswordEqual] = useState(false);
     const { signup } = useAuth();
+    const history = useHistory();
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -47,6 +49,7 @@ const SignUp = () => {
             console.log(subscribe);
             try {
                 await signup(email, password);
+                history.push('/dashboard');
             } catch {
                 console.log('error');
             }

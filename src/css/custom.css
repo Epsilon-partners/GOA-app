@@ -1,3 +1,18 @@
+/* General */
+
+
+html, body, #root {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* General */
+
+
+
 /* Footer style */
 
 .footer-h2 {
@@ -44,6 +59,12 @@ label a:hover {
 .form-control {
     border-radius: 12px;
     background-color: #E5E3E3;
+}
+
+#connect-modal .btn-password {
+    color: black;
+    text-decoration: underline black;
+    font-size: 14px;
 }
 
 /* Modals */

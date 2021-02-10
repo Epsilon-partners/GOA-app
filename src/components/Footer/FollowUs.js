@@ -17,5 +17,5 @@ const FollowUs = () => {
         </Card>
      );
 }
- 
+
 export default FollowUs;

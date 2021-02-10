@@ -4,19 +4,22 @@ import Footer from './Footer/Footer';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
 import { AuthProvider } from './auth/contexts/AuthContext';
+import Profile from './user/Profile';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/'>
-            <AuthProvider>
-              <Footer />
-              <SignUp/>
-              <SignIn />
-            </AuthProvider>
-          </Route>
+          <AuthProvider>
+            <Route exact path='/'>
+                <Footer />
+                <SignUp/>
+                <SignIn />
+            </Route>
+            <PrivateRoute exact path='/dashboard' component={Profile} />
+          </AuthProvider>
         </Switch>
       </BrowserRouter>
     </>
