@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Footer from './Footer/Footer';
 import SignUp from './auth/SignUp';
 import SignIn from './auth/SignIn';
+import { AuthProvider } from './auth/contexts/AuthContext';
 
 function App() {
   return (
@@ -10,9 +11,11 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path='/'>
-            <Footer />
-            <SignUp/>
-            <SignIn />
+            <AuthProvider>
+              <Footer />
+              <SignUp/>
+              <SignIn />
+            </AuthProvider>
           </Route>
         </Switch>
       </BrowserRouter>

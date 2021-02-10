@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import { useAuth } from './contexts/AuthContext';
 
 const SignUp = () => {
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(false);
     const [passwordEqual, setPasswordEqual] = useState(false);
+    const { signup } = useAuth();
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -18,7 +20,7 @@ const SignUp = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
         const form = e.currentTarget;
         if (form.checkValidity() === false) {
@@ -43,6 +45,11 @@ const SignUp = () => {
             };
 
             console.log(subscribe);
+            try {
+                await signup(email, password);
+            } catch {
+                console.log('error');
+            }
         }
     }
 
