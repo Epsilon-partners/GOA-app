@@ -8,17 +8,22 @@ const db = firebase.firestore();
 const settings = { timestampsInSnapshots: true };
 db.settings(settings);
 
+
 export function useAuth () {
     return useContext(AuthContext);
 };
 
 export function AuthProvider ({ children }) {
     const [currentUser, setCurrentUser] = useState();
+    const [loading, setLoading] = useState(true);
 
     const signup = (email, password, user) => {
         return auth.createUserWithEmailAndPassword(email, password)
         .then(cred => {
-            return db.collection('users').doc(cred.user.uid).set(user);
+            return db.collection('users').doc(cred.user.uid).set({
+                ...user,
+                email
+            });
         })
         .catch(err => console.error(err));
     };
@@ -46,6 +51,7 @@ export function AuthProvider ({ children }) {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             setCurrentUser(user);
+            setLoading(false);
         });
 
         return unsubscribe;
@@ -63,7 +69,7 @@ export function AuthProvider ({ children }) {
 
     return (
         <AuthContext.Provider value={value}>
-            {children}
+            {!loading && children}
         </AuthContext.Provider>
     );
 };
