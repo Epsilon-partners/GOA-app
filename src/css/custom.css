@@ -67,5 +67,9 @@ label a:hover {
     font-size: 14px;
 }
 
+.text-small {
+    font-size: small;
+}
+
 /* Modals */
 

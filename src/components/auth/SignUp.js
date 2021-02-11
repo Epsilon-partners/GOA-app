@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Button, Form, Col, Row } from 'react-bootstrap';
+import { Modal, Button, Form, Col, Row, Alert } from 'react-bootstrap';
 import { useAuth } from './contexts/AuthContext';
 import { useHistory }from 'react-router-dom';
 
@@ -9,6 +9,7 @@ const SignUp = () => {
     const [passwordEqual, setPasswordEqual] = useState(false);
     const { signup } = useAuth();
     const history = useHistory();
+    const [error, setError] = useState(false);
 
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -36,22 +37,19 @@ const SignUp = () => {
             setValidated(true);
             setPasswordEqual(false);
         
-            const subscribe = {
-                email,
+            const user = {
                 name,
                 birthday,
                 phone,
-                password,
                 stayConnected,
                 conditions
             };
 
-            console.log(subscribe);
             try {
-                await signup(email, password);
+                await signup(email, password, user);
                 history.push('/dashboard');
             } catch {
-                console.log('error');
+                setError(true);
             }
         }
     }
@@ -119,6 +117,7 @@ const SignUp = () => {
                                 onChange={e => setPassword(e.target.value)} name="password" required />
                                 <Form.Control.Feedback>Valide</Form.Control.Feedback>
                                 <Form.Control.Feedback type='invalid'>Non valide</Form.Control.Feedback>
+                                <div className="text-right text-small">6 caractères minimum</div>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="confirmPassword">
@@ -142,7 +141,7 @@ const SignUp = () => {
                         </div>
                         <div className="custom-control custom-checkbox mb-3">
                             <input type="checkbox" id="conditions" className="custom-control-input" value={conditions} 
-                            onChange={e => setConditions(e.target.value)} name="conditions" required />
+                            onChange={e => setConditions(e.target.checked)} name="conditions" required />
                             <label className="custom-control-label" htmlFor="conditions">
                                 En cochant cette case, j'accepte et je reconnais avoir
                                 pris connaissance <a href="#">des conditions générales</a> de vente et de 
@@ -155,6 +154,7 @@ const SignUp = () => {
                             Continuer
                         </Button>
                     </Form>
+                    {error && <Alert variant="danger" className="my-4">Un problème est survenu avec votre inscription, veuillez réessayer.</Alert>}
                 </Modal.Body>
             </Modal>
         </>

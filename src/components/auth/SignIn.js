@@ -8,6 +8,7 @@ const SignIn = () => {
     const [forgotPassword, setForgotPassword] = useState(false);
     const [resetMessageSuccess, setResetMessageSuccess] = useState(false); 
     const [resetMessageFailed, setResetMessageFailed] = useState(false); 
+    const [error, setError] = useState(false);
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
@@ -35,7 +36,7 @@ const SignIn = () => {
             await login(email, password);
             history.push('/dashboard');
         } catch {
-            console.log('sing in failed');
+            setError(true);
         }
     };
 
@@ -118,6 +119,7 @@ const SignIn = () => {
                             Se connecter
                         </Button>
                     </Form>
+                    {error && <Alert variant="danger" className="my-4">Un problème est survenu, veuillez réessayer.</Alert>}
                 </Modal.Body>
                 </>}
             </Modal>

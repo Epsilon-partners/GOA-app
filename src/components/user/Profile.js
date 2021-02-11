@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Container, Row, Col, Card, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
 import { useAuth } from '../auth/contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
 
@@ -42,11 +42,12 @@ const Profile = () => {
         <Container className="h-100" fluid>
             <Row className="h-100">
                 <Col className="h-100 d-flex align-items-center">
+                    {error && <Alert variant="danger">Un problème est survenu</Alert>}
                     <Card className="border-dark mx-auto" style={{borderRadius: '33px'}}>
                         <Card.Body>
                             <Card.Title className="text-center mb-5 font-weight-bold">Mes informations personnelles</Card.Title>
                             <Card.Text as="div">
-                                <Form as={Row}>
+                                <Form as={Row} onSubmit={handleSubmit}>
                                     <Col>
                                         <h6 className="font-weight-bold mb-4 text-center">Votre identité</h6>
                                         <Form.Group as={Row}>
@@ -125,6 +126,9 @@ const Profile = () => {
                                             </Col>
                                         </Form.Group>
                                     </Col>
+                                    <Button variant="outline-success" type="submit" className="mx-auto w-75 rounded-pill">
+                                        Valider
+                                    </Button>
                                 </Form>
                             </Card.Text>
                         </Card.Body>
