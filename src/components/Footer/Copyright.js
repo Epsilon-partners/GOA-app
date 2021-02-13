@@ -5,10 +5,10 @@ const Copyright = () => {
     return ( 
         <Col>
             <ListGroup horizontal className="border-0 d-flex justify-content-around px-3">
-                <ListGroup.Item className="border-0">&copy; Copyright 2021 GOA Indian Fast-Food. All Rights Reserved.</ListGroup.Item>
-                <ListGroup.Item className="border-0">Mentions légales</ListGroup.Item>
-                <ListGroup.Item className="border-0">Données personnelles</ListGroup.Item>
-                <ListGroup.Item className="border-0">Conditions générales de vente</ListGroup.Item>
+                <ListGroup.Item className="border-0 copyright-item">&copy; Copyright 2021 GOA Indian Fast-Food. All Rights Reserved.</ListGroup.Item>
+                <ListGroup.Item className="border-0 copyright-item"><a href='#'>Mentions légales</a></ListGroup.Item>
+                <ListGroup.Item className="border-0 copyright-item"><a href='#'>Données personnelles</a></ListGroup.Item>
+                <ListGroup.Item className="border-0 copyright-item"><a href='#'>Conditions générales de vente</a></ListGroup.Item>
             </ListGroup>
         </Col>
      );

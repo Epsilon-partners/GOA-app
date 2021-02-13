@@ -42,7 +42,7 @@ const SignUp = () => {
                 birthday,
                 phone,
                 stayConnected,
-                conditions
+                conditions,
             };
 
             try {
@@ -56,9 +56,9 @@ const SignUp = () => {
 
     return ( 
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <a href='#' onClick={handleShow}>
                 Créer un compte
-            </Button>
+            </a>
 
             <Modal show={show} onHide={handleClose} className="border border-dark rounded modal-custom">
                 <Modal.Header closeButton className="h2 border-0">Créer mon compte</Modal.Header>

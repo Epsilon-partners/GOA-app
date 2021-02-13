@@ -55,9 +55,9 @@ const SignIn = () => {
 
     return ( 
         <>
-            <Button variant="primary" onClick={handleShow}>
+            <a href='#' onClick={handleShow}>
                 Se connecter
-            </Button>
+            </a>
 
             <Modal show={show} onHide={handleClose} className="border border-dark rounded modal-custom" id="connect-modal">
                 {forgotPassword ? 

@@ -8,7 +8,7 @@ const FollowUs = () => {
         <Card className="border-0 col-12">
             <Card.Body>
                 <Card.Title className="card-title-footer">Suivez-nous</Card.Title>
-                <Card.Text>
+                <Card.Text className="card-text-footer">
                     <FontAwesomeIcon icon={faFacebookF} size="1x" className="mx-2" />
                     <FontAwesomeIcon icon={faInstagram} size="1x" className="mr-2"  />
                     <FontAwesomeIcon icon={faTripadvisor} size="1x" />

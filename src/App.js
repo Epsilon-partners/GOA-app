@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Footer from './Footer/Footer';
-import SignUp from './auth/SignUp';
-import SignIn from './auth/SignIn';
-import { AuthProvider } from './auth/contexts/AuthContext';
-import Profile from './user/Profile';
-import PrivateRoute from './PrivateRoute';
+import Footer from './components/Footer/Footer';
+import SignUp from './components/auth/SignUp';
+import SignIn from './components/auth/SignIn';
+import { AuthProvider } from './components/auth/contexts/AuthContext';
+import Profile from './components/user/Profile';
+import PrivateRoute from './components/PrivateRoute';
+import Navbar from './components/layout/Navbar';
 
 function App() {
   return (
@@ -14,9 +15,8 @@ function App() {
         <Switch>
           <AuthProvider>
             <Route exact path='/'>
+                <Navbar />
                 <Footer />
-                <SignUp/>
-                <SignIn />
             </Route>
             <PrivateRoute exact path='/dashboard' component={Profile} />
           </AuthProvider>

@@ -33,7 +33,7 @@ html, body, #root {
 
 #footer a:hover {
     color: #707070;
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* Footer style */
@@ -72,4 +72,10 @@ label a:hover {
 }
 
 /* Modals */
+
+/* Profile */
+
+
+
+/* Profile */
 

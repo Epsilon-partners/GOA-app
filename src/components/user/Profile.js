@@ -3,9 +3,10 @@ import { Container, Row, Col, Card, Form, Button, Alert, Spinner } from 'react-b
 import { useAuth } from '../auth/contexts/AuthContext';
 import { useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
+import Navbar from '../layout/Navbar';
 
 const Profile = () => {
-    const { currentUser, updatePassword, updateEmail, db } = useAuth();
+    const { currentUser, updatePassword, updateEmail } = useAuth();
     const emailRef = useRef();
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -45,14 +46,14 @@ const Profile = () => {
         }
 
         const updateUser = {
-            emailRef,
-            nameRef,
-            firstNameRef,
-            birthdayRef,
-            phoneRef,
-            addressRef,
-            zipCodeRef,
-            cityRef
+            email: emailRef.current.value,
+            name: nameRef.current.value,
+            firstName: firstNameRef.current.value,
+            birthday: birthdayRef.current.value,
+            phone: phoneRef.current.value,
+            address: addressRef.current.value,
+            zipCode: zipCodeRef.current.value,
+            city: cityRef.current.value
         };
 
         const db = firebase.firestore();
@@ -88,7 +89,8 @@ const Profile = () => {
 
 
     return ( 
-        
+        <>
+        <Navbar />
         <Container className="h-100" fluid>
             {user ? (
             <Row className="h-100">
@@ -100,14 +102,16 @@ const Profile = () => {
                         <Card.Body>
                             <Card.Title className="text-center mb-5 font-weight-bold">Mes informations personnelles</Card.Title>
                             <Card.Text as="div">
-                                <Form as={Row} onSubmit={handleSubmit}>
+                                <Form className="row" onSubmit={handleSubmit}>
                                     <Col>
                                         <h6 className="font-weight-bold mb-4 text-center">Votre identité</h6>
                                         <Form.Group as={Row}>
                                             <Form.Label as="legend" column sm={4}>Civilité</Form.Label>
                                             <Col sm={8}>
-                                                <Form.Check type="radio" label="M" name="civilité" id="monsieur" inline />
-                                                <Form.Check type="radio" label="Mme" name="civilité" id="madame" inline />
+                                                <Form.Check type="radio" label="M" name="civilité" 
+                                                id="monsieur" inline value="monsieur" />
+                                                <Form.Check type="radio" label="Mme" name="civilité" 
+                                                id="madame" inline value="madame" />
                                             </Col>
                                         </Form.Group>
                                         <Form.Group as={Row} controlId="lastName">
@@ -119,10 +123,10 @@ const Profile = () => {
                                         <Form.Group as={Row} controlId="firstName">
                                             <Form.Label column sm={4}>Prenom</Form.Label>
                                             <Col sm={8}>
-                                                <Form.Control type="text" placeholder="Jean" defaultValue={user.firsName} ref={firstNameRef} />
+                                                <Form.Control type="text" placeholder="Jean" defaultValue={user.firstName} ref={firstNameRef} />
                                             </Col>
                                         </Form.Group>
-                                        <Form.Group as={Row} controlId="birthday" className="mb-0">
+                                        <Form.Group as={Row} controlId="birthday">
                                             <Form.Label column sm={4}>Date de naissance</Form.Label>
                                             <Col sm={8}>
                                                 <Form.Control type="date" placeholder="XX/XX/XXXX" defaultValue={user.birthday} ref={birthdayRef} />
@@ -192,6 +196,7 @@ const Profile = () => {
                 <Spinner animation="grow" />
             )}
         </Container> 
+        </>
      );
 }
  
