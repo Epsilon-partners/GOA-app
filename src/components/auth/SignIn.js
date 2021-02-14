@@ -55,7 +55,7 @@ const SignIn = () => {
 
   return (
     <>
-      <a href="#" onClick={handleShow}>
+      <a href="#connexion" onClick={handleShow}>
         Se connecter
       </a>
 

@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
-import SignUp from "./components/auth/SignUp";
-import SignIn from "./components/auth/SignIn";
 import { AuthProvider } from "./components/auth/contexts/AuthContext";
 import Profile from "./components/user/Profile";
 import PrivateRoute from "./components/PrivateRoute";

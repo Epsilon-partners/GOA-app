@@ -56,7 +56,7 @@ const SignUp = () => {
 
   return (
     <>
-      <a href="#" onClick={handleShow}>
+      <a href="#creer-un-compte" onClick={handleShow}>
         Créer un compte
       </a>
 
@@ -225,9 +225,9 @@ const SignUp = () => {
               />
               <label className="custom-control-label" htmlFor="conditions">
                 En cochant cette case, j'accepte et je reconnais avoir pris
-                connaissance <a href="#">des conditions générales</a> de vente
+                connaissance <a href="#conditions-generales">des conditions générales</a> de vente
                 et de
-                <a href="#"> la notice de données personnelles.</a>
+                <a href="#donnees-personnelles"> la notice de données personnelles.</a>
               </label>
               <Form.Control.Feedback>Valide</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">

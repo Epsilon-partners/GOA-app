@@ -5,7 +5,7 @@ import logo from "../../img/Logo.png";
 import { useAuth } from "../auth/contexts/AuthContext";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
-import { Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import React, { useState } from "react";
 
 const Navbar = () => {
@@ -41,7 +41,7 @@ const Navbar = () => {
               <SignUp />
             </>
           ) : (
-            <a href="#" onClick={handleLogOut}>
+            <a href="#deconnexion" onClick={handleLogOut}>
               Se déconnecter
             </a>
           )}
