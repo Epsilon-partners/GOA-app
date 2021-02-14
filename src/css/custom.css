@@ -1,81 +1,75 @@
 /* General */
 
-
-html, body, #root {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-
 /* General */
-
-
 
 /* Footer style */
 
 .footer-h2 {
-    color: #0b6c13;
+  color: #0b6c13;
 }
 
 .card-title-footer {
-    color: #a7c83a;
+  color: #a7c83a;
 }
 
 .card-text-footer {
-    color: #707070;
+  color: #707070;
 }
 
 #footer a {
-    color: #707070;
+  color: #707070;
 }
 
 #footer a:hover {
-    color: #707070;
-    text-decoration: underline;
+  color: #707070;
+  text-decoration: underline;
 }
 
 /* Footer style */
 
-
 /* Modals */
 
 .modal-content {
-    border-radius: 33px;
-    padding: 20px;
+  border-radius: 33px;
+  padding: 20px;
 }
 
 label a {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 label a:hover {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 .form-control {
-    border-radius: 12px;
-    background-color: #E5E3E3;
+  border-radius: 12px;
+  background-color: #e5e3e3;
 }
 
 #connect-modal .btn-password {
-    color: black;
-    text-decoration: underline black;
-    font-size: 14px;
+  color: black;
+  text-decoration: underline black;
+  font-size: 14px;
 }
 
 .text-small {
-    font-size: small;
+  font-size: small;
 }
 
 /* Modals */
 
 /* Profile */
 
-
-
 /* Profile */
-
