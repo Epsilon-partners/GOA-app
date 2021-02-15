@@ -8,8 +8,8 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const FollowUs = () => {
-  return (
-    <Card className="border-0 col-12">
+  return ( 
+    <Card className="border-0 col-md-6 col-12">
       <Card.Body>
         <Card.Title className="card-title-footer">Suivez-nous</Card.Title>
         <Card.Text className="card-text-footer">

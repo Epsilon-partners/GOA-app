@@ -34,6 +34,12 @@ body,
   text-decoration: underline;
 }
 
+@media screen and (max-width: 720px) {
+  .copyright-item {
+    text-align: center;
+  }
+}
+
 /* Footer style */
 
 /* Modals */
@@ -70,6 +76,30 @@ label a:hover {
 
 /* Modals */
 
-/* Profile */
+/* OrderRecap */
 
-/* Profile */
+.quantity-btn {
+  border: 1px solid #a7c83a;
+  border-radius: 50%;
+  background-color: #a7c83a;
+  color: #fff;
+  display: inline;
+}
+
+.user-info-btn {
+  width: 40%;
+}
+
+@media screen and (max-width: 720px) {
+  .user-info-btn {
+    width: 80%;
+  }
+}
+
+.card-order {
+  border: 1px solid black;
+  border-radius: 33px;
+  border-collapse: collapse;
+}
+
+/* OrderRecap */

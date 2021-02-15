@@ -5,6 +5,7 @@ import { AuthProvider } from "./components/auth/contexts/AuthContext";
 import Profile from "./components/user/Profile";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from "./components/layout/Navbar";
+import Order from './components/order/Order';
 
 function App() {
   return (
@@ -17,6 +18,11 @@ function App() {
               <Footer />
             </Route>
             <PrivateRoute exact path="/dashboard" component={Profile} />
+            <Route exact path='/valider-commande'>
+              <Navbar />
+              <Order />
+              <Footer />
+            </Route>
           </AuthProvider>
         </Switch>
       </BrowserRouter>

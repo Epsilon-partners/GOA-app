@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationArrow, faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope, faClock } from "@fortawesome/free-regular-svg-icons";
 
-const Contact = () => {
+const Contact = () => { 
   return (
-    <Card className="border-0 col-6">
+    <Card className="border-0 col-md-6 col-12">
       <Card.Body>
         <Card.Title className="card-title-footer">Contact</Card.Title>
         <Card.Text className="card-text-footer">

@@ -3,7 +3,7 @@ import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = ({ text, classStyle }) => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [passwordEqual, setPasswordEqual] = useState(false);
@@ -56,8 +56,8 @@ const SignUp = () => {
 
   return (
     <>
-      <a href="#creer-un-compte" onClick={handleShow}>
-        Créer un compte
+      <a href="#creer-un-compte" onClick={handleShow} className={classStyle}>
+        {text}
       </a>
 
       <Modal

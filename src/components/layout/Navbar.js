@@ -34,11 +34,11 @@ const Navbar = () => {
         <div className="links">
           <Link to="/">Accueil</Link>
           <Link to="/menu-list">Nos Menus</Link>
-          <Link to="/contact">Contact</Link>
+          <a href="#footer">Contact</a>
           {!currentUser ? (
             <>
-              <SignIn />
-              <SignUp />
+              <SignIn text="Se connecter" />
+              <SignUp text="Créer un compte" />
             </>
           ) : (
             <a href="#deconnexion" onClick={handleLogOut}>

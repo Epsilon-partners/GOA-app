@@ -16,10 +16,10 @@ class Map extends React.Component {
     ));
 
     return (
-      <Col className="d-flex justify-content-center">
+      <Col className="d-flex justify-content-center" sm='12' md='6' style={{height: '45vh'}}>
         <GoogleMapExample
           isMarkerShown
-          containerElement={<div style={{ height: "100%", width: "70%" }} />}
+          containerElement={<div style={{ height: "100%", width: "100%" }} />}
           mapElement={<div style={{ height: "100%", width: "100%" }} />}
         />
       </Col>

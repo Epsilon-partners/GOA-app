@@ -3,7 +3,7 @@ import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
-const SignIn = () => {
+const SignIn = ({ text, classStyle }) => {
   const [show, setShow] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetMessageSuccess, setResetMessageSuccess] = useState(false);
@@ -55,8 +55,8 @@ const SignIn = () => {
 
   return (
     <>
-      <a href="#connexion" onClick={handleShow}>
-        Se connecter
+      <a href="#connexion" onClick={handleShow} className={classStyle}>
+        {text}
       </a>
 
       <Modal
@@ -78,7 +78,7 @@ const SignIn = () => {
                   </Form.Label>
                   <Col sm={8}>
                     <Form.Control
-                      type="email"
+                      type="email" 
                       placeholder="exemple@gmail.com"
                       value={emailReset}
                       onChange={(e) => setEmailReset(e.target.value)}

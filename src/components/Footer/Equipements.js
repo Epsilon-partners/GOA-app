@@ -4,8 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faWifi, faTv, faWind } from "@fortawesome/free-solid-svg-icons";
 
 const Equipements = () => {
-  return (
-    <Card className="border-0 col-6">
+  return ( 
+    <Card className="border-0 col-md-6 col-12">
       <Card.Body>
         <Card.Title className="card-title-footer">Equipements</Card.Title>
         <Card.Text className="card-text-footer">

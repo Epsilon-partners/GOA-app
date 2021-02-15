@@ -6,21 +6,19 @@ import Copyright from "./Copyright";
 
 const Footer = () => {
   return (
-    <Container fluid className="p-4">
-      <footer id="footer">
-        <Row className="py-4">
-          <Col>
-            <h2 className="text-center footer-h2">CONTACTEZ-NOUS</h2>
-          </Col>
-        </Row>
-        <Row>
-          <Infos />
-          <Map />
-        </Row>
-        <Row className="mt-4">
-          <Copyright />
-        </Row>
-      </footer>
+    <Container fluid className="p-4" as="footer" id="footer">
+      <Row className="py-4">
+        <Col>
+          <h2 className="text-center footer-h2">CONTACTEZ-NOUS</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Infos />
+        <Map />
+      </Row>
+      <Row className="mt-4">
+        <Copyright />
+      </Row>
     </Container>
   );
 };

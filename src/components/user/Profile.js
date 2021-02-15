@@ -66,7 +66,7 @@ const Profile = () => {
 
     const db = firebase.firestore();
     db.collection("users")
-      .doc(currentUser.email)
+      .doc(currentUser.uid)
       .update({
         ...updateUser,
       })
@@ -74,13 +74,14 @@ const Profile = () => {
         setUpdateFailed(false);
         setUpdateSuccess(true);
       })
-      .catch(() => {
+      .catch(err => {
         setUpdateSuccess(false);
         setUpdateFailed(true);
+        console.error(err);
       });
 
     Promise.all(promises)
-      .then(() => history.push("/"))
+      .then(() => setTimeout(() => history.push('/'), 3000))
       .catch(() => setError(true));
   };
 
@@ -97,7 +98,7 @@ const Profile = () => {
     };
 
     getUser();
-  }, []);
+  }, [currentUser]);
 
   return (
     <>
@@ -105,7 +106,7 @@ const Profile = () => {
       <Container className="h-100" fluid>
         {user ? (
           <Row className="h-100">
-            <Col className="h-100 d-flex align-items-center">
+            <Col className="h-100 d-flex flex-column align-items-center">
               {error && (
                 <Alert variant="danger" className="my-4">
                   Un problème est survenu pour la modification de votre email ou
@@ -320,7 +321,11 @@ const Profile = () => {
             </Col>
           </Row>
         ) : (
-          <Spinner animation="grow" />
+          <Row className="h-100">
+            <Col className="d-flex justify-content-center h-100">
+              <Spinner animation="grow" className="my-auto"/>
+            </Col>
+          </Row>
         )}
       </Container>
     </>

@@ -6,7 +6,7 @@ const Copyright = () => {
     <Col>
       <ListGroup
         horizontal
-        className="border-0 d-flex justify-content-around px-3"
+        className="border-0 d-md-flex flex-md-row flex-column justify-content-md-around px-md-3"
       >
         <ListGroup.Item className="border-0 copyright-item">
           &copy; Copyright 2021 GOA Indian Fast-Food. All Rights Reserved.

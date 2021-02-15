@@ -312,7 +312,7 @@ p {
   font-weight: 500;
 }
 .list-group-item {
-  color: #a7c83a !important;
+  color: #a7c83a;
   font-size: 22px;
   font-weight: 500;
 }
