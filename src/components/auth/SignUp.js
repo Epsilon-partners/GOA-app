@@ -3,7 +3,7 @@ import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
-const SignUp = ({ text, classStyle }) => {
+const SignUp = ({ text, classStyle, directTo }) => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [passwordEqual, setPasswordEqual] = useState(false);
@@ -47,7 +47,7 @@ const SignUp = ({ text, classStyle }) => {
 
       try {
         await signup(email, password, user);
-        history.push("/dashboard");
+        history.push(directTo);
       } catch {
         setError(true);
       }

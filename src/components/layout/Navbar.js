@@ -37,8 +37,8 @@ const Navbar = () => {
           <a href="#footer">Contact</a>
           {!currentUser ? (
             <>
-              <SignIn text="Se connecter" />
-              <SignUp text="Créer un compte" />
+              <SignIn text="Se connecter" directTo="/dashboard" />
+              <SignUp text="Créer un compte" directTo="/dashboard" />
             </>
           ) : (
             <a href="#deconnexion" onClick={handleLogOut}>

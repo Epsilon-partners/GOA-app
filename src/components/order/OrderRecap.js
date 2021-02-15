@@ -17,7 +17,7 @@ const OrderRecap = () => {
         <Card className="card-order">
             <Card.Body>
                 <Card.Title className="text-center">Récapitulatif de ma commande</Card.Title>
-                <Card.Subtitle className="border-bottom text-center">
+                <Card.Subtitle className="text-center pb-4 mb-3 border-styled">
                     1 menu
                     Quantité 
                     <button className="quantity-btn mx-3" onClick={decrement}>-</button>

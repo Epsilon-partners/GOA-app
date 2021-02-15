@@ -3,7 +3,7 @@ import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
-const SignIn = ({ text, classStyle }) => {
+const SignIn = ({ text, classStyle, directTo }) => {
   const [show, setShow] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetMessageSuccess, setResetMessageSuccess] = useState(false);
@@ -34,7 +34,7 @@ const SignIn = ({ text, classStyle }) => {
 
     try {
       await login(email, password);
-      history.push("/dashboard");
+      history.push(directTo);
     } catch {
       setError(true);
     }
