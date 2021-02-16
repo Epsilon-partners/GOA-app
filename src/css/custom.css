@@ -9,6 +9,11 @@ body,
   padding: 0;
 }
 
+.btn-success {
+  background-color: #a7c83a;
+  border-color: #a7c83a;
+}
+
 /* General */
 
 /* Footer style */
@@ -114,6 +119,21 @@ label a:hover {
   height  : 1px;
   width   : 50%;
   border-bottom:1px solid black;
+}
+
+.modif-icons {
+  cursor: pointer;
+  color: grey;
+}
+
+.modif-input {
+  width: 50%;
+}
+
+@media screen and (max-width: 720px) {
+  .modif-input {
+    width: 100%;
+  }
 }
 
 /* OrderRecap */

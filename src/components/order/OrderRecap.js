@@ -24,16 +24,16 @@ const OrderRecap = () => {
                     {quantity}
                     <button className="quantity-btn mx-3" onClick={() => setQuantity(() => quantity + 1)}>+</button>
                 </Card.Subtitle>
-                <Card.Text>
-                    <ListGroup className="border-0">
-                        <ListGroup.Item className="text-dark" style={{fontSize: '16px'}}>1 cheese naan</ListGroup.Item>
-                        <ListGroup.Item className="text-dark" style={{fontSize: '16px'}}>1 coca light</ListGroup.Item>
-                        <ListGroup.Item className="text-dark" style={{fontSize: '16px'}}>1 grande frite</ListGroup.Item>
+                <Card.Text as="div">
+                    <ListGroup className="border-0 d-flex flex-column justify-content-center">
+                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 cheese naan</ListGroup.Item>
+                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 coca light</ListGroup.Item>
+                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 grande frite</ListGroup.Item>
                     </ListGroup>
-                    <strong className="text-weight-bold" style={{fontSize: '24px'}}>TOTAL : 20€</strong>
+                    <p><strong className="text-weight-bold" style={{fontSize: '24px'}}>TOTAL : 20€</strong></p>
                 </Card.Text>
                 <Card.Footer className="d-flex justify-content-center bg-white border-0">
-                    <Button variant="success" className="rounded-pill w-75 mx-auto">Modifier</Button>
+                    <Button variant="success" className="rounded-pill w-75 mx-auto">Valider</Button>
                 </Card.Footer>
             </Card.Body>
         </Card>

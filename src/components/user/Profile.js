@@ -133,7 +133,7 @@ const Profile = () => {
                   </Card.Title>
                   <Card.Text as="div">
                     <Form className="row" onSubmit={handleSubmit}>
-                      <Col>
+                      <Col sm='12' md='6'>
                         <h6 className="font-weight-bold mb-4 text-center">
                           Votre identité
                         </h6>
@@ -226,7 +226,7 @@ const Profile = () => {
                           </Col>
                         </Form.Group>
                       </Col>
-                      <Col>
+                      <Col sm='12' md='6'>
                         <h6 className="font-weight-bold mb-4 text-center">
                           Votre adresse de livraison
                         </h6>
