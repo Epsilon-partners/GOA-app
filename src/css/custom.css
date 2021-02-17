@@ -8,7 +8,7 @@ body,
   margin: 0;
   padding: 0;
 }
-
+ 
 .btn-success {
   background-color: #a7c83a;
   border-color: #a7c83a;
@@ -25,37 +25,6 @@ body,
 }
 
 /* General */
-
-/* Footer style */
-
-.footer-h2 {
-  color: #0b6c13;
-}
-
-.card-title-footer {
-  color: #a7c83a;
-}
-
-.card-text-footer {
-  color: #707070;
-}
-
-#footer a {
-  color: #707070;
-}
-
-#footer a:hover {
-  color: #707070;
-  text-decoration: underline;
-}
-
-@media screen and (max-width: 720px) {
-  .copyright-item {
-    text-align: center;
-  }
-}
-
-/* Footer style */
 
 /* Modals */
 
