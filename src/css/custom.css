@@ -1,75 +1,149 @@
 /* General */
 
-
-html, body, #root {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+.btn-success {
+  background-color: #a7c83a;
+  border-color: #a7c83a;
+}
+
+.btn-outline-sucess {
+  border-color: #a7c83a;
+  color: #a7c83a;
+}
+
+.btn-outline-sucess:hover {
+  border-color: #a7c83a;
+  background-color: #a7c83a;
+}
 
 /* General */
-
-
 
 /* Footer style */
 
 .footer-h2 {
-    color: #0b6c13;
+  color: #0b6c13;
 }
 
 .card-title-footer {
-    color: #a7c83a;
+  color: #a7c83a;
 }
 
 .card-text-footer {
-    color: #707070;
+  color: #707070;
 }
 
 #footer a {
-    color: #707070;
+  color: #707070;
 }
 
 #footer a:hover {
-    color: #707070;
-    text-decoration: none;
+  color: #707070;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 720px) {
+  .copyright-item {
+    text-align: center;
+  }
 }
 
 /* Footer style */
 
-
 /* Modals */
 
 .modal-content {
-    border-radius: 33px;
-    padding: 20px;
+  border-radius: 33px;
+  padding: 20px;
 }
 
 label a {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 label a:hover {
-    color: black;
-    font-weight: bold;
+  color: black;
+  font-weight: bold;
 }
 
 .form-control {
-    border-radius: 12px;
-    background-color: #E5E3E3;
+  border-radius: 12px;
+  background-color: #e5e3e3;
 }
 
 #connect-modal .btn-password {
-    color: black;
-    text-decoration: underline black;
-    font-size: 14px;
+  color: black;
+  text-decoration: underline black;
+  font-size: 14px;
 }
 
 .text-small {
-    font-size: small;
+  font-size: small;
 }
 
 /* Modals */
 
+/* OrderRecap */
+
+.quantity-btn {
+  border: 1px solid #a7c83a;
+  border-radius: 50%;
+  background-color: #a7c83a;
+  color: #fff;
+  display: inline;
+}
+
+.user-info-btn {
+  width: 40%;
+}
+
+@media screen and (max-width: 720px) {
+  .user-info-btn {
+    width: 80%;
+  }
+}
+
+.card-order {
+  border: 1px solid black;
+  border-radius: 33px;
+  border-collapse: collapse;
+}
+
+.border-styled {
+  position: relative;
+}
+
+.border-styled:before {
+  content : "";
+  position: absolute;
+  left    : 25%;
+  bottom  : 0;
+  height  : 1px;
+  width   : 50%;
+  border-bottom:1px solid black;
+}
+
+.modif-icons {
+  cursor: pointer;
+  color: grey;
+}
+
+.modif-input {
+  width: 50%;
+}
+
+@media screen and (max-width: 720px) {
+  .modif-input {
+    width: 100%;
+  }
+}
+
+/* OrderRecap */
