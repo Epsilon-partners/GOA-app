@@ -9,7 +9,6 @@ import Order from './components/order/Order';
 import Home from './components/home/Home';
 import MenuList from './components/Menu/MenuList';
 import MenuItem from './components/Menu/MenuItem';
-import NotFound from './components/NotFound';
 import Delivery from './components/home/Delivery';
 
 

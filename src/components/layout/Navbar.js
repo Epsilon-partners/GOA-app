@@ -1,12 +1,31 @@
 import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import logo from "../../img/Logo.png";
 import { useAuth } from "../auth/contexts/AuthContext";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
-import { Alert, Nav, Navbar } from "react-bootstrap";
+import { Alert, Nav, Navbar, OverlayTrigger, Popover, ListGroup, Button } from "react-bootstrap";
 import React, { useState } from "react";
+
+const poppover = (
+  <Popover id="popover-basic" className="card-order p-2">
+    <Popover.Content as="div">
+      <h5 className="text-center" style={{fontSize: 'small'}}>Résumé de votre commande</h5>
+      <p className="text-center border-bottom text-dark">1 menu <FontAwesomeIcon icon={faTimesCircle} /></p>
+      <ListGroup className="border-0">
+        <ListGroup.Item className="list-small-cart">1 cheese naan</ListGroup.Item>
+        <ListGroup.Item className="list-small-cart">1 coca light</ListGroup.Item>
+        <ListGroup.Item className="list-small-cart">1 grande frite</ListGroup.Item>
+      </ListGroup>
+      <p className="text-dark text-center mt-3 mb-0 font-weight-bold">TOTAL: 20€</p>
+      <div className="d-flex justify-content-center">
+        <Button variant="success" className="rounded-pill my-3 w-75 mx-auto">Confirmer</Button>
+      </div>
+    </Popover.Content>
+  </Popover>
+)
 
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
@@ -55,9 +74,11 @@ const NavBar = () => {
                 </div>
               ) : null}
               <div className="icon">
-                <Link to="/cart">
+                <a href="#pop">
+                <OverlayTrigger trigger="click" placement="bottom" overlay={poppover}>
                   <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
-                </Link>
+                </OverlayTrigger>
+                </a>
               </div>
           </Nav>
         </Navbar.Collapse>

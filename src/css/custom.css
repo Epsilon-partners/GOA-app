@@ -116,3 +116,17 @@ label a:hover {
 }
 
 /* OrderRecap */
+
+
+/* Small Cart */
+
+.list-small-cart {
+  font-size: small !important;
+  text-align: center;
+  border: none;
+  color: black !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Small Cart */
