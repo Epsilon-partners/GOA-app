@@ -1,13 +1,46 @@
-import React, { useRef } from "react";
-import { Card, Col, Row, Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Card, Col, Row, Form, Button, Alert } from "react-bootstrap";
 import SignUp from "../auth/SignUp";
 import SignIn from "../auth/SignIn";
+import firebase from '../../firebase';
 
 const UserGuest = () => {
-  const nameRef = useRef();
-  const emailRef = useRef();
-  const phoneRef = useRef();
-  const conditionsRef = useRef();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [conditions, setConditions] = useState(false);
+
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [showFailed, setShowFailed] = useState(false);
+
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    const userGuest = {
+      name,
+      email,
+      phone,
+      conditions
+    };
+
+    const db = firebase.firestore();
+    db.collection("guests")
+    .doc()
+    .set({
+      ...userGuest
+    })
+    .then(() => {
+      setShowFailed(false);
+      setShowSuccess(true);
+    })
+    .catch(err => {
+      console.error(err);
+      setShowSuccess(false);
+      setShowFailed(true);
+    });
+
+  }
 
   return (
     <Card className="card-order">
@@ -22,7 +55,7 @@ const UserGuest = () => {
               Je ne souhaite pas créer un compte mais je souhaiterai être
               informé lorsque ma commande est prête
             </div>
-            <Form className="d-flex flex-column justify-content-center">
+            <Form className="d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
               <Form.Group as={Row} controlId="name">
                 <Form.Label column sm="4">
                   Nom
@@ -31,7 +64,8 @@ const UserGuest = () => {
                   <Form.Control
                     type="text"
                     placeholder="Jean"
-                    ref={nameRef}
+                    value={name}
+                    onChange={e => setName(e.target.value)}
                     required
                   />
                 </Col>
@@ -44,7 +78,8 @@ const UserGuest = () => {
                   <Form.Control
                     type="number"
                     placeholder="0123456789"
-                    ref={phoneRef}
+                    value={phone}
+                    onChange={e => setPhone(e.target.value)}
                     required
                   />
                 </Col>
@@ -55,9 +90,10 @@ const UserGuest = () => {
                 </Form.Label>
                 <Col sm="8">
                   <Form.Control
-                    type="text"
+                    type="email"
                     placeholder="exemple@email.com"
-                    ref={emailRef}
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
                     required
                   />
                 </Col>
@@ -67,7 +103,8 @@ const UserGuest = () => {
                   type="checkbox"
                   id="conditions"
                   className="custom-control-input"
-                  ref={conditionsRef}
+                  value={conditions}
+                  onChange={e => setConditions(e.target.checked)}
                   name="conditions"
                   required
                 />
@@ -113,6 +150,12 @@ const UserGuest = () => {
               />
             </div>
           </Col>
+          {showSuccess &&
+            <Alert variant="success" className="my-4 ml-3">Vous êtes bien enregistré en tant qu'invité !</Alert>
+          }
+          {showFailed &&
+            <Alert variant="danger" className="my-4 ml-3">Un problème est survenu ! Veuillez réessayer</Alert>
+          }
         </Card.Text>
       </Card.Body>
     </Card>

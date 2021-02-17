@@ -14,6 +14,16 @@ body,
   border-color: #a7c83a;
 }
 
+.btn-outline-sucess {
+  border-color: #a7c83a;
+  color: #a7c83a;
+}
+
+.btn-outline-sucess:hover {
+  border-color: #a7c83a;
+  background-color: #a7c83a;
+}
+
 /* General */
 
 /* Footer style */
