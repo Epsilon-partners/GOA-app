@@ -1,18 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&family=Roboto&display=swap');
 
 /* base styles */
 * {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   color: #333;
 }
-h1,
-h2,
-h3 {
-  font-family: "El Messiri", sans-serif;
+h1, h2, h3 {
+  font-family: 'El Messiri', sans-serif;
 }
-.app {
-  margin: 0;
+.app{
+  margin:0;
   padding: 0;
 }
 .navbar {
@@ -24,37 +22,40 @@ h3 {
   margin: 0 auto;
   border-bottom: 1px solid #f2f2f2;
 }
-.navbar h2 {
-  color: #a7c83a;
+.navbar h2 { 
+  color: #A7C83A;
 }
-.navbar .logo {
-  width: 120px;
-  height: 80px;
+.navbar .logo{
+  width:120px;
+  height: 80px;;
 }
 .navbar .logo img {
-  max-width: 100%;
-  max-height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+
+
 }
 .navbar .links {
   margin-left: auto;
   margin-right: 10px;
 }
 .navbar a {
-  color: #0b6c13;
+  color: #0B6C13;
   font-size: 20px;
-  font-family: "El Messiri", sans-serif;
+  font-family: 'El Messiri', sans-serif;
   margin-left: 16px;
   text-decoration: none;
+  
 }
 .navbar a:hover {
-  color: #a7c83a;
+  color: #A7C83A;
 }
 .navbar .auth {
   display: flex;
   flex-direction: row;
 }
-.navbar .auth .icon {
-  margin-left: 10px;
+.navbar .auth .icon{
+  margin-left:10px;
   display: flex;
 }
 
@@ -65,15 +66,15 @@ h3 {
 } */
 
 /* ---------------HomePage---------------------- */
-.home {
+.home{
   height: 80vh;
   background-image: url("./img/Banner.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
+  background-position:top;
 }
 
-.home-content {
+.home-content{
   width: 700px;
   height: 100%;
   margin: auto;
@@ -81,37 +82,38 @@ h3 {
   padding: 20px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+ justify-content: space-around;
 }
-.home-logo {
-  width: 300px;
+.home-logo{
+  width:300px;
   align-items: center;
+
 }
 .home-logo img {
   width: 80%;
 }
 
-.home-order {
-  width: 300px;
+.home-order{
+  width:300px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   padding-top: 20%;
 }
-.home-order-content {
+.home-order-content{
   display: flex;
   flex-direction: row;
 }
-.home-order-content a {
-  margin: 15px;
+.home-order-content a{
+  margin:15px;
 }
-.home-order-content a:hover {
+.home-order-content a:hover{
   text-decoration: none;
 }
-.home-order-type {
-  margin: 25px auto;
+.home-order-type{
+  margin:25px auto;
 }
-.home-order-type div {
+.home-order-type div{
   width: 100px;
   height: 100px;
   background-color: white;
@@ -120,22 +122,23 @@ h3 {
   justify-content: center;
   padding-top: 20px;
 }
-.home-order-type p {
+.home-order-type p{
   text-align: center;
   font-size: 20px;
   margin-top: 10px;
   font-weight: 600;
 }
 
-.home-order-type img {
+.home-order-type img{
   width: 70%;
   height: 70%;
 }
 /* ---------------------Menu------------------------- */
-.menu-list {
+.menu-list{
   height: 500px;
+  
 }
-.menu-list-content {
+.menu-list-content{
   padding-top: 70px;
   max-width: 800px;
   justify-content: center;
@@ -143,26 +146,25 @@ h3 {
 }
 
 /* ------------Delivery------------------- */
-.delivery {
+.delivery{
   width: 100vw;
   height: 78vh;
   /* background-image: url('./img/indian-food.jpg'); */
-  background: url("./img/indian-food.jpg"),
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  background: url("./img/indian-food.jpg"), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
   background-size: cover;
+  
 }
 
-.delivery-content {
+.delivery-content{
   padding-top: 70px;
   max-width: 800px;
   justify-content: center;
   margin: 0px auto;
+  
 }
 
-.delivery-content .delivery-text h2,
-h3,
-p {
+.delivery-content .delivery-text h2 , h3, p{
   color: white;
   text-align: center;
 }
@@ -171,49 +173,50 @@ p {
   font-size: 18px;
 }
 
-.delivery-partners {
+.delivery-partners{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.delivery-partners_item {
+.delivery-partners_item{
   background-color: #59c269;
   display: flex;
   flex-direction: row;
   justify-content: left;
   border-radius: 76px;
   align-content: center;
-  margin-top: 70px;
+  margin-top:70px;
   height: 70px;
   width: 300px;
 }
-.delivery-partners a:hover {
+.delivery-partners  a:hover{
   text-decoration: none;
 }
-.delivery-partners_item p {
+.delivery-partners_item p{
   font-size: 22px;
   padding-top: 5px;
   padding-left: 20px;
+  
 }
-.deliveroo {
-  background-color: #20cfbe;
+.deliveroo{
+  background-color: #20CFBE;
 }
-.deliveroo-icon {
+.deliveroo-icon{
   border: 2px white solid;
   border-radius: 50%;
 }
 
 /* Instagram feed */
-.insta-feed {
-  background-color: #0b6c13;
+.insta-feed{
+  background-color: #0B6C13;
   width: 100vw;
-  margin: 0px auto;
-  padding-top: 50px;
+  margin:0px auto;
+  padding-top:  50px;
   padding-bottom: 50px;
 }
 
-.insta-feed-content {
+.insta-feed-content{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -221,15 +224,15 @@ p {
 }
 
 .insta-feed-left {
-  width: 350px;
-  margin: auto;
+ width: 350px;
+ margin: auto;
   width: 50%;
   padding: 10px;
 }
 .insta-feed-left img {
   width: 50px;
   height: 50px;
-  margin-left: 40%;
+  margin-left:40%;
   margin-top: 20px;
 }
 
@@ -246,22 +249,25 @@ p {
 }
 
 /* Menu items */
-.menu-list {
+.menu-list{
   height: 1000px;
 }
-.infoBtn {
+.infoBtn{
   background-color: white;
   border: none;
 }
 
-.menu-list svg > path {
-  color: #a7c83a;
-}
+.menu-list svg > path
+{ 
+  color: #A7C83A;
+ }
 
-.infoBtn:hover {
+
+.infoBtn:hover{
   background-color: white;
   border: none;
 }
+
 
 .tooltip > .tooltip-inner {
   background-color: #fff;
@@ -273,56 +279,62 @@ p {
   border-top: 5px solid #062e56;
 }
 
-.menu-list-header {
-  border: 1px solid #0b6c13;
+
+.menu-list-header{
+  border: 1px solid #0B6C13;
+
 }
-.menu-list h2 {
+.menu-list h2{
   text-align: center;
-  color: #0b6c13;
+  color: #0B6C13;
   font-size: 35px;
   padding-top: 10px;
+  
 }
-.list-group-item {
+.list-group-item{
   border: none !important;
 }
-.menu-list-item {
-  color: #a7c83a;
-  font-family: "El Messiri", sans-serif;
-  font-size: 20px;
-  padding: 30px;
-  border: none;
+.menu-list-item{
+ color: #A7C83A;
+ font-family: 'El Messiri', sans-serif;
+ font-size: 20px;
+ padding: 30px;
+ border: none;
 }
 
-.menu-list-item:hover {
-  border-bottom: 2px solid #a7c83a !important;
+.menu-list-item:hover{
+  border-bottom: 2px solid  #A7C83A  !important;
 }
 
-.list-group {
+.list-group{
   justify-content: center;
 }
 
-.card {
+.card{
   margin-top: 20px;
-  border: none;
+  border: none  !important;
 }
-.addToCartBtn {
-  border: 2px solid #a7c83a !important;
-  background-color: #a7c83a;
+.addToCartBtn
+{
+  border: 2px solid  #A7C83A !important;
+  background-color:#A7C83A;
   color: white;
   font-weight: 500;
 }
-.list-group-item {
-  color: #a7c83a;
+.list-group-item{
+  color:#A7C83A  !important;
   font-size: 22px;
   font-weight: 500;
 }
-.addToCartBtn:hover {
-  background-color: #a7c83a;
+.addToCartBtn:hover{
+  background-color:#A7C83A;
+  
 }
 
 /* footer */
 .footer-h2 {
   color: #0b6c13;
+  
 }
 
 .card-title-footer {
@@ -342,15 +354,120 @@ p {
   text-decoration: none;
 }
 
-.card-text-footer {
+
+.card-text-footer{
   text-align: left;
 }
 
-.copyright-item {
+.copyright-item{
   color: black !important;
 }
-#footer .copyright-item {
+#footer .copyright-item{
   color: black !important;
   font-weight: normal;
   font-size: 14px;
+  
 }
+
+@media screen and (max-width: 720px) {
+  .copyright-item {
+    text-align: center;
+  }
+}
+
+
+/* MenuItem */
+
+.menu-item h2 {
+  max-width: 20rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.menu-item .card{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu-item .right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center ;
+  padding:25px;
+  border: 1px solid #B0BEC5;
+ border-radius: 5% 0% 0% 5% / 5% 0% 0% 5% ;
+  
+}
+.menu-item .left-section {
+ 
+  display: flex;
+  flex-direction: column;
+  padding:25px;
+  padding-left: 50px;
+  border: 1px solid #B0BEC5;
+  border-radius: 0% 5% 5% 0% / 0% 5% 5% 0% ;
+
+  
+}
+
+.menu-item .left-section h3 {
+  color: #000;
+  font-size: 20px;
+}
+.left-section .asMenu {
+  margin-bottom: 50px;
+}
+
+/* The container */
+.containerRadio {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+ 
+}
+/* Hide the browser's default radio button */
+.containerRadio input {
+  /* position: absolute; */
+  opacity: 0;
+  cursor: pointer;
+}
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color:white;
+  border: 1px #CFD8DC solid;
+  border-radius: 50%;
+}
+
+/* When the radio button is checked, add a green background */
+.containerRadio input:checked ~ .checkmark {
+  background-color: #a7c83b;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

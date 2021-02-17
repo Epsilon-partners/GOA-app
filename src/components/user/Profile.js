@@ -12,7 +12,6 @@ import {
 import { useAuth } from "../auth/contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import firebase from "../../firebase";
-import Navbar from "../layout/Navbar";
 
 const Profile = () => {
   const { currentUser, updatePassword, updateEmail } = useAuth();
@@ -102,7 +101,6 @@ const Profile = () => {
 
   return (
     <>
-      <Navbar />
       <Container className="h-100" fluid>
         {user ? (
           <Row className="h-100">
