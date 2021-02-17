@@ -2,14 +2,23 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import { useParams } from "react-router-dom";
 import firebase from '../../firebase'
 import { useLocation } from "react-router-dom";
+import React, { useState } from 'react';
 
 
 //get ALL data
 const db = firebase.firestore();
 const MenuItem = () => {
+    const [quantity, setQuantity] = useState(1);
+    
+    const decrement = () => {
+        if (quantity > 1) {
+            setQuantity(quantity - 1);
+        } else {
+            return;
+        }
+    }
 
     const location = useLocation();
-    console.log(location.state.item.imageUrl);
     let menuItem = location.state.item
     return (
         <div className="menu-item">
@@ -60,7 +69,13 @@ const MenuItem = () => {
                             </div>
                         </div>
 
-
+                        <div className="addToCart mt-5">
+                            Quantité
+                            <button className="quantity-btn mx-3" onClick={decrement}>-</button>
+                                {quantity}
+                            <button className="quantity-btn mx-3" onClick={() => setQuantity(() => quantity + 1)}>+</button>
+                            <Button variant="success" type="button" className="rounded-pill" >Ajouter au panier</Button>
+                        </div>
 
                     </Col>
                 </Row >
