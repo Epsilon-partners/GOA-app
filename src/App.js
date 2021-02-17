@@ -4,7 +4,7 @@ import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./components/auth/contexts/AuthContext";
 import Profile from "./components/user/Profile";
 import PrivateRoute from "./components/PrivateRoute";
-import Navbar from "./components/layout/Navbar";
+import NavBar from "./components/layout/Navbar";
 import Order from './components/order/Order';
 import Home from './components/home/Home';
 import MenuList from './components/Menu/MenuList';
@@ -19,9 +19,10 @@ function App() {
       <BrowserRouter>
         <Switch>
           <AuthProvider>
-          <Navbar />
+          <NavBar />
             <Route exact path="/">
               <Home />
+              <MenuList />
             </Route>
             <Route exact path="/delivery">
               <Delivery></Delivery>
@@ -38,7 +39,7 @@ function App() {
             <Route exact path="/menu-list">
               <MenuList></MenuList>
             </Route>
-           
+            <Footer />
           </AuthProvider>
         </Switch>
       </BrowserRouter>

@@ -6,7 +6,7 @@ import Copyright from "./Copyright";
 
 const Footer = () => {
   return (
-    <Container fluid className="p-4 my-auto" as="footer" id="footer">
+    <Container fluid className="p-4" as="footer" id="footer">
       <Row className="py-4">
         <Col>
           <h2 className="text-center footer-h2">CONTACTEZ-NOUS</h2>

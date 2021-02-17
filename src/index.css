@@ -32,13 +32,13 @@ h1, h2, h3 {
 .navbar .logo img {
     max-width: 100%;
     max-height: 100%;
-
-
 }
+
 .navbar .links {
   margin-left: auto;
   margin-right: 10px;
 }
+
 .navbar a {
   color: #0B6C13;
   font-size: 20px;
@@ -134,10 +134,7 @@ h1, h2, h3 {
   height: 70%;
 }
 /* ---------------------Menu------------------------- */
-.menu-list{
-  height: 500px;
-  
-}
+
 .menu-list-content{
   padding-top: 70px;
   max-width: 800px;
@@ -250,7 +247,7 @@ h1, h2, h3 {
 
 /* Menu items */
 .menu-list{
-  height: 1000px;
+  height: auto;
 }
 .infoBtn{
   background-color: white;
@@ -312,7 +309,7 @@ h1, h2, h3 {
 
 .card{
   margin-top: 20px;
-  border: none  !important;
+  border: none;
 }
 .addToCartBtn
 {

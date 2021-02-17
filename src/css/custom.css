@@ -81,8 +81,8 @@ label a:hover {
 }
 
 .card-order {
-  border: 1px solid black;
-  border-radius: 33px;
+  border: 1px solid black !important;
+  border-radius: 33px !important;
   border-collapse: collapse;
 }
 
@@ -97,7 +97,7 @@ label a:hover {
   bottom  : 0;
   height  : 1px;
   width   : 50%;
-  border-bottom:1px solid black;
+  border-bottom:1px solid black !important;
 }
 
 .modif-icons {
