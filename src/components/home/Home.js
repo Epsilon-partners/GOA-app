@@ -3,14 +3,12 @@ import goaImage from '../../img/goaImage.png'
 import delivery from '../../img/delivery-man.png'
 import takeAway from '../../img/take-away.png'
 import { Link } from "react-router-dom"
-import MenuList from '../Menu/MenuList';
-import Footer from '../Footer/Footer';
 
 
 const Home = () => {
     return (
         <>
-        <div className="home">
+        <div className="home"> 
             <div className="home-content">
                 <div className="home-logo">
                     <img src={goaImage} alt="Elephnat" />
@@ -36,10 +34,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <MenuList></MenuList>
-
         </div>
-        <Footer />
         </>
     );
 }
