@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, ListGroup, Button, Table } from 'react-bootstrap';
+import { Card, Button, Table } from 'react-bootstrap';
 
 
 const OrderRecap = () => {
@@ -12,6 +12,14 @@ const OrderRecap = () => {
         } else {
             return;
         }
+    };
+
+    const totalPrice = array => {
+        let total = 0;
+        for (let i = 0; i < array.length; i++) {
+            total += array[i][0].price;
+        }
+        return total.toFixed(2);
     }
 
     return ( 
@@ -26,7 +34,7 @@ const OrderRecap = () => {
                     <button className="quantity-btn mx-3" onClick={() => setQuantity(() => quantity + 1)}>+</button>
                 </Card.Subtitle>
                 <Card.Text as="div">
-                    {/*recapArray && (
+                    {recapArray && (
                         <Table>
                             {recapArray.map(recapItem => (
                                 <tbody>
@@ -39,13 +47,8 @@ const OrderRecap = () => {
                                 </tbody>
                             ))}
                         </Table>
-                    )*/}
-                    <ListGroup className="border-0 d-flex flex-column justify-content-center">
-                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 cheese naan</ListGroup.Item>
-                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 coca light</ListGroup.Item>
-                        <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 grande frite</ListGroup.Item>
-                    </ListGroup>
-                    <p><strong className="text-weight-bold" style={{fontSize: '24px'}}>TOTAL : 20€</strong></p>
+                    )}
+                    <p><strong className="text-weight-bold" style={{fontSize: '24px'}}>TOTAL : {totalPrice(recapArray)} €</strong></p>
                 </Card.Text>
                 <Card.Footer className="d-flex justify-content-center bg-white border-0">
                     <Button variant="success" className="rounded-pill w-75 mx-auto">Valider</Button>
