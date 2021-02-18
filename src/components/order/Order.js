@@ -13,11 +13,11 @@ function Order() {
     return (
         <Container>
             <Row>
-                <Col md={4} sm={12}>
+                <Col md={12} sm={12}>
                     <OrderRecap />
-                    <Extra />
+                    {/* <Extra /> */}
                 </Col>
-                <Col md={8} sm={12}>
+                <Col md={12} sm={12}>
                     {currentUser ? <UserInfo userID={currentUser.uid} /> : <UserGuest />}
                 </Col>
             </Row>

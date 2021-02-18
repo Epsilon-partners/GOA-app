@@ -5,7 +5,6 @@ import { Card, Button, Table } from 'react-bootstrap';
 const OrderRecap = () => {
     const [quantity, setQuantity] = useState(1);
     const recapArray = JSON.parse(localStorage.getItem('recapArray'));
-    console.log(recapArray[0][0].name);
     const decrement = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
