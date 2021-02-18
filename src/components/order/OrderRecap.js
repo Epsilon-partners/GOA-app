@@ -37,14 +37,16 @@ const OrderRecap = () => {
                     {recapArray && (
                         <Table>
                             {recapArray.map(recapItem => (
-                                <tbody>
-                                    <tr>
-                                        <td>{recapItem.quantity}</td>
-                                        <td>{recapItem.name}</td>
-                                        <td>{recapItem.price} €</td>
-                                        <td><Button variant="danger" type="button">Supprimer</Button></td>
-                                    </tr>
-                                </tbody>
+                                recapItem.map(item => (
+                                    <tbody>
+                                        <tr>
+                                            <td>{item.quantity}</td>
+                                            <td>{item.name}</td>
+                                            <td>{item.price} €</td>
+                                            <td><Button variant="danger" type="button">Supprimer</Button></td>
+                                        </tr>
+                                    </tbody>
+                                ))
                             ))}
                         </Table>
                     )}

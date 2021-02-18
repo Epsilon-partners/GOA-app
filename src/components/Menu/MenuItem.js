@@ -16,7 +16,7 @@ const MenuItem = () => {
     const [quantity, setQuantity] = useState(1);
     const [menu, setMenu] = useState(false);
     const [supplement, setSupplement] = useState([]);
-    const [shoppingCart, setShoppingCart] = useState([])
+    var shoppingCart = [];
     const decrement = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
@@ -29,8 +29,9 @@ const MenuItem = () => {
     //add items to cart
 
     const addToCart = e => {
-        e.preventDefault()
-        setShoppingCart(shoppingCart.push(
+        e.preventDefault();
+        console.log('shpo', shoppingCart);
+        shoppingCart.push(
             {
                 name: menuItem.name,
                 price: menuItem.price,
@@ -39,13 +40,13 @@ const MenuItem = () => {
                 supplement: supplement
             }
         )
-        )
+        
         const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
-        console.log(recapArray);
 
         for (let i in recapArray) {
-            if (recapArray[i].name === shoppingCart.menuItem.name) {
-                recapArray[i].quantity += quantity;
+            if (recapArray[0][i].name === shoppingCart.name) {
+                console.log('in if')
+                recapArray[0][i].quantity += quantity;
                 localStorage.setItem('recapArray', JSON.stringify(recapArray));
                 return;
             }
