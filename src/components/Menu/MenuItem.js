@@ -11,11 +11,12 @@ const MenuItem = () => {
     //get menu item 
     const location = useLocation();
     let menuItem = location.state.item
+
     //set quantity
     const [quantity, setQuantity] = useState(1);
     const [menu, setMenu] = useState(false);
     const [supplement, setSupplement] = useState([]);
-    const [shoppingCart, setShoppingCart] = useState([menuItem])
+    const [shoppingCart, setShoppingCart] = useState([])
     const decrement = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
@@ -30,17 +31,22 @@ const MenuItem = () => {
         e.preventDefault()
         setShoppingCart(shoppingCart.push(
             {
+                name: menuItem.name,
+                price: menuItem.price,
                 quantity: quantity,
                 menu: menu,
                 supplement: supplement
             }
-        ))
-
+        )
+        )
         const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
+        console.log(recapArray);
+
         for (let i in recapArray) {
-            if (recapArray[i][0].name === shoppingCart[0].name) {
-                recapArray[i][1].quantity += shoppingCart[1].quantity;
-                
+            if (recapArray[i].name === shoppingCart.menuItem.name) {
+                recapArray[i].quantity += quantity;
+                localStorage.setItem('recapArray', JSON.stringify(recapArray));
+                return;
             }
         }
         recapArray.push(shoppingCart);
