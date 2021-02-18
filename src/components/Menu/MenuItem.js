@@ -1,15 +1,21 @@
-import { Card, Button, Container, Row, Col } from 'react-bootstrap';
-import { useParams } from "react-router-dom";
-import firebase from '../../firebase'
-import { useLocation } from "react-router-dom";
-import React, { useState } from 'react';
+import { Card, Button, Container, Row, Col, Form } from 'react-bootstrap'
+import { useLocation } from "react-router-dom"
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+
 
 
 //get ALL data
-const db = firebase.firestore();
 const MenuItem = () => {
+    const history = useHistory()
+    //get menu item 
+    const location = useLocation();
+    let menuItem = location.state.item
+    //set quantity
     const [quantity, setQuantity] = useState(1);
-    
+    const [menu, setMenu] = useState(false);
+    const [supplement, setSupplement] = useState([]);
+    const [shoppingCart, setShoppingCart] = useState([menuItem])
     const decrement = () => {
         if (quantity > 1) {
             setQuantity(quantity - 1);
@@ -18,8 +24,23 @@ const MenuItem = () => {
         }
     }
 
-    const location = useLocation();
-    let menuItem = location.state.item
+    //add items to cart
+
+    const addToCart = (e) => {
+        e.preventDefault()
+        setShoppingCart(shoppingCart.push(
+            {
+                quantity: quantity,
+                menu: menu,
+                supplement: supplement
+            }
+        ))
+        history.push({
+            pathname: `/valider-commande`,
+            state: { shoppingCart }
+        })
+    }
+
     return (
         <div className="menu-item">
             <Container>
@@ -36,47 +57,60 @@ const MenuItem = () => {
                             </Card.Body>
                         </Card>
                     </Col>
+
+                    {/* form */}
                     <Col className="left-section">
-
-                        <div className="asMenu">
+                        <Form onSubmit={addToCart}>
                             <h3>Menu</h3>
-                            <div>
-                                <label class="containerRadio">Oui
-                                    <input type="radio" checked="checked" name="radio1" value="oui" id="oui" />
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerRadio">Non
-                                    <input type="radio" name="radio1" value="non" id="non" />
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <div className="supplements">
-                            <h3>Suppléments (0.50)</h3>
-                            <div>
-                                <label class="containerRadio">Mozzarella
-                                    <input type="radio" checked="checked" name="radio2" value="mozzarella" id="mozzarella" />
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerRadio">Cheddar
-                                    <input type="radio" name="radio2" value="cheddar" id="cheddar" />
-                                    <span class="checkmark"></span>
-                                </label>
-                                <label class="containerRadio">Chèvre
-                                    <input type="radio" name="radio2" value="chevre" id="chevre" />
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
+                            <Form.Group as={Row}>
+                                <Col sm={10}>
+                                    <Form.Check
+                                        type="radio"
+                                        label="Oui"
+                                        id="ouiMenu"
+                                        name="menu"
+                                        onChange={(e) => setMenu(true)}
+                                    />
+                                    <Form.Check
+                                        type="radio"
+                                        label="Non"
+                                        id="nonMenu"
+                                        name="menu"
+                                        onChange={(e) => setMenu(false)}
+                                    />
+                                </Col>
+                            </Form.Group>
 
-                        <div className="addToCart mt-5">
-                            Quantité
-                            <button className="quantity-btn mx-3" onClick={decrement}>-</button>
+                            <h3>Suppléments (0.50 )</h3>
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Mozzarella" value="Mozzarella" onChange={(e) => setSupplement([...supplement, e.target.value])} />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Cheddar" value="Cheddar" onChange={(e) => setSupplement([...supplement, e.target.value])} />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Chèvre" value="Chèvre" onChange={(e) => setSupplement([...supplement, e.target.value])} />
+                            </Form.Group>
+                            <Form.Group controlId="formBasicCheckbox">
+                                <Form.Check type="checkbox" label="Aucun" value="Aucun" onChange={(e) => setSupplement([...supplement, e.target.value])} />
+                            </Form.Group>
+                            <div className="addToCart mt-5">
+                                Quantité
+                            <button className="quantity-btn mx-3" type="button" onClick={decrement}>-</button>
                                 {quantity}
-                            <button className="quantity-btn mx-3" onClick={() => setQuantity(() => quantity + 1)}>+</button>
-                            <Button variant="success" type="button" className="rounded-pill" >Ajouter au panier</Button>
-                        </div>
+                                <button className="quantity-btn mx-3" type="button" onClick={() => setQuantity(() => quantity + 1)}>+</button>
+                                {/* <Link to={{
+                                    pathname: `/valider-commande`,
+                                    state: { shoppingCart }
 
+                                }}> */}
+                                {/* <Button variant="success" type="button" className="rounded-pill" onClick={addToCart} > */}
+                                <Button variant="success" type="submit" className="rounded-pill" >
+                                    Ajouter au panier
+                                </Button>
+                                {/* </Link> */}
+                            </div>
+                        </Form>
                     </Col>
                 </Row >
             </Container>

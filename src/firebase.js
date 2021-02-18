@@ -3,13 +3,13 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  apiKey: "AIzaSyA6_j7skRbMOQCVcGggC375O1FtRMG4Cv0",
+  authDomain: "goa-food-354bd.firebaseapp.com",
+  projectId: "goa-food-354bd",
+  storageBucket: "goa-food-354bd.appspot.com",
+  messagingSenderId: "164535159572",
+  appId: "1:164535159572:web:b794ac168660cb5e6a5001",
+  measurementId: "G-34VEFV73XS"
 });
 
 export const auth = app.auth();

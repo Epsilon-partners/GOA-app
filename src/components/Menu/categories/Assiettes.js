@@ -10,11 +10,10 @@ const Assiettes = ({ menuList }) => {
     menuList.map(element => {
         if (element.type === 'assiettes') {
             menuItems.push(element)
-        } 
+        }
         return 0;
-        
+
     })
-    console.log(menuItems);
     return (
         <div className="assiettes menu-items">
             <Container>
