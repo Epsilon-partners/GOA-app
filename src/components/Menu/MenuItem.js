@@ -24,6 +24,20 @@ const MenuItem = () => {
         }
     }
 
+    const addToShoppingCart = (shoppingCart, quantity) => {
+        const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
+        for (let i in recapArray) {
+            if (recapArray[i][0].name === shoppingCart[0].name) {
+                recapArray[i][1].quantity += quantity;
+                localStorage.setItem('recap', JSON.stringify(recapArray));
+                return;
+            }
+        }
+        recapArray.push(shoppingCart);
+        localStorage.setItem('recapArray', JSON.stringify(recapArray));
+    }
+
+
     //add items to cart
 
     const addToCart = e => {
@@ -36,15 +50,7 @@ const MenuItem = () => {
             }
         ))
 
-        const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
-        for (let i in recapArray) {
-            if (recapArray[i][0].name === shoppingCart[0].name) {
-                recapArray[i][1].quantity += shoppingCart[1].quantity;
-                
-            }
-        }
-        recapArray.push(shoppingCart);
-        localStorage.setItem('recapArray', JSON.stringify(recapArray));
+        addToShoppingCart(shoppingCart, quantity);
 
         // redirect user to validate order
         history.push({
