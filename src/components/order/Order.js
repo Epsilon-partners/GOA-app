@@ -5,16 +5,10 @@ import OrderRecap from './OrderRecap';
 import UserInfo from './UserInfo';
 import UserGuest from './UserGuest';
 import Extra from './Extra';
-import { useLocation } from "react-router-dom";
+
 
 function Order() {
-    //get menu item 
-    const location = useLocation();
-    const item = location.state ? location.state.shoppingCart : null;
     const { currentUser } = useAuth();
-
-    console.log('in order', JSON.parse(localStorage.getItem('recapArray')));
-        
 
     return (
         <Container>
