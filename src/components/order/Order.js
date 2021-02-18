@@ -10,7 +10,8 @@ import { useLocation } from "react-router-dom";
 function Order() {
     //get menu item 
     const location = useLocation();
-    console.log(location.state.shoppingCart);
+    const item = location.state.shoppingCart;
+    console.log('item', item);
     const { currentUser } = useAuth();
 
     return (
