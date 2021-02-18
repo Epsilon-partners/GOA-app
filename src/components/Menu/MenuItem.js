@@ -26,7 +26,7 @@ const MenuItem = () => {
 
     //add items to cart
 
-    const addToCart = (e) => {
+    const addToCart = (item, e) => {
         e.preventDefault()
         setShoppingCart(shoppingCart.push(
             {
@@ -39,6 +39,17 @@ const MenuItem = () => {
             pathname: `/valider-commande`,
             state: { shoppingCart }
         })
+
+        console.log(item);
+        const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
+        for (let i in recapArray) {
+            if (recapArray[i][0].name === item[0].name) {
+                recapArray[i][1].quantity += item[1].quantity;
+                return;
+            }
+        }
+        recapArray.push(item);
+        localStorage.setItem('recapArray', JSON.stringify(recapArray));
     }
 
     return (
@@ -60,7 +71,7 @@ const MenuItem = () => {
 
                     {/* form */}
                     <Col className="left-section">
-                        <Form onSubmit={addToCart}>
+                        <Form onSubmit={addToCart(shoppingCart)}>
                             <h3>Menu</h3>
                             <Form.Group as={Row}>
                                 <Col sm={10}>

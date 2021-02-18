@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useAuth } from '../auth/contexts/AuthContext';
 import OrderRecap from './OrderRecap';
@@ -10,9 +10,11 @@ import { useLocation } from "react-router-dom";
 function Order() {
     //get menu item 
     const location = useLocation();
-    const item = location.state.shoppingCart;
-    console.log('item', item);
+    const item = location.state ? location.state.shoppingCart : null;
     const { currentUser } = useAuth();
+
+    console.log('in order', JSON.parse(localStorage.getItem('recapArray')));
+        
 
     return (
         <Container>

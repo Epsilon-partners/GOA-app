@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Card, ListGroup, Button } from 'react-bootstrap';
+import { Card, ListGroup, Button, Table } from 'react-bootstrap';
 
 
 const OrderRecap = () => {
     const [quantity, setQuantity] = useState(1);
+    const recapArray = JSON.parse(localStorage.getItem('recapArray'));
 
     const decrement = () => {
         if (quantity > 1) {
@@ -25,6 +26,20 @@ const OrderRecap = () => {
                     <button className="quantity-btn mx-3" onClick={() => setQuantity(() => quantity + 1)}>+</button>
                 </Card.Subtitle>
                 <Card.Text as="div">
+                    {/*recapArray && (
+                        <Table>
+                            {recapArray.map(recapItem => (
+                                <tbody>
+                                    <tr>
+                                        <td>{recapItem[1].quantity}</td>
+                                        <td>{recapItem[0].name}</td>
+                                        <td>{recapItem[0].price} €</td>
+                                        <td><Button variant="danger" type="button">Supprimer</Button></td>
+                                    </tr>
+                                </tbody>
+                            ))}
+                        </Table>
+                    )*/}
                     <ListGroup className="border-0 d-flex flex-column justify-content-center">
                         <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 cheese naan</ListGroup.Item>
                         <ListGroup.Item className="text-dark mx-auto" style={{fontSize: '16px'}}>1 coca light</ListGroup.Item>
