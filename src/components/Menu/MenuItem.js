@@ -72,7 +72,6 @@ const MenuItem = () => {
 
             }
         )
-        console.log('shopping cart', shoppingCart);
         const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
         recapArray.push(shoppingCart);
         localStorage.setItem('recapArray', JSON.stringify(recapArray));
