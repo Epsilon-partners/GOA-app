@@ -30,7 +30,6 @@ const MenuItem = () => {
 
     const addToCart = e => {
         e.preventDefault();
-        console.log('shpo', shoppingCart);
         shoppingCart.push(
             {
                 name: menuItem.name,
@@ -43,14 +42,6 @@ const MenuItem = () => {
         
         const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
 
-        for (let i in recapArray) {
-            if (recapArray[0][i].name === shoppingCart.name) {
-                console.log('in if')
-                recapArray[0][i].quantity += quantity;
-                localStorage.setItem('recapArray', JSON.stringify(recapArray));
-                return;
-            }
-        }
         recapArray.push(shoppingCart);
         localStorage.setItem('recapArray', JSON.stringify(recapArray));
 
