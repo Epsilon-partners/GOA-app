@@ -18,11 +18,12 @@ const MenuItem = () => {
     const [quantity, setQuantity] = useState(1);
     const [menu, setMenu] = useState(false);
     const [supplement, setSupplement] = useState('aucun');
-    const [accompAssiette, setAccompAssiette] = useState('');
+    const [accompAssiette, setAccompAssiette] = useState('aucun');
     const [accompMenu, setAccompMenu] = useState('');
     const [boisson, setBoisson] = useState('');
     const [sauce, setSauce] = useState('');
-    const [prix, setPrix] = useState(menuItem.price)
+    let [prix, setPrix] = useState(menuItem.price)
+
 
     useEffect(() => {
         const fn = () => {
@@ -53,6 +54,11 @@ const MenuItem = () => {
     //add items to cart
     const addToCart = e => {
         e.preventDefault();
+        if (menuItem.type === 'naan' || menuItem.type === 'classique' || menuItem.type === 'wrap') {
+            if (menu === false) {
+                prix = menuItem.priceNoMenu
+            }
+        }
         shoppingCart.push(
             {
                 name: menuItem.name,
@@ -86,7 +92,8 @@ const MenuItem = () => {
                         <Card style={{ width: '20rem' }} className="text-center">
                             <Card.Img variant="top" src={`/images/${menuItem.imageUrl}`} />
                             <Card.Body>
-                                <Card.Title>{menuItem.price.toFixed(2)} €</Card.Title>
+                                <Card.Title>Avec menu: {menuItem.price.toFixed(2)} €</Card.Title>
+                                {menuItem.priceNoMenu && <Card.Title>Sans menu: {menuItem.priceNoMenu.toFixed(2)} €</Card.Title>}
                                 <Card.Text className="text-dark">
                                     {menuItem.description}
                                 </Card.Text>
@@ -171,14 +178,14 @@ const MenuItem = () => {
                                                 label="Frites"
                                                 id="frites"
                                                 name="menuAccomp"
-                                                onChange={(e) => setMenu(true)}
+                                                onChange={(e) => setAccompMenu('Frites')}
                                             />
                                             <Form.Check
                                                 type="radio"
                                                 label="Riz"
                                                 id="riz"
                                                 name="menuAccomp"
-                                                onChange={(e) => setMenu(false)}
+                                                onChange={(e) => setAccompMenu('Riz')}
                                             />
                                         </Col>
                                     </Form.Group>
