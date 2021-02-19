@@ -10,6 +10,7 @@ import Home from './components/home/Home';
 import MenuList from './components/Menu/MenuList';
 import MenuItem from './components/Menu/MenuItem';
 import Delivery from './components/home/Delivery';
+import Admin from './components/admin/Admin';
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             <Route exact path="/">
               <Home />
               <MenuList />
+            </Route>
+            <Route exact path='/admin-panel'>
+              <Admin />
             </Route>
             <Route exact path="/delivery">
               <Delivery></Delivery>

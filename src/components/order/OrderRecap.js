@@ -34,6 +34,7 @@ const OrderRecap = () => {
                 </Card.Subtitle>
                 <Card.Text as="div">
                     {recapArray && (
+                        <>
                         <Table>
                             {recapArray.map(recapItem => (
                                 recapItem.map(item => (
@@ -41,6 +42,7 @@ const OrderRecap = () => {
                                         <tr>
                                             <td>{item.quantity}</td>
                                             <td>{item.name}</td>
+                                            <td>{item.menu ? 'Oui' : 'Non'}</td>
                                             <td>{item.price} €</td>
                                             <td><Button variant="danger" type="button">x</Button></td>
                                         </tr>
@@ -48,8 +50,9 @@ const OrderRecap = () => {
                                 ))
                             ))}
                         </Table>
+                        <p><strong className="text-weight-bold" style={{ fontSize: '24px' }}>TOTAL : {totalPrice(recapArray)} €</strong></p>
+                        </>
                     )}
-                    <p><strong className="text-weight-bold" style={{ fontSize: '24px' }}>TOTAL : {totalPrice(recapArray)} €</strong></p>
                 </Card.Text>
                 <Card.Footer className="d-flex justify-content-center bg-white border-0">
                     <Button variant="success" className="rounded-pill w-75 mx-auto">Valider</Button>

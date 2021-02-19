@@ -4,7 +4,6 @@ import { useAuth } from '../auth/contexts/AuthContext';
 import OrderRecap from './OrderRecap';
 import UserInfo from './UserInfo';
 import UserGuest from './UserGuest';
-import Extra from './Extra';
 
 function Order() {
     //get menu item 
@@ -15,7 +14,10 @@ function Order() {
             <Row>
                 <Col md={12} sm={12}>
                     <OrderRecap />
+<<<<<<< HEAD
                     {/* <Extra /> */}
+=======
+>>>>>>> order
                 </Col>
                 <Col md={12} sm={12}>
                     {currentUser ? <UserInfo userID={currentUser.uid} /> : <UserGuest />}
