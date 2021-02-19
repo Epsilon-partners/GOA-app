@@ -12,15 +12,11 @@ const Extra = ({ menuList }) => {
         }
         return 0;
     })
-    console.log('menuitems', menuItems);
     let lassi = menuItems.filter(item => item.sousType === 'Lassi')
     let petitesFaims = menuItems.filter(item => item.sousType === 'Petites Faims')
     let petitPlus = menuItems.filter(item => item.sousType === 'Petit plus')
     let dessert = menuItems.filter(item => item.sousType === 'Desserts')
-    let brochettes = menuItems.filter(item => item.sousType ==='Brochettes')
-
-    console.log('lassi', petitPlus);
-
+    let brochettes = menuItems.filter(item => item.sousType === 'Brochettes')
     return (
         <div className="extra hidden">
             <Container>

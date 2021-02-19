@@ -7,61 +7,80 @@ import { useHistory } from 'react-router-dom'
 
 //get ALL data
 const MenuItem = () => {
+    let shoppingCart = [];
     const history = useHistory()
-    //get menu item 
     const location = useLocation();
     let menuItem = location.state.item
-    const [cdt, setCdt] = useState(true)
+    const [cdtAssiettes, setCdtAssiettes] = useState(false)
+    const [cdtMenu, setCdtMenu] = useState(false)
+    const [cdtWrap, setCdtWrap] = useState(false)
+    const [cdtExtra, setCdtExtra] = useState(false)
+    const [quantity, setQuantity] = useState(1);
+    const [menu, setMenu] = useState(false);
+    const [supplement, setSupplement] = useState('aucun');
+    const [accompAssiette, setAccompAssiette] = useState('');
+    const [accompMenu, setAccompMenu] = useState('');
+    const [boisson, setBoisson] = useState('');
+    const [sauce, setSauce] = useState('');
+    const [prix, setPrix] = useState(menuItem.price)
 
     useEffect(() => {
         const fn = () => {
-            if (menuItem.type === 'assiettes' || menuItem.type === 'extra') {
-                setCdt(false)
+            if (menuItem.type === 'assiettes') {
+                setCdtAssiettes(true)
+                setCdtMenu(false)
+            }
+            if (menuItem.type === 'naan' || menuItem.type === 'classique' || menuItem.type === 'wrap') {
+                setCdtMenu(true)
+                setCdtAssiettes(false)
+            }
+            if (menuItem.type === 'wrap') {
+                setCdtMenu(true)
+                setCdtAssiettes(false)
+                setCdtWrap(true)
+            }
+            if (menuItem.type === 'extra') {
+                setCdtMenu(false)
+                setCdtAssiettes(false)
+                setCdtWrap(false)
             }
         }
         fn()
     }, [menuItem])
 
-    //set quantity
-    const [quantity, setQuantity] = useState(1);
-    const [menu, setMenu] = useState(false);
-    const [supplement, setSupplement] = useState([]);
-    var shoppingCart = [];
-    const decrement = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1);
-        } else {
-            return;
-        }
-    }
+
+
     //add items to cart
     const addToCart = e => {
         e.preventDefault();
         shoppingCart.push(
             {
                 name: menuItem.name,
-                price: menuItem.price,
-                quantity: quantity,
+                prix: prix,
+                // quantity: quantity,
                 menu: menu,
-                supplement: supplement
+                supplement: supplement,
+                boisson: boisson,
+                sauce: sauce,
+                accompAssiette: accompAssiette
+
             }
         )
-        const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
-        recapArray.push(shoppingCart);
-        localStorage.setItem('recapArray', JSON.stringify(recapArray));
-
-        // redirect user to validate order
-        history.push({
-            pathname: `/valider-commande`,
-            state: { shoppingCart }
-        })
+        console.log('shopping cart', shoppingCart);
+        // const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
+        // recapArray.push(shoppingCart);
+        // localStorage.setItem('recapArray', JSON.stringify(recapArray));
+        // // redirect user to validate order
+        // history.push({
+        //     pathname: `/valider-commande`,
+        //     state: { shoppingCart }
+        // })
     }
 
     return (
         <div className="menu-item">
             <Container>
                 <Row>
-
                     <Col className="right-section justify-content-center">
                         <h2>{menuItem.name}</h2>
                         <Card style={{ width: '20rem' }} className="text-center">
@@ -74,15 +93,10 @@ const MenuItem = () => {
                             </Card.Body>
                         </Card>
                     </Col>
-
-
-
-
                     {/* form */}
                     <Col className="left-section">
-
                         <Form onSubmit={addToCart}>
-                            {cdt && (
+                            {cdtMenu &&
                                 <>
                                     <h3>Menu</h3>
                                     <Form.Group as={Row}>
@@ -103,7 +117,102 @@ const MenuItem = () => {
                                             />
                                         </Col>
                                     </Form.Group>
+                                </>}
 
+
+                            {/* accompagnement assiettes */}
+                            {cdtAssiettes &&
+                                <>
+                                    <h3>Accompagnement assiettes</h3>
+                                    <Form.Group as={Row}>
+                                        <Col sm={10}>
+                                            <Form.Check
+                                                type="radio"
+                                                label="galette de Naan"
+                                                id="geletteNaan"
+                                                name="assiettesAccomp"
+                                                onChange={(e) => setAccompAssiette('Galette de Naan')}
+                                            />
+                                            <Form.Check
+                                                type="radio"
+                                                label="Cheese Naan"
+                                                id="cheeseNaan"
+                                                name="assiettesAccomp"
+                                                onChange={(e) => setAccompAssiette('Cheese Naan')}
+                                            />
+                                        </Col>
+                                    </Form.Group>
+                                    <h3>Boisson</h3>
+                                    <Form.Group controlId="exampleForm.SelectCustom">
+                                        <Form.Label>Selectionnez votre boisson</Form.Label>
+                                        <Form.Control as="select" value={boisson} custom onChange={(e) => setBoisson(e.target.value)}>
+                                            <option value=""></option>
+                                            <option value="coca">Coca</option>
+                                            <option value="sprite">Sprite</option>
+                                            <option value="jus">Jus</option>
+                                            <option value="eau">Eau</option>
+
+                                        </Form.Control>
+                                    </Form.Group>
+
+                                </>
+                            }
+
+
+
+                            {cdtMenu &&
+                                <>
+                                    {/* accompagnement menu */}
+                                    <h3>Accompagnement Menu</h3>
+                                    <Form.Group as={Row}>
+                                        <Col sm={10}>
+                                            <Form.Check
+                                                type="radio"
+                                                label="Frites"
+                                                id="frites"
+                                                name="menuAccomp"
+                                                onChange={(e) => setMenu(true)}
+                                            />
+                                            <Form.Check
+                                                type="radio"
+                                                label="Riz"
+                                                id="riz"
+                                                name="menuAccomp"
+                                                onChange={(e) => setMenu(false)}
+                                            />
+                                        </Col>
+                                    </Form.Group>
+                                    {/* sace menu */}
+                                    <h3>Sauce</h3>
+                                    <Form.Group controlId="exampleForm.SelectCustom">
+                                        <Form.Label>Selectionnez votre sauce</Form.Label>
+                                        <Form.Control as="select" value={sauce} custom onChange={(e) => setSauce(e.target.value)}>
+                                            <option value=""></option>
+                                            <option value='mayo'>Mayo</option>
+                                            <option value='harissa'>Harissa</option>
+                                            <option value='ketchup'>Ketchup</option>
+                                            <option value='curry'>Curry</option>
+                                            <option value='algerienne'>Algerienne</option>
+                                        </Form.Control>
+                                    </Form.Group>
+                                    {/* boisson menu */}
+                                    <h3>Boisson</h3>
+                                    <Form.Group controlId="exampleForm.SelectCustom">
+                                        <Form.Label>Selectionnez votre boisson</Form.Label>
+                                        <Form.Control as="select" value={boisson} custom onChange={(e) => setBoisson(e.target.value)}>
+                                            <option value=""></option>
+                                            <option value="coca">Coca</option>
+                                            <option value="sprite">Sprite</option>
+                                            <option value="jus">Jus</option>
+                                            <option value="eau">Eau</option>
+
+                                        </Form.Control>
+                                    </Form.Group>
+
+                                </>}
+
+                            {cdtWrap &&
+                                <>
                                     <h3>Suppléments (0.50 )</h3>
                                     <Form.Group controlId="formBasicCheckbox">
                                         <Form.Check type="checkbox" label="Mozzarella" value="Mozzarella" onChange={(e) => setSupplement([...supplement, e.target.value])} />
@@ -117,31 +226,23 @@ const MenuItem = () => {
                                     <Form.Group controlId="formBasicCheckbox">
                                         <Form.Check type="checkbox" label="Aucun" value="Aucun" onChange={(e) => setSupplement([...supplement, e.target.value])} />
                                     </Form.Group>
+
                                 </>
-                            )}
+                            }
+
+
 
                             <div className="addToCart mt-5">
-                                Quantité
-                            <button className="quantity-btn mx-3" type="button" onClick={decrement}>-</button>
-                                {quantity}
-                                <button className="quantity-btn mx-3" type="button" onClick={() => setQuantity(() => quantity + 1)}>+</button>
-                                {/* <Link to={{
-                                    pathname: `/valider-commande`,
-                                    state: { shoppingCart }
-
-                                }}> */}
-                                {/* <Button variant="success" type="button" className="rounded-pill" onClick={addToCart} > */}
                                 <Button variant="success" type="submit" className="rounded-pill" >
                                     Ajouter au panier
                                 </Button>
-                                {/* </Link> */}
                             </div>
                         </Form>
                     </Col>
                 </Row >
-            </Container>
+            </Container >
 
-        </div>
+        </div >
     );
 }
 

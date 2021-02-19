@@ -42,7 +42,7 @@ const OrderRecap = () => {
                                             <td>{item.quantity}</td>
                                             <td>{item.name}</td>
                                             <td>{item.price} €</td>
-                                            <td><Button variant="danger" type="button">Supprimer</Button></td>
+                                            <td><Button variant="danger" type="button">x</Button></td>
                                         </tr>
                                     </tbody>
                                 ))
