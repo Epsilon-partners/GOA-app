@@ -1,7 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faUserAlt } from "@fortawesome/free-solid-svg-icons";
-import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import logo from "../../img/Logo.png";
 import { useAuth } from "../auth/contexts/AuthContext";
 import SignIn from "../auth/SignIn";
@@ -18,6 +17,7 @@ const NavBar = () => {
   const handleLogOut = async () => {
     try {
       await logout();
+      localStorage.removeItem('isUser');
       history.push("/");
     } catch (e) {
       console.error(e);

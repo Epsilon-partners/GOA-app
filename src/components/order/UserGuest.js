@@ -4,7 +4,7 @@ import SignUp from "../auth/SignUp";
 import SignIn from "../auth/SignIn";
 import firebase from '../../firebase';
 
-const UserGuest = () => {
+const UserGuest = ({ validateUser }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -33,6 +33,7 @@ const UserGuest = () => {
     .then(() => {
       setShowFailed(false);
       setShowSuccess(true);
+      validateUser(userGuest);
     })
     .catch(err => {
       console.error(err);
@@ -76,7 +77,7 @@ const UserGuest = () => {
                 </Form.Label>
                 <Col sm="8">
                   <Form.Control
-                    type="number"
+                    type="tel"
                     placeholder="0123456789"
                     value={phone}
                     onChange={e => setPhone(e.target.value)}

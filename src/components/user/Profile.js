@@ -203,7 +203,7 @@ const Profile = () => {
                           </Form.Label>
                           <Col sm={8}>
                             <Form.Control
-                              type="number"
+                              type="tel"
                               placeholder="XX.XX.XX.XX.XX"
                               defaultValue={user.phone}
                               ref={phoneRef}

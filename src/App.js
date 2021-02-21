@@ -42,7 +42,6 @@ function App() {
             <Route exact path="/menu-list">
               <MenuList></MenuList>
             </Route>
-            <Footer />
           </AuthProvider>
         </Switch>
       </BrowserRouter>

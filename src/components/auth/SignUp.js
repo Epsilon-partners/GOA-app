@@ -137,7 +137,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
               </Form.Label>
               <Col sm="8">
                 <Form.Control
-                  type="number"
+                  type="tel"
                   placeholder="xx.xx.xx.xx.xx"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}

@@ -54,14 +54,11 @@ const MenuItem = () => {
     //add items to cart
     const addToCart = e => {
         e.preventDefault();
-<<<<<<< HEAD
         if (menuItem.type === 'naan' || menuItem.type === 'classique' || menuItem.type === 'wrap') {
             if (menu === false) {
                 prix = menuItem.priceNoMenu
             }
         }
-=======
->>>>>>> order
         shoppingCart.push(
             {
                 name: menuItem.name,
@@ -76,10 +73,6 @@ const MenuItem = () => {
             }
         )
         const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
-<<<<<<< HEAD
-=======
-
->>>>>>> order
         recapArray.push(shoppingCart);
         localStorage.setItem('recapArray', JSON.stringify(recapArray));
         // redirect user to validate order

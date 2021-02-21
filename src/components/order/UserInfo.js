@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../auth/contexts/AuthContext";
 
-const UserInfo = ({ userID }) => {
+const UserInfo = ({ userID, validateUser }) => {
   const [user, setUser] = useState();
   const [showPhone, setShowPhone] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
@@ -151,7 +151,7 @@ const UserInfo = ({ userID }) => {
                     defaultValue={user.address}
                   />
                   <FormControl
-                    type="number"
+                    type="tel"
                     placeholder="Code postal"
                     ref={zipCodeRef}
                     className="modif-input mb-3"
@@ -190,6 +190,7 @@ const UserInfo = ({ userID }) => {
           variant="success"
           className="rounded-pill user-info-btn mx-auto mb-4"
           type="button"
+          onClick={() => validateUser(user)}
         >
           Valider
         </Button>
