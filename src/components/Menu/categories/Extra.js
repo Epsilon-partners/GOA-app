@@ -1,8 +1,11 @@
+import React from 'react';
+import uniqid from 'uniqid';
 import { ListGroup, Card, ListGroupItem, Button, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 let slugify = require('slugify')
+
 
 const Extra = ({ menuList }) => {
     let menuItems = []
@@ -24,7 +27,7 @@ const Extra = ({ menuList }) => {
                 <Row>
                     {
                         petitesFaims.map((item) => (
-                            <Col key={item.id}>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
@@ -68,7 +71,7 @@ const Extra = ({ menuList }) => {
                 <Row>
                     {
                         petitPlus.map((item) => (
-                            <Col key={item.id}>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
@@ -106,7 +109,7 @@ const Extra = ({ menuList }) => {
                 <Row>
                     {
                         brochettes.map((item) => (
-                            <Col key={item.id}>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
@@ -143,7 +146,7 @@ const Extra = ({ menuList }) => {
                 <Row>
                     {
                         lassi.map((item) => (
-                            <Col key={item.id}>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
@@ -180,7 +183,7 @@ const Extra = ({ menuList }) => {
                 <Row>
                     {
                         dessert.map((item) => (
-                            <Col key={item.id}>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>

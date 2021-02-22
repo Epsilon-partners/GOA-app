@@ -25,13 +25,6 @@ const SignIn = ({ text, classStyle, directTo }) => {
   const handleSumbit = async (e) => {
     e.preventDefault();
 
-    const user = {
-      email,
-      password,
-    };
-
-    console.log(user);
-
     try {
       await login(email, password);
       history.push(directTo);
@@ -128,7 +121,7 @@ const SignIn = ({ text, classStyle, directTo }) => {
                 onSubmit={handleSumbit}
                 id="signInForm"
               >
-                <Form.Group as={Row} controlId="email">
+                <Form.Group as={Row} controlId="emailSignIn">
                   <Form.Label column sm="4">
                     Adresse mail
                   </Form.Label>

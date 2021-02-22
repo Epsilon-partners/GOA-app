@@ -136,8 +136,17 @@ label a:hover {
 .list-group-admin {
   font-size: medium !important;
   color: black !important;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 5em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-align: center;
+  font-weight: 100 !important;
 }
 
+.list-group-admin strong {
+  font-weight: 600;
+}
 /* Admin */

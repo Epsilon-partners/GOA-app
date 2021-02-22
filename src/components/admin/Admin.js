@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import uniqid from 'uniqid';
 import { Container, Row, Col, Table, Button, Form, ListGroup } from "react-bootstrap";
 import firebase from "../../firebase";
 
@@ -12,6 +13,11 @@ const Admin = () => {
       total += array[i][0].prix;
     }
     return total.toFixed(2);
+  };
+
+  const capitalize = (s) => {
+    if (typeof s !== "string" || s.length === 0) return "Aucun";
+    return s.charAt(0).toUpperCase() + s.slice(1);
   };
 
   useEffect(() => {
@@ -42,14 +48,14 @@ const Admin = () => {
             <Table>
               <thead>
                 <tr>
-                  <th>Numéro de commande</th>
-                  <th>Informations du client</th>
-                  <th>Commande</th>
-                  <th>Prix</th>
+                  <th className="text-center">Numéro de commande</th>
+                  <th className="text-center">Informations du client</th>
+                  <th className="text-center">Commande</th>
+                  <th className="text-center">Prix</th>
                 </tr>
               </thead>
               {ordersListed.map((order) => (
-                <tbody>
+                <tbody key={uniqid()}>
                   <tr>
                     <td>{order.orderNumber}</td>
                     <td>
@@ -66,12 +72,12 @@ const Admin = () => {
                     <td>
                     {order.order.map((recapItem) =>
                       recapItem.map((item) => (
-                        <ListGroup horizontal="md">
-                          <ListGroup.Item className="list-group-admin text-left m-3 p-0">{item.name}</ListGroup.Item>
-                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Menu:</strong> {item.menu ? "Oui" : "Non"}</ListGroup.Item>
-                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Suppléments:</strong> {item.supplements ? item.supplements : "Aucun"}</ListGroup.Item>
-                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Boissons:</strong> {item.boissons}</ListGroup.Item>
-                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Prix:</strong> {item.prix}</ListGroup.Item>
+                        <ListGroup horizontal="md" key={uniqid()}>
+                          <ListGroup.Item className="list-group-admin"><strong>{item.name}</strong></ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin"><strong>Menu:</strong> {item.menu ? "Oui" : "Non"}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin"><strong>Suppléments:</strong> {item.supplements ? item.supplements : "Aucun"}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin"><strong>Boissons:</strong> {capitalize(item.boisson)}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin"><strong>Prix:</strong> {item.prix}€</ListGroup.Item>
                         </ListGroup>
                       ))
                     )}

@@ -1,3 +1,5 @@
+import React from 'react';
+import uniqid from 'uniqid';
 import { ListGroup, Card, ListGroupItem, Button, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +22,7 @@ const Wrap = ({ menuList }) => {
                 <Row>
                     {
                         menuItems.map((item) => (
-                            <Col>
+                            <Col key={uniqid()}>
                                 <Card className="text-center" key={item.id} style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>

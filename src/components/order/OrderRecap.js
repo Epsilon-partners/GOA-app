@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import uniqid from 'uniqid';
 import { Card, Button, Table, Alert } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -77,7 +78,7 @@ const OrderRecap = ({ user }) => {
                 </thead>
                 {recapArray.map((recapItem) =>
                   recapItem.map((item) => (
-                    <tbody>
+                    <tbody key={uniqid()}>
                       <tr>
                         <td>{item.name}</td>
                         <td>{item.menu ? "Oui" : "Non"}</td>
