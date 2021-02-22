@@ -28,18 +28,19 @@ const OrderRecap = ({ user }) => {
   };
 
   const createOrder = orderArray => {
+    if (orderArray === null || orderArray === undefined) return;
     const orderRef = firebase.database().ref('orders');
     const order = {
       order: orderArray,
-      user,
+      user: typeof Object ? user : JSON.parse(user),
       confirmed: false,
       orderNumber: Date.now()
     };
     orderRef.push(order)
     .then(() => {
+      localStorage.setItem('recapArray', JSON.stringify([]));
       setErrorOrder(false);
       setValidateOrder(true);
-      localStorage.removeItem('recapArray');
     })
     .catch(err => {
       setValidateOrder(false);

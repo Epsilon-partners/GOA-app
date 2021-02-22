@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Table, Button, Form } from "react-bootstrap";
+import { Container, Row, Col, Table, Button, Form, ListGroup } from "react-bootstrap";
 import firebase from "../../firebase";
 
 const Admin = () => {
   const [isValidated, setIsValidated] = useState(false);
   const [ordersListed, setOrdersListed] = useState();
+
+  const totalPrice = (array) => {
+    let total = 0;
+    for (let i = 0; i < array.length; i++) {
+      total += array[i][0].prix;
+    }
+    return total.toFixed(2);
+  };
 
   useEffect(() => {
     const orderRef = firebase.database().ref("orders");
@@ -19,7 +27,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Col>
           <h1 className="text-center h1">Goa Food</h1>
@@ -55,22 +63,20 @@ const Admin = () => {
                         ? "Utilisateur enregistré"
                         : "Utilisateur invité"}
                     </td>
+                    <td>
                     {order.order.map((recapItem) =>
                       recapItem.map((item) => (
-                        <>
-                          <td>
-                            {item.name}
-                            <br />
-                            Menu: {item.menu ? "Oui" : "Non"}
-                            <br />
-                            Suppléments:{" "}
-                            {item.supplements ? item.supplements : "Aucun"}
-                            Boissons: {item.boissons}
-                          </td>
-                          <td>{item.price}</td>
-                        </>
+                        <ListGroup horizontal="md">
+                          <ListGroup.Item className="list-group-admin text-left m-3 p-0">{item.name}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Menu:</strong> {item.menu ? "Oui" : "Non"}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Suppléments:</strong> {item.supplements ? item.supplements : "Aucun"}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Boissons:</strong> {item.boissons}</ListGroup.Item>
+                          <ListGroup.Item className="list-group-admin text-left m-3 p-0"><strong>Prix:</strong> {item.prix}</ListGroup.Item>
+                        </ListGroup>
                       ))
                     )}
+                    </td>
+                    <td>Prix total: {totalPrice(order.order)}</td>
                     <td>
                       {isValidated ? (
                         <Form>

@@ -130,3 +130,14 @@ label a:hover {
 }
 
 /* Small Cart */
+
+/* Admin */
+
+.list-group-admin {
+  font-size: medium !important;
+  color: black !important;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* Admin */
