@@ -75,6 +75,7 @@ const Admin = () => {
         ordersList.push({ id, ...orders[id] });
       }
       setOrdersListed(ordersList);
+      
     });
   }, []);
 
@@ -152,7 +153,6 @@ const Admin = () => {
                               value={timeSelected}
                               onChange={(e) => {
                                 setTimeSelected(e.target.value);
-                                console.log(e.target.value)
                               }}
                             >
                               <option value="10 minutes">10 minutes</option>

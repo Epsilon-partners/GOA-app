@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { useAuth } from "../auth/contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import OrderRecap from "./OrderRecap";
 import UserInfo from "./UserInfo";
 import UserGuest from "./UserGuest";

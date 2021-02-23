@@ -2,7 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../img/Logo.png";
-import { useAuth } from "../auth/contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import { Alert, Nav, Navbar } from "react-bootstrap";

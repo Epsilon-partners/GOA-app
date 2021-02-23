@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
-import { auth } from "../../../firebase";
-import firebase from "../../../firebase";
+import { auth } from "../../firebase";
+import firebase from "../../firebase";
 
 const AuthContext = React.createContext();
 
@@ -36,7 +36,7 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    return auth.signOut();
+    return auth.signOut(); 
   };
 
   const resetPassword = (email) => {
