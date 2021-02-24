@@ -36,7 +36,6 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navabr-nav">
           <Nav className="links">
-            <Link to="/">Accueil</Link>
             <Link to="/menu-list">Nos Menus</Link>
             <a href="#footer">Contact</a>
             {!currentUser ? (
