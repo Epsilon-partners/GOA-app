@@ -58,7 +58,7 @@ const MenuList = () => {
                             setWrap(false)
                             setAssiettes(false);
                         }
-                    }>Classique</ListGroup.Item>
+                    }>Classiques</ListGroup.Item>
                     <ListGroup.Item className="menu-list-item " id="extra" onClick={
                         () => {
                             setNaan(false);
@@ -67,7 +67,7 @@ const MenuList = () => {
                             setWrap(false)
                             setAssiettes(false);
                         }
-                    }>Extra</ListGroup.Item>
+                    }>Extras</ListGroup.Item>
                 </ListGroup>
                 {assiettes && < Assiettes menuList={menuList}></Assiettes>}
                 {naan && <Naan menuList={menuList}></Naan>}

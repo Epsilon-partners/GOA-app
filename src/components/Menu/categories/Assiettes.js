@@ -18,15 +18,17 @@ const Assiettes = ({ menuList }) => {
     return (
         <div className="assiettes menu-items">
             <Container>
-
+                <h3 className="menuDescription">Toutes nos assiettes sont accompagnées <br /> d'une galette de Naan ou Cheese Naan</h3>
                 <Row>
+
                     {
                         menuItems.map((item) => (
                             <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '12rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
-                                        <Card.Title>{item.name}
+                                        <Card.Title>
+                                            <h5>{item.name}</h5>
                                             {/* tooltip */}
                                             <OverlayTrigger
                                                 key={'bottom'}
@@ -52,7 +54,7 @@ const Assiettes = ({ menuList }) => {
                                             state: { item }
 
                                         }}>
-                                            <Button type="submit" className="addToCartBtn mx-auto rounded-pill" >
+                                            <Button type="submit" className="addToCartBtn mx-auto" >
                                                 Ajouter au panier
                                             </Button>
                                         </Link>

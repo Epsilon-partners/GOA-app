@@ -36,7 +36,7 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navabr-nav">
           <Nav className="links">
-            <Link to="/menu-list">Nos Menus</Link>
+            <Link to="/menu-list">La carte</Link>
             <a href="#footer">Contact</a>
             {!currentUser ? (
               <>
@@ -44,22 +44,22 @@ const NavBar = () => {
                 <SignUp text="Créer un compte" directTo="/dashboard" />
               </>
             ) : (
-              <a href="#deconnexion" onClick={handleLogOut}>
-                Se déconnecter
-              </a>
-            )}
-              {currentUser && currentUser.email ? (
-                <div className="icon">
-                  <Link to="/dashboard">
-                    <FontAwesomeIcon icon={faUserAlt} size="lg" />
-                  </Link>
-                </div>
-              ) : null}
+                <a href="#deconnexion" onClick={handleLogOut}>
+                  Se déconnecter
+                </a>
+              )}
+            {currentUser && currentUser.email ? (
               <div className="icon">
-                <Link to='/valider-commande'>
-                  <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
+                <Link to="/dashboard">
+                  <FontAwesomeIcon icon={faUserAlt} size="lg" />
                 </Link>
               </div>
+            ) : null}
+            <div className="icon">
+              <Link to='/valider-commande'>
+                <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
+              </Link>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
