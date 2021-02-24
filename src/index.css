@@ -18,9 +18,8 @@ h1, h2 {
   display: flex;
   align-content: space-between;
   align-items: center;
-  max-width: 800px;
   margin: 0 auto;
-  border-bottom: 1px solid #f2f2f2;
+  border: 1px solid #A7C83A;
 }
 .navbar h2 { 
   color: #A7C83A;
@@ -35,7 +34,7 @@ h1, h2 {
 }
 
 .navbar .links {
-  margin-left: auto;
+  margin-left: 35%;
   margin-right: 10px;
 }
 
@@ -67,7 +66,7 @@ h1, h2 {
 
 /* ---------------HomePage---------------------- */
 .home{
-  height: 80vh;
+  height: auto;
   background-image: url("./img/Banner.png");
   background-repeat: no-repeat;
   background-size: cover;

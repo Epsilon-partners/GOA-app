@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignIn = ({ text, classStyle, directTo }) => {
+const SignIn = ({ text, classStyle, directTo, icon }) => {
   const [show, setShow] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetMessageSuccess, setResetMessageSuccess] = useState(false);
@@ -49,7 +50,7 @@ const SignIn = ({ text, classStyle, directTo }) => {
   return (
     <>
       <a href="#connexion" onClick={handleShow} className={classStyle}>
-        {text}
+        {icon ? <FontAwesomeIcon icon={icon} color="black" size="lg" /> : text}
       </a>
 
       <Modal
