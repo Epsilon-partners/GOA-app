@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
 const SignIn = ({ text, classStyle, directTo }) => {

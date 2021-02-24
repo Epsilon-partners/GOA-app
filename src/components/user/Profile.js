@@ -9,7 +9,7 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
-import { useAuth } from "../auth/contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import firebase from "../../firebase";
 

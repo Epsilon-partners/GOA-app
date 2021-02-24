@@ -3,7 +3,7 @@ import { Card, Spinner, Button, FormControl, Alert } from "react-bootstrap";
 import firebase from "../../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
-import { useAuth } from "../auth/contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 
 const UserInfo = ({ userID, validateUser }) => {
   const [user, setUser] = useState();

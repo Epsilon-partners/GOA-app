@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 
 const SignUp = ({ text, classStyle, directTo }) => {
@@ -27,31 +27,34 @@ const SignUp = ({ text, classStyle, directTo }) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      e.preventDefault();
-      e.stopPropagation();
-    } else if (password !== confirmPassword) {
-      setPasswordEqual(true);
-      e.preventDefault();
-      e.stopPropagation();
-    } else {
+      if (password !== confirmPassword) setPasswordEqual(true);
       setValidated(true);
-      setPasswordEqual(false);
-
-      const user = {
-        name,
-        birthday,
-        phone,
-        stayConnected,
-        conditions,
-      };
-
-      try {
-        await signup(email, password, user);
-        history.push(directTo);
-      } catch {
-        setError(true);
-      }
+      return;
     }
+    if (password !== confirmPassword) {
+      setPasswordEqual(true);
+      setValidated(true);
+      return;
+    }
+
+    setValidated(true);
+    setPasswordEqual(false);
+
+    const user = {
+      name,
+      birthday,
+      phone,
+      stayConnected,
+      conditions,
+    };
+
+    try {
+      await signup(email, password, user);
+      history.push(directTo);
+    } catch {
+      setError(true);
+    }
+    
   };
 
   return (
@@ -88,7 +91,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                   name="email"
                   required
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -107,7 +110,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                   name="name"
                   required
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -125,7 +128,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                   onChange={(e) => setBirthday(e.target.value)}
                   name="birthday"
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -139,12 +142,15 @@ const SignUp = ({ text, classStyle, directTo }) => {
                 <Form.Control
                   type="tel"
                   placeholder="xx.xx.xx.xx.xx"
+                  pattern="[0-9]{10}"
+                  minLength="10"
+                  maxLength="10"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   name="phone"
                   required
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -163,7 +169,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                   name="password"
                   required
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -185,7 +191,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                   name="confirmPassword"
                   required
                 />
-                <Form.Control.Feedback>Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
@@ -208,7 +214,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
               <label className="custom-control-label" htmlFor="stayConnected">
                 Rester connecté
               </label>
-              <Form.Control.Feedback>Valide</Form.Control.Feedback>
+              <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Non valide
               </Form.Control.Feedback>
@@ -229,7 +235,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
                 et de
                 <a href="#donnees-personnelles"> la notice de données personnelles.</a>
               </label>
-              <Form.Control.Feedback>Valide</Form.Control.Feedback>
+              <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
               <Form.Control.Feedback type="invalid">
                 Non valide
               </Form.Control.Feedback>

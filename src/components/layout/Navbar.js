@@ -2,7 +2,7 @@ import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingBasket, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../img/Logo.png";
-import { useAuth } from "../auth/contexts/AuthContext";
+import { useAuth } from "../contexts/AuthContext";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import { Alert, Nav, Navbar } from "react-bootstrap";
@@ -36,7 +36,6 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navabr-nav">
           <Nav className="links">
-            <Link to="/">Accueil</Link>
             <Link to="/menu-list">Nos Menus</Link>
             <a href="#footer">Contact</a>
             {!currentUser ? (

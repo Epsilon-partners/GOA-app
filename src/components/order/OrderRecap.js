@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import uniqid from 'uniqid';
-import { Card, Button, Table, Alert, Modal, Image } from "react-bootstrap";
+import { Card, Button, Table, Alert, Modal } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import firebase from '../../firebase';
 import { useHistory } from "react-router-dom";
+import { useOrder } from '../contexts/OrderContext';
 
 const OrderRecap = ({ user }) => {
   const [recapArray, setRecapArray] = useState(JSON.parse(localStorage.getItem('recapArray')));
@@ -20,6 +20,7 @@ const OrderRecap = ({ user }) => {
     history.push('/')
   };
   const handleShow = () => setShow(true);
+  const {addOrder} = useOrder();
 
   const totalPrice = (array) => {
     let total = 0;
@@ -41,26 +42,25 @@ const OrderRecap = ({ user }) => {
 
   const createOrder = orderArray => {
     if (orderArray === null || orderArray === undefined) return;
-    const orderRef = firebase.database().ref('orders');
     const order = {
       order: orderArray,
       user: typeof Object ? user : JSON.parse(user),
       confirmed: false,
       orderNumber: Date.now()
     };
-    orderRef.push(order)
-      .then(() => {
-        localStorage.clear();
-        setRecapArray([])
-        setErrorOrder(false);
-        setValidateOrder(true);
-        handleShow()
-      })
-      .catch(err => {
-        setValidateOrder(false);
-        setErrorOrder(true);
-        console.error(err);
-      });
+    addOrder(order)
+    .then(() => {
+      localStorage.clear();
+      setRecapArray([])
+      setErrorOrder(false);
+      setValidateOrder(true);
+      handleShow()
+    })
+    .catch(err => {
+      setValidateOrder(false);
+      setErrorOrder(true);
+      console.error(err);
+    });
   }
 
   useEffect(() => {
