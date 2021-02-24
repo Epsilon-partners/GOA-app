@@ -114,13 +114,12 @@ h1, h2 {
   margin:25px auto;
 }
 .home-order-type div{
-  width: 100px;
-  height: 100px;
+  width: 182px;
+  height: 182px;
   background-color: white;
   border-radius: 100%;
   display: flex;
   justify-content: center;
-  padding-top: 20px;
 }
 .home-order-type p{
   text-align: center;
@@ -130,8 +129,8 @@ h1, h2 {
 }
 
 .home-order-type img{
-  width: 70%;
-  height: 70%;
+  width: 182px;
+  height: 182px;
 }
 /* ---------------------Menu------------------------- */
 

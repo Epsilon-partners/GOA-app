@@ -1,6 +1,6 @@
 import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket, faUserPlus, faSignInAlt, faUserFriends, faSignOutAlt, faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import { faShoppingBasket, faUserPlus, faSignInAlt, faUserFriends, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import Goalogo from "../../img/goaImage.png";
 import Goatitle from '../../img/GOA.png';
 import { useAuth } from "../contexts/AuthContext";
@@ -41,21 +41,9 @@ const NavBar = () => {
             <div className="d-flex justify-content-start">
               <Link to='/'>Goa Food</Link>
               <Link to="/menu-list">La carte</Link>
-              <a href="#footer" className="mr-auto">Contact</a>
+              <a href="#footer" className="mr-auto">Contactez-nous</a>
             </div>
             <div className="d-flex">
-<<<<<<< HEAD
-              {!currentUser ? (
-                <div className="icon">
-                  <SignIn icon={faSignInAlt} directTo="/dashboard" />
-                  <SignUp icon={faUserPlus} directTo="/dashboard" />
-                </div>
-              ) : (
-                  <a href="#deconnexion" onClick={handleLogOut}>
-                    <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-                  </a>
-                )}
-=======
             {!currentUser ? (
               <div className="icon">
                 <SignIn icon={faSignInAlt} directTo="/dashboard" />
@@ -66,7 +54,6 @@ const NavBar = () => {
                 <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
               </a>
             )}
->>>>>>> 3b63a9cc180629303edcb807b51cc20dd26bd018
               {currentUser && currentUser.email ? (
                 <div className="icon">
                   <Link to="/dashboard">
@@ -79,11 +66,7 @@ const NavBar = () => {
                   <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
                 </Link>
               </div>
-<<<<<<< HEAD
-            </div>
-=======
               </div>
->>>>>>> 3b63a9cc180629303edcb807b51cc20dd26bd018
           </Nav>
         </Navbar.Collapse>
       </Navbar>
