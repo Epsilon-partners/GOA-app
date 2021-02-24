@@ -66,7 +66,7 @@ h1, h2, h3 {
 
 /* ---------------HomePage---------------------- */
 .home{
-  height: 80vh;
+  height: auto;
   background-image: url("./img/Banner.png");
   background-repeat: no-repeat;
   background-size: cover;
