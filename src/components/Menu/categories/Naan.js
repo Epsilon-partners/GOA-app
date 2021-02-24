@@ -17,8 +17,9 @@ const Naan = ({ menuList }) => {
 
 
     return (
-        <div className="naan hidden">
+        <div className="naan">
             <Container>
+                <h3 className="menuDescription">Vous avez la possibilitée de choisir votre Naan avec ou sans fromage</h3>
                 <Row>
                     {
                         menuItems.map((item) => (

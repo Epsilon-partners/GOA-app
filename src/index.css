@@ -6,7 +6,7 @@
   font-family: 'Roboto', sans-serif;
   color: #333;
 }
-h1, h2, h3 {
+h1, h2 {
   font-family: 'El Messiri', sans-serif;
 }
 .app{
@@ -137,7 +137,7 @@ h1, h2, h3 {
 
 .menu-list-content{
   padding-top: 70px;
-  max-width: 800px;
+  max-width: 980px;
   justify-content: center;
   margin: 0px auto;
 }
@@ -294,10 +294,11 @@ h1, h2, h3 {
 .menu-list-item{
  color: #A7C83A;
  font-family: 'El Messiri', sans-serif;
- font-size: 20px;
+ font-size: 30px;
  padding: 30px;
  border: none;
 }
+
 
 .menu-list-item:hover{
   border-bottom: 2px solid  #A7C83A  !important;
@@ -316,11 +317,13 @@ h1, h2, h3 {
   border: 2px solid  #A7C83A !important;
   background-color:#A7C83A;
   color: white;
-  font-weight: 500;
+  font-size: 12px;
+  width: 100%;
+  border-radius: 20px;
 }
 .list-group-item{
   color:#A7C83A;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
 }
 .addToCartBtn:hover{
@@ -416,6 +419,20 @@ h1, h2, h3 {
 .left-section .asMenu {
   margin-bottom: 50px;
 }
+
+
+.menuDescription{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: black;
+  font-size: 16px;
+}
+
+.menu-items h5{
+  font-size: 14px;
+  font-weight:500;
+}
+
 
 
 

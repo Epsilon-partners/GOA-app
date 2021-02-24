@@ -62,7 +62,7 @@ const NavBar = () => {
                 </div>
               ) : null}
               <div className="icon">
-                <Link to='/valider-commande'>
+                <Link to="/valider-commande">
                   <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
                 </Link>
               </div>
