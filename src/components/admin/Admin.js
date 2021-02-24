@@ -12,6 +12,8 @@ import {
 } from "react-bootstrap";
 import firebase from "../../firebase";
 
+
+
 const Admin = () => {
   const [isValidated, setIsValidated] = useState(false);
   const [validateSuccess, setValidateSuccess] = useState(false);
@@ -50,15 +52,15 @@ const Admin = () => {
       confirmed: true,
       timeEstimation: time
     })
-    .then(() => {
-      setValidateError(false);
-      setValidateSuccess(true);
-    })
-    .catch(err => {
-      console.error('Error updating order', err);
-      setValidateSuccess(false);
-      setValidateError(true);
-    });
+      .then(() => {
+        setValidateError(false);
+        setValidateSuccess(true);
+      })
+      .catch(err => {
+        console.error('Error updating order', err);
+        setValidateSuccess(false);
+        setValidateError(true);
+      });
   };
 
   const refuseOrder = order => {
@@ -70,12 +72,26 @@ const Admin = () => {
     const orderRef = firebase.database().ref("orders");
     orderRef.on("value", (snapshot) => {
       const orders = snapshot.val();
+      //display latest item
+      if (orders) {
+        let { [Object.keys(orders).pop()]: lastItem } = orders;
+        console.log('last item', lastItem);
+      }
+
       const ordersList = [];
+      const confirmedOrder = []
       for (let id in orders) {
-        ordersList.push({ id, ...orders[id] });
+        if (orders[id].confirmed) {
+          confirmedOrder.push({ id, ...orders[id] });
+        } else {
+          ordersList.push({ id, ...orders[id] });
+        }
       }
       setOrdersListed(ordersList);
+      console.log('confirmed order', confirmedOrder);
+
     });
+
   }, []);
 
   return (
@@ -144,74 +160,74 @@ const Admin = () => {
                     <td>
                       {isValidated ? (
                         <>
-                        <Form onSubmit={confirmOrder(order)}>
-                          <Form.Group controlId="timeEstimation">
-                            <Form.Label>Temps estimé de préparation</Form.Label>
-                            <Form.Control
-                              as="select"
-                              value={timeSelected}
-                              onChange={(e) => {
-                                setTimeSelected(e.target.value);
-                                console.log(e.target.value)
-                              }}
+                          <Form onSubmit={confirmOrder(order)}>
+                            <Form.Group controlId="timeEstimation">
+                              <Form.Label>Temps estimé de préparation</Form.Label>
+                              <Form.Control
+                                as="select"
+                                value={timeSelected}
+                                onChange={(e) => {
+                                  setTimeSelected(e.target.value);
+                                  console.log(e.target.value)
+                                }}
+                              >
+                                <option value="10 minutes">10 minutes</option>
+                                <option value="20 minutes">20 minutes</option>
+                                <option value="30 minutes">30 minutes</option>
+                                <option value="40 minutes">40 minutes</option>
+                                <option value="50 minutes">50 minutes</option>
+                              </Form.Control>
+                            </Form.Group>
+                            <Form.Group controlId="customizedTime">
+                              <Form.Label>Un autre temps d'estimation</Form.Label>
+                              <Form.Control
+                                type="text"
+                                placeholder="1 heure"
+                                value={timeCustom}
+                                onChange={(e) => setTimeCustom(e.target.value)}
+                              />
+                            </Form.Group>
+                            <Button
+                              variant="success"
+                              className="mr-3 my-2"
+                              type="submit"
                             >
-                              <option value="10 minutes">10 minutes</option>
-                              <option value="20 minutes">20 minutes</option>
-                              <option value="30 minutes">30 minutes</option>
-                              <option value="40 minutes">40 minutes</option>
-                              <option value="50 minutes">50 minutes</option>
-                            </Form.Control>
-                          </Form.Group>
-                          <Form.Group controlId="customizedTime">
-                            <Form.Label>Un autre temps d'estimation</Form.Label>
-                            <Form.Control
-                              type="text"
-                              placeholder="1 heure"
-                              value={timeCustom}
-                              onChange={(e) => setTimeCustom(e.target.value)}
-                            />
-                          </Form.Group>
-                          <Button
-                            variant="success"
-                            className="mr-3 my-2"
-                            type="submit"
-                          >
-                            Valider la commande
+                              Valider la commande
                           </Button>
-                          <Button
-                            variant="secondary"
-                            type="reset"
-                            className="my-2"
-                            onClick={() => setIsValidated(false)}
-                          >
-                            Annuler
+                            <Button
+                              variant="secondary"
+                              type="reset"
+                              className="my-2"
+                              onClick={() => setIsValidated(false)}
+                            >
+                              Annuler
                           </Button>
-                        </Form>
-                        {validateSuccess && <Alert variant="success" className="my-3">Commande validée</Alert>}
-                        {validateError && <Alert variant="danger" className="my-3">Un problème est survenu</Alert>}
+                          </Form>
+                          {validateSuccess && <Alert variant="success" className="my-3">Commande validée</Alert>}
+                          {validateError && <Alert variant="danger" className="my-3">Un problème est survenu</Alert>}
                         </>
                       ) : (
-                        <>
-                          <Button
-                            variant="success"
-                            className="mr-3"
-                            onClick={() => setIsValidated(true)}
-                          >
-                            Valider
+                          <>
+                            <Button
+                              variant="success"
+                              className="mr-3"
+                              onClick={() => setIsValidated(true)}
+                            >
+                              Valider
                           </Button>
-                          <Button variant="danger" type="button" onClick={() => refuseOrder(order)}>Refuser</Button>
-                        </>
-                      )}
+                            <Button variant="danger" type="button" onClick={() => refuseOrder(order)}>Refuser</Button>
+                          </>
+                        )}
                     </td>
                   </tr>
                 </tbody>
               ))}
             </Table>
           ) : (
-            <p className="text-dark">
-              Il n'y a pas de commandes pour l'instant.
-            </p>
-          )}
+              <p className="text-dark">
+                Il n'y a pas de commandes pour l'instant.
+              </p>
+            )}
         </Col>
       </Row>
     </Container>
