@@ -28,7 +28,7 @@ const NavBar = () => {
 
   return (
     <>
-      <Navbar expand="lg" className="w-100">
+      <Navbar expand="lg" bg="white" className="w-100" fixed="top">
         <Link to="/">
           <div className="logo d-flex">
             <img src={Goalogo} alt="Logo" />
