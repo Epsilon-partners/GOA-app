@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
             email,
           });
       })
-      .catch((err) => console.error(err));
+      .catch((err) => console.error('envoyé', err));
   };
 
   const login = (email, password) => {
