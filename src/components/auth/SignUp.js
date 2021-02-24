@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignUp = ({ text, classStyle, directTo }) => {
+const SignUp = ({ text, classStyle, directTo, icon }) => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [passwordEqual, setPasswordEqual] = useState(false);
@@ -60,7 +61,7 @@ const SignUp = ({ text, classStyle, directTo }) => {
   return (
     <>
       <a href="#creer-un-compte" onClick={handleShow} className={classStyle}>
-        {text}
+        {icon ? <FontAwesomeIcon icon={icon} color="black" size="lg" /> : text}
       </a>
 
       <Modal
