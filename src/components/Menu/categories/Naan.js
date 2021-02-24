@@ -17,30 +17,31 @@ const Naan = ({ menuList }) => {
 
 
     return (
-        <div className="naan">
+        <div className="naan menu-items">
             <Container>
                 <h3 className="menuDescription">Vous avez la possibilitée de choisir votre Naan avec ou sans fromage</h3>
                 <Row>
                     {
                         menuItems.map((item) => (
                             <Col key={uniqid()}>
-                                <Card className="text-center" style={{ width: '12rem' }}>
+                                <Card className="text-center" style={{ width: '13rem' }}>
                                     <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
                                     <Card.Body>
-                                        <Card.Title>{item.name}
-                                            {/* tooltip */}
-                                            <OverlayTrigger
-                                                key={'bottom'}
-                                                placement={'bottom'}
-                                                overlay={
-                                                    <Tooltip id={`tooltip-bottom`}>
-                                                        {item.description}
-                                                    </Tooltip>
-                                                }
-                                            >
-                                                <Button variant="secondary" className='infoBtn'><FontAwesomeIcon icon={faInfoCircle} className="infoIcon" /></Button>
-                                            </OverlayTrigger>
-
+                                        <Card.Title>
+                                            <h5>
+                                                {item.name}
+                                                <OverlayTrigger
+                                                    key={'bottom'}
+                                                    placement={'bottom'}
+                                                    overlay={
+                                                        <Tooltip id={`tooltip-bottom`}>
+                                                            {item.description}
+                                                        </Tooltip>
+                                                    }
+                                                >
+                                                    <Button variant="secondary" className='infoBtn'><FontAwesomeIcon icon={faInfoCircle} className="infoIcon" /></Button>
+                                                </OverlayTrigger>
+                                            </h5>
                                         </Card.Title>
                                     </Card.Body>
                                     <ListGroup className="list-group-flush">
