@@ -22,13 +22,13 @@ const Home = () => {
                             <div className="home-order-type">
                                 <div>
                                     <img src={delivery} alt="food delivery" /></div>
-                                <p>Livraison</p>
+                                <p style={{color: '#333'}}>Livraison</p>
                             </div>
                         </Link>
                         <Link to="/menu-list">
                             <div className="home-order-type">
                                 <div><img src={takeAway} alt="food delivery" /></div>
-                                <p>A emporter</p>
+                                <p style={{color: '#333'}}>A emporter</p>
                             </div>
                         </Link>
                     </div>

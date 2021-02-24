@@ -44,6 +44,7 @@ const NavBar = () => {
               <a href="#footer" className="mr-auto">Contact</a>
             </div>
             <div className="d-flex">
+<<<<<<< HEAD
               {!currentUser ? (
                 <div className="icon">
                   <SignIn icon={faSignInAlt} directTo="/dashboard" />
@@ -54,6 +55,18 @@ const NavBar = () => {
                     <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
                   </a>
                 )}
+=======
+            {!currentUser ? (
+              <div className="icon">
+                <SignIn icon={faSignInAlt} directTo="/dashboard" />
+                <SignUp icon={faUserPlus} directTo="/dashboard" />
+              </div>
+            ) : (
+              <a href="#deconnexion" onClick={handleLogOut}>
+                <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
+              </a>
+            )}
+>>>>>>> 3b63a9cc180629303edcb807b51cc20dd26bd018
               {currentUser && currentUser.email ? (
                 <div className="icon">
                   <Link to="/dashboard">
@@ -62,11 +75,15 @@ const NavBar = () => {
                 </div>
               ) : null}
               <div className="icon">
-                <Link to="/dashboard">
-                  <FontAwesomeIcon icon={faUserAlt} size="lg" />
+                <Link to="/valider-commande">
+                  <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
                 </Link>
               </div>
+<<<<<<< HEAD
             </div>
+=======
+              </div>
+>>>>>>> 3b63a9cc180629303edcb807b51cc20dd26bd018
           </Nav>
         </Navbar.Collapse>
       </Navbar>
