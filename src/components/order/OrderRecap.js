@@ -1,14 +1,25 @@
 import React, { useState, useEffect } from "react";
 import uniqid from 'uniqid';
-import { Card, Button, Table, Alert } from "react-bootstrap";
+import { Card, Button, Table, Alert, Modal, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import firebase from '../../firebase';
+import { useHistory } from "react-router-dom";
 
 const OrderRecap = ({ user }) => {
   const [recapArray, setRecapArray] = useState(JSON.parse(localStorage.getItem('recapArray')));
   const [validateOrder, setValidateOrder] = useState(false);
   const [errorOrder, setErrorOrder] = useState(false);
+  const history = useHistory();
+
+
+  //order confirmation message
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false)
+    history.push('/')
+  };
+  const handleShow = () => setShow(true);
 
   const totalPrice = (array) => {
     let total = 0;
@@ -38,16 +49,18 @@ const OrderRecap = ({ user }) => {
       orderNumber: Date.now()
     };
     orderRef.push(order)
-    .then(() => {
-      localStorage.setItem('recapArray', JSON.stringify([]));
-      setErrorOrder(false);
-      setValidateOrder(true);
-    })
-    .catch(err => {
-      setValidateOrder(false);
-      setErrorOrder(true);
-      console.error(err);
-    });
+      .then(() => {
+        localStorage.clear();
+        setRecapArray([])
+        setErrorOrder(false);
+        setValidateOrder(true);
+        handleShow()
+      })
+      .catch(err => {
+        setValidateOrder(false);
+        setErrorOrder(true);
+        console.error(err);
+      });
   }
 
   useEffect(() => {
@@ -88,11 +101,11 @@ const OrderRecap = ({ user }) => {
                         <td>{capitalize(item.accompAssiette)}</td>
                         <td>{item.prix} €</td>
                         <td>
-                          <FontAwesomeIcon icon={faTrash} 
-                          onClick={() => {
-                            deleteItem(recapArray, recapItem);
-                          }}
-                          style={{ cursor: "pointer" }} />
+                          <FontAwesomeIcon icon={faTrash}
+                            onClick={() => {
+                              deleteItem(recapArray, recapItem);
+                            }}
+                            style={{ cursor: "pointer" }} />
                         </td>
                       </tr>
                     </tbody>
@@ -111,14 +124,27 @@ const OrderRecap = ({ user }) => {
           )}
         </Card.Text>
         <Card.Footer className="d-flex justify-content-center bg-white border-0">
-          <Button variant="success" className="rounded-pill w-75 mx-auto" onClick={() => createOrder(recapArray)}>
+          <Button variant="success" className="rounded-pill w-75 mx-auto" onClick={() => { createOrder(recapArray) }}>
             Valider
           </Button>
         </Card.Footer>
-        {validateOrder && <Alert variant="success" className="my-4">Votre commande a été prise en compte</Alert>}
+        {validateOrder &&
+          <>
+            <Modal show={show} onHide={handleClose} animation={false}>
+              <Modal.Body>
+                Votre commande a été prise en charge
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="success" onClick={handleClose}>
+                  Retour à l'accueil
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        }
         {errorOrder && <Alert variant="danger" className="my-4">Un problème est survenu</Alert>}
       </Card.Body>
-    </Card>
+    </Card >
   );
 };
 
