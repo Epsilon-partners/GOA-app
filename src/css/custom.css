@@ -8,6 +8,10 @@ body,
   margin: 0;
   padding: 0;
 }
+
+body {
+  padding-top: 122px;
+}
  
 .btn-success {
   background-color: #a7c83a;

@@ -84,7 +84,7 @@ const MenuItem = () => {
 
     return (
         <div className="menu-item">
-            <Container>
+            <Container className="mt-5">
                 <Row>
                     <Col className="right-section justify-content-center">
                         <h2>{menuItem.name}</h2>
