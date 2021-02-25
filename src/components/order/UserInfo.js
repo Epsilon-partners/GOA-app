@@ -55,7 +55,7 @@ const UserInfo = ({ userID, validateUser }) => {
       city: cityRef.current !== undefined ? cityRef.current.value : user.city,
     };
     const db = firebase.firestore();
-    db.collection("users")
+    await db.collection("users")
       .doc(userID)
       .update({
         ...updateUser,
@@ -63,6 +63,9 @@ const UserInfo = ({ userID, validateUser }) => {
       .then(() => {
         setShowFailed(false);
         setShowSuccess(true);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         setShowSuccess(false);
@@ -71,9 +74,9 @@ const UserInfo = ({ userID, validateUser }) => {
   };
 
   useEffect(() => {
-    const getuser = () => {
+    const getuser = async () => {
       const db = firebase.firestore();
-      db.collection("users")
+      await db.collection("users")
         .doc(userID)
         .get()
         .then((doc) => setUser(doc.data()))
