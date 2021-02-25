@@ -230,7 +230,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
                 name="conditionsCreateAccount"
                 required
               />
-              <label className="custom-control-label" htmlFor="conditions">
+              <label className="custom-control-label" htmlFor="conditionsCreateAccount">
                 En cochant cette case, j'accepte et je reconnais avoir pris
                 connaissance <a href="#conditions-generales">des conditions générales</a> de vente
                 et de
