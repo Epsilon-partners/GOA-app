@@ -1,24 +1,29 @@
 import { Link, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faShoppingBasket, faUserPlus, faSignInAlt, faUserFriends, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faShoppingBasket,
+  faUserFriends,
+  faSignOutAlt,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Goalogo from "../../img/goaImage.png";
-import Goatitle from '../../img/GOA.png';
+import Goatitle from "../../img/GOA.png";
 import { useAuth } from "../contexts/AuthContext";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
-import { Alert, Nav, Navbar } from "react-bootstrap";
+import { Alert, Nav, Navbar, Modal } from "react-bootstrap";
 import React, { useState } from "react";
-
 
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
   const [errorMessage, setErrorMessage] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   const handleLogOut = async () => {
     try {
       await logout();
-      localStorage.removeItem('isUser');
+      localStorage.removeItem("isUser");
       history.push("/");
     } catch (e) {
       console.error(e);
@@ -37,36 +42,31 @@ const NavBar = () => {
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navabr-nav">
-          <Nav className="links d-flex justify-content-between w-100">
-            <div className="d-flex justify-content-start">
-              <Link to='/'>Goa Food</Link>
-              <Link to="/menu-list">La carte</Link>
-              <a href="#footer" className="mr-auto">Contactez-nous</a>
-            </div>
-            <div className="d-flex">
+          <Nav className="links d-flex justify-content-end w-100">
+            <Link to="/">Goa Food</Link>
+            <Link to="/menu-list">La carte</Link>
+            <a href="#footer">Contact</a>
             {!currentUser ? (
-              <div className="icon">
-                <SignIn icon={faSignInAlt} directTo="/dashboard" />
-                <SignUp icon={faUserPlus} directTo="/dashboard" />
+              <div className="icon" style={{ marginLeft: "16px" }}>
+                  <FontAwesomeIcon icon={faUser} size="lg" cursor="pointer" onClick={() => setShowModal(true)} />
               </div>
             ) : (
               <a href="#deconnexion" onClick={handleLogOut}>
                 <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
               </a>
             )}
-              {currentUser && currentUser.email ? (
-                <div className="icon">
-                  <Link to="/dashboard">
-                    <FontAwesomeIcon icon={faUserFriends} size="lg" />
-                  </Link>
-                </div>
-              ) : null}
+            {currentUser && currentUser.email ? (
               <div className="icon">
-                <Link to="/valider-commande">
-                  <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
+                <Link to="/dashboard">
+                  <FontAwesomeIcon icon={faUserFriends} size="lg" />
                 </Link>
               </div>
-              </div>
+            ) : null}
+            <div className="icon">
+              <Link to="/valider-commande">
+                <FontAwesomeIcon icon={faShoppingBasket} size="lg" />
+              </Link>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
@@ -81,6 +81,13 @@ const NavBar = () => {
           </Alert>
         </>
       )}
+      <Modal show={showModal} onHide={() => setShowModal(false)} id="user-modal" className="border border-dark rounded modal-custom">
+        <Modal.Header closeButton className="h2 border-0">S'identifier</Modal.Header>
+        <Modal.Body className="d-flex flex-column justify-content-between">
+          <SignIn text="Se connecter" classStyle="btn btn-outline-success rounded-pill mb-4" />
+          <SignUp text="Créer un compte" classStyle="btn btn-success rounded-pill" />
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
