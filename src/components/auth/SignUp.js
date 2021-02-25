@@ -223,14 +223,14 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
             <div className="custom-control custom-checkbox mb-3">
               <input
                 type="checkbox"
-                id="conditionsCreateAccount"
+                id="conditionsCreateAccount" 
                 className="custom-control-input"
                 value={conditions}
                 onChange={(e) => setConditions(e.target.checked)}
                 name="conditionsCreateAccount"
                 required
               />
-              <label className="custom-control-label" htmlFor="conditions">
+              <label className="custom-control-label" htmlFor="conditionsCreateAccount">
                 En cochant cette case, j'accepte et je reconnais avoir pris
                 connaissance <a href="#conditions-generales">des conditions générales</a> de vente
                 et de
