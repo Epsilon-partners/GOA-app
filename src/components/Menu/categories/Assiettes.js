@@ -1,27 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import uniqid from 'uniqid';
-import { ListGroup, Card, ListGroupItem, Button, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { ListGroup, Card, ListGroupItem, Button, Container, Row, Col, OverlayTrigger, Tooltip, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 let slugify = require('slugify')
 
 const Assiettes = ({ menuList }) => {
-    let menuItems = []
-    menuList.map(element => {
-        if (element.type === 'assiettes') {
-            menuItems.push(element)
-        }
-        return 0;
+    const [menuItems, setMenuItems] = useState([]);
+    
 
-    })
+    useEffect(() => {
+        const getItems = () => {
+            menuList.map(element => {
+                if (element.type === 'assiettes') {
+                    setMenuItems(prevState => [...prevState, element]);
+                }
+                return 0;
+            });
+        };
+        getItems();
+    }, [])
+
     return (
         <div className="assiettes menu-items">
             <Container>
                 <h3 className="menuDescription">Toutes nos assiettes sont accompagnées <br /> d'une galette de Naan ou Cheese Naan</h3>
                 <Row>
 
-                    {
+                    {menuItems.length ?
                         menuItems.map((item) => (
                             <Col key={uniqid()}>
                                 <Card className="text-center" style={{ width: '13rem' }}>
@@ -62,6 +69,10 @@ const Assiettes = ({ menuList }) => {
                                 </Card>
                             </Col>
                         ))
+                    : 
+                    <Col className="d-flex justify-content-center">
+                        <Spinner animation="grow" variant="dark" />
+                    </Col>
                     }
 
                 </Row>

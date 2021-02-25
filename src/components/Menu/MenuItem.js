@@ -14,8 +14,6 @@ const MenuItem = () => {
     const [cdtAssiettes, setCdtAssiettes] = useState(false)
     const [cdtMenu, setCdtMenu] = useState(false)
     const [cdtWrap, setCdtWrap] = useState(false)
-    const [cdtExtra, setCdtExtra] = useState(false)
-    const [quantity, setQuantity] = useState(1);
     const [menu, setMenu] = useState(false);
     const [supplement, setSupplement] = useState('aucun');
     const [accompAssiette, setAccompAssiette] = useState('aucun');

@@ -295,10 +295,15 @@ h1, h2 {
  font-size: 30px;
  padding: 30px;
  border: none;
+ cursor: pointer;
 }
 
 
 .menu-list-item:hover{
+  border-bottom: 2px solid  #A7C83A  !important;
+}
+
+.menu-list-item-active {
   border-bottom: 2px solid  #A7C83A  !important;
 }
 

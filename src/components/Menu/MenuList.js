@@ -1,11 +1,12 @@
+import React, { useState, useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { menuList } from '../../data/MenuData'
 import Assiettes from './categories/Assiettes'
 import Naan from './categories/Naan';
 import Wrap from './categories/Wrap'
 import Extra from './categories/Extra'
 import Classique from './categories/Classique'
-import React, { useState } from 'react';
+import firebase from '../../firebase';
+
 
 
 const MenuList = () => {
@@ -15,6 +16,22 @@ const MenuList = () => {
     const [wrap, setWrap] = useState(false);
     const [extra, setExtra] = useState(false);
     const [classique, setClassique] = useState(false);
+    const [menuList, setMenuList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        const getMenuList = async () => {
+            const db = firebase.firestore();
+            await db.collection("menu").get()
+            .then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    setMenuList(prevState => [...prevState, doc.data()]);
+                });
+                setIsLoading(false);
+            });
+        };
+        getMenuList();
+    }, []);
 
 
     return (
@@ -25,14 +42,14 @@ const MenuList = () => {
                     <h2 className="menu-list-title">La carte</h2>
                 </div>
                 <ListGroup horizontal >
-                    <ListGroup.Item className="menu-list-item" id="assiettes" onClick={() => {
+                    <ListGroup.Item className={assiettes ? "menu-list-item menu-list-item-active" : "menu-list-item"} id="assiettes" onClick={() => {
                         setNaan(false);
                         setClassique(false);
                         setExtra(false);
                         setWrap(false)
                         setAssiettes(true);
                     }} >Nos assiettes</ListGroup.Item>
-                    <ListGroup.Item className="menu-list-item " id="naan" onClick={
+                    <ListGroup.Item className={naan ? "menu-list-item menu-list-item-active" : "menu-list-item"} id="naan" onClick={
                         () => {
                             setNaan(true);
                             setClassique(false);
@@ -41,7 +58,7 @@ const MenuList = () => {
                             setAssiettes(false);
                         }
                     } >Naan</ListGroup.Item>
-                    <ListGroup.Item className="menu-list-item " id="wrap" onClick={
+                    <ListGroup.Item className={wrap ? "menu-list-item menu-list-item-active" : "menu-list-item"} id="wrap" onClick={
                         () => {
                             setNaan(false);
                             setClassique(false);
@@ -50,7 +67,7 @@ const MenuList = () => {
                             setAssiettes(false);
                         }
                     }>Wrap</ListGroup.Item>
-                    <ListGroup.Item className="menu-list-item " id="classique" onClick={
+                    <ListGroup.Item className={classique ? "menu-list-item menu-list-item-active" : "menu-list-item"} id="classique" onClick={
                         () => {
                             setNaan(false);
                             setClassique(true);
@@ -59,7 +76,7 @@ const MenuList = () => {
                             setAssiettes(false);
                         }
                     }>Classiques</ListGroup.Item>
-                    <ListGroup.Item className="menu-list-item " id="extra" onClick={
+                    <ListGroup.Item className={extra ? "menu-list-item menu-list-item-active" : "menu-list-item"} id="extra" onClick={
                         () => {
                             setNaan(false);
                             setClassique(false);
@@ -69,7 +86,7 @@ const MenuList = () => {
                         }
                     }>Extras</ListGroup.Item>
                 </ListGroup>
-                {assiettes && < Assiettes menuList={menuList}></Assiettes>}
+                {assiettes && !isLoading && < Assiettes menuList={menuList}></Assiettes>}
                 {naan && <Naan menuList={menuList}></Naan>}
                 {wrap && <Wrap menuList={menuList} ></Wrap>}
                 {classique && <Classique menuList={menuList} ></Classique>}
