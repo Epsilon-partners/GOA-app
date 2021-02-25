@@ -79,7 +79,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
             className="d-flex flex-column justify-content-center"
             onSubmit={handleSubmit}
           >
-            <Form.Group as={Row} controlId="email">
+            <Form.Group as={Row} controlId="emailCreateAccount">
               <Form.Label column sm="4">
                 Adresse mail
               </Form.Label>
@@ -98,7 +98,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
                 </Form.Control.Feedback>
               </Col>
             </Form.Group>
-            <Form.Group as={Row} controlId="name">
+            <Form.Group as={Row} controlId="nameCreateAccount">
               <Form.Label column sm="4">
                 Nom
               </Form.Label>
@@ -135,7 +135,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
                 </Form.Control.Feedback>
               </Col>
             </Form.Group>
-            <Form.Group as={Row} controlId="phone">
+            <Form.Group as={Row} controlId="phoneCreateAccount">
               <Form.Label column sm="4">
                 Téléphone
               </Form.Label>
@@ -223,11 +223,11 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
             <div className="custom-control custom-checkbox mb-3">
               <input
                 type="checkbox"
-                id="conditions"
+                id="conditionsCreateAccount"
                 className="custom-control-input"
                 value={conditions}
                 onChange={(e) => setConditions(e.target.checked)}
-                name="conditions"
+                name="conditionsCreateAccount"
                 required
               />
               <label className="custom-control-label" htmlFor="conditions">
