@@ -84,7 +84,7 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                 </Form.Group>
                 <div className="d-flex justify-content-between my-4">
                   <Button
-                    variant="outline-info"
+                    variant="outline-success"
                     type="button"
                     className="mr-3 rounded-pill w-50"
                     onClick={() => setForgotPassword(false)}
@@ -92,7 +92,7 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                     Revenir en arrière
                   </Button>
                   <Button
-                    variant="outline-success"
+                    variant="success"
                     type="submit"
                     className="rounded-pill w-50"
                   >
