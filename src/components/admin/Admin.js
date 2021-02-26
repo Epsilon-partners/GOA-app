@@ -121,7 +121,7 @@ const Admin = () => {
                   <tr>
                     <td>{order.orderNumber}</td>
                     <td>
-                      Nom: {order.user.name}
+                      Nom: {order.user.firstName}
                       <br />
                       Email: {order.user.email}
                       <br />
