@@ -20,6 +20,10 @@ const NavBar = () => {
   const [errorMessage, setErrorMessage] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const handleLogOut = async () => {
     try {
       await logout();
@@ -84,8 +88,8 @@ const NavBar = () => {
       <Modal show={showModal} onHide={() => setShowModal(false)} id="user-modal" className="border border-dark rounded modal-custom">
         <Modal.Header closeButton className="h2 border-0">S'identifier</Modal.Header>
         <Modal.Body className="d-flex flex-column justify-content-between">
-          <SignIn text="Se connecter" classStyle="btn btn-outline-success rounded-pill mb-4" />
-          <SignUp text="Créer un compte" classStyle="btn btn-success rounded-pill" />
+          <SignIn text="Se connecter" classStyle="btn btn-outline-success rounded-pill mb-4" directTo='/dashboard' closeModal={closeModal} />
+          <SignUp text="Créer un compte" classStyle="btn btn-success rounded-pill" directTo='/dashboard' closeModal={closeModal} />
         </Modal.Body>
       </Modal>
     </>

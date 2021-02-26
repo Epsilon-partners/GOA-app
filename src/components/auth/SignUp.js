@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignUp = ({ text, classStyle, directTo, icon }) => {
+const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
   const [show, setShow] = useState(false);
   const [validated, setValidated] = useState(false);
   const [passwordEqual, setPasswordEqual] = useState(false);
@@ -13,8 +13,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
   const [error, setError] = useState(false);
 
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [birthday, setBirthday] = useState("");
+  const [firstName, setFirstName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -42,8 +41,7 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
     setPasswordEqual(false);
 
     const user = {
-      name,
-      birthday,
+      firstName,
       phone,
       stayConnected,
       conditions,
@@ -51,6 +49,8 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
 
     try {
       await signup(email, password, user);
+      setShow(false);
+      closeModal();
       history.push(directTo);
     } catch {
       setError(true);
@@ -79,55 +79,18 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
             className="d-flex flex-column justify-content-center"
             onSubmit={handleSubmit}
           >
-            <Form.Group as={Row} controlId="emailCreateAccount">
-              <Form.Label column sm="4">
-                Adresse mail
-              </Form.Label>
-              <Col sm="8">
-                <Form.Control
-                  type="email"
-                  placeholder="xxxx.@gmail.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  name="email"
-                  required
-                />
-                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Non valide
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
             <Form.Group as={Row} controlId="nameCreateAccount">
               <Form.Label column sm="4">
-                Nom
+                Prénom
               </Form.Label>
               <Col sm="8">
                 <Form.Control
                   type="text"
-                  placeholder="Nom"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  name="name"
+                  placeholder="Prénom"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  name="nameCreateAccount"
                   required
-                />
-                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
-                  Non valide
-                </Form.Control.Feedback>
-              </Col>
-            </Form.Group>
-            <Form.Group as={Row} controlId="birthday">
-              <Form.Label column sm="4">
-                Date de naissance (facultatif)
-              </Form.Label>
-              <Col sm="8">
-                <Form.Control
-                  type="date"
-                  placeholder="XX/XX/XXXX"
-                  value={birthday}
-                  onChange={(e) => setBirthday(e.target.value)}
-                  name="birthday"
                 />
                 <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
                 <Form.Control.Feedback type="invalid">
@@ -149,6 +112,25 @@ const SignUp = ({ text, classStyle, directTo, icon }) => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   name="phone"
+                  required
+                />
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Non valide
+                </Form.Control.Feedback>
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} controlId="emailCreateAccount">
+              <Form.Label column sm="4">
+                Adresse mail
+              </Form.Label>
+              <Col sm="8">
+                <Form.Control
+                  type="email"
+                  placeholder="xxxx.@gmail.com"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  name="email"
                   required
                 />
                 <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>

@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const SignIn = ({ text, classStyle, directTo, icon }) => {
+const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
   const [show, setShow] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [resetMessageSuccess, setResetMessageSuccess] = useState(false);
@@ -28,6 +28,8 @@ const SignIn = ({ text, classStyle, directTo, icon }) => {
 
     try {
       await login(email, password);
+      setShow(false);
+      closeModal();
       history.push(directTo);
     } catch {
       setError(true);
