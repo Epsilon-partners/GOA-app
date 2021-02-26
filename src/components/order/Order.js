@@ -8,31 +8,29 @@ import UserGuest from "./UserGuest";
 function Order() {
   //get menu item
   const { currentUser } = useAuth();
-  const [isUser, setIsUser] = useState(localStorage.getItem('isUser') || false);
-  const [user, setUser] = useState(localStorage.getItem('User') || {});
+  const [orderEnd, setOrderEnd] = useState(false);
+  const [order, setOrder] = useState();
 
-  const validateUser = user => {
-    setIsUser(true);
-    setUser(user);
-    localStorage.setItem('isUser', JSON.stringify(isUser));
-    localStorage.setItem('User', JSON.stringify(user));
-  };
+  const validateOrder = order => {
+    setOrderEnd(true);
+    setOrder(order);
+  }
 
   return (
     <Container>
       <Row>
         <Col md={12} sm={12}>
-          {currentUser ? (
-            <UserInfo userID={currentUser.uid} validateUser={validateUser} />
-          ) : (
-            <UserGuest validateUser={validateUser} />
-          )}
+          <OrderRecap sendValidateOrder={validateOrder} />
         </Col>
-        {isUser && (
-          <Col md={12} sm={12}>
-            <OrderRecap user={user} />
-          </Col>
-        )}
+        {orderEnd &&
+        <Col md={12} sm={12}>
+          {currentUser ? (
+            <UserInfo userID={currentUser.uid} order={order} />
+          ) : (
+            <UserGuest order={order} />
+          )} 
+        </Col>
+        }
       </Row>
     </Container>
   );

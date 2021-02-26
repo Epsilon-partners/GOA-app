@@ -1,17 +1,24 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Card, Spinner, Button, FormControl, Alert } from "react-bootstrap";
+import { Card, Spinner, Button, FormControl, Alert, Modal } from "react-bootstrap";
 import firebase from "../../firebase";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../contexts/AuthContext";
+import { useHistory } from 'react-router-dom';
+import { useOrder } from '../contexts/OrderContext';
 
-const UserInfo = ({ userID, validateUser }) => {
+const UserInfo = ({ userID, order }) => {
   const [user, setUser] = useState();
   const [showPhone, setShowPhone] = useState(false);
   const [showEmail, setShowEmail] = useState(false);
   const [showAddress, setShowAddress] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
+  const [validateOrder, setValidateOrder] = useState(false);
+  const [errorOrder, setErrorOrder] = useState(false);
+
+  const history = useHistory();
+  const { addOrder } = useOrder();
 
   const { updateEmail } = useAuth();
 
@@ -21,6 +28,35 @@ const UserInfo = ({ userID, validateUser }) => {
   const zipCodeRef = useRef();
   const cityRef = useRef();
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false)
+    history.push('/')
+  };
+
+  const handleShow = () => setShow(true);
+
+  const createOrder = user => {
+    const finalOrder = {
+      order,
+      user,
+      confirmed: false,
+      orderNumber: Date.now()
+    };
+    addOrder(finalOrder)
+    .then(() => {
+      localStorage.setItem('recapArray', JSON.stringify([]));
+      setErrorOrder(false);
+      setValidateOrder(true);
+      handleShow()
+    })
+    .catch(err => {
+      console.error(err);
+      setShowFailed(true);
+    });
+  } 
+ 
   const handleModifSubmit = async (e) => {
     if (
       !phoneRef.current &&
@@ -193,7 +229,7 @@ const UserInfo = ({ userID, validateUser }) => {
           variant="success"
           className="rounded-pill user-info-btn mx-auto mb-4"
           type="button"
-          onClick={() => validateUser(user)}
+          onClick={() => createOrder(user)}
         >
           Valider
         </Button>
@@ -205,6 +241,23 @@ const UserInfo = ({ userID, validateUser }) => {
         >
           Enregistrer mes modifications
         </Button>
+        {validateOrder &&
+          <>
+            <Modal show={show} onHide={handleClose} animation={false}>
+              <Modal.Body>
+                Votre commande a été prise en charge
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="success" onClick={handleClose}>
+                  Retour à l'accueil
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        }
+        {errorOrder &&
+          <Alert variant="danger" className="my-4 ml-3">Un problème est survenu avec votre commande</Alert>
+        }
       </Card.Footer>
     </Card>
   );

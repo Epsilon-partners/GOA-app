@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from "react";
 import uniqid from 'uniqid';
-import { Card, Button, Table, Alert, Modal } from "react-bootstrap";
+import { Card, Button, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
-import { useOrder } from '../contexts/OrderContext';
 
-const OrderRecap = ({ user }) => {
+const OrderRecap = ({ sendValidateOrder }) => {
   const [recapArray, setRecapArray] = useState(JSON.parse(localStorage.getItem('recapArray')));
-  const [validateOrder, setValidateOrder] = useState(false);
-  const [errorOrder, setErrorOrder] = useState(false);
-  const history = useHistory();
-
-
-  //order confirmation message
-  const [show, setShow] = useState(false);
-  const handleClose = () => {
-    setShow(false)
-    history.push('/')
-  };
-  const handleShow = () => setShow(true);
-  const {addOrder} = useOrder();
 
   const totalPrice = (array) => {
     let total = 0;
@@ -42,26 +27,10 @@ const OrderRecap = ({ user }) => {
 
   const createOrder = orderArray => {
     if (orderArray === null || orderArray === undefined) return;
-    const order = {
-      order: orderArray,
-      user: typeof Object ? user : JSON.parse(user),
-      confirmed: false,
-      orderNumber: Date.now()
-    };
-    addOrder(order)
-    .then(() => {
-      localStorage.clear();
-      setRecapArray([])
-      setErrorOrder(false);
-      setValidateOrder(true);
-      handleShow()
-    })
-    .catch(err => {
-      setValidateOrder(false);
-      setErrorOrder(true);
-      console.error(err);
-    });
+    sendValidateOrder(orderArray);
   }
+
+
 
   useEffect(() => {
     localStorage.setItem('recapArray', JSON.stringify(recapArray));
@@ -128,21 +97,6 @@ const OrderRecap = ({ user }) => {
             Valider
           </Button>
         </Card.Footer>
-        {validateOrder &&
-          <>
-            <Modal show={show} onHide={handleClose} animation={false}>
-              <Modal.Body>
-                Votre commande a été prise en charge
-              </Modal.Body>
-              <Modal.Footer>
-                <Button variant="success" onClick={handleClose}>
-                  Retour à l'accueil
-                </Button>
-              </Modal.Footer>
-            </Modal>
-          </>
-        }
-        {errorOrder && <Alert variant="danger" className="my-4">Un problème est survenu</Alert>}
       </Card.Body>
     </Card >
   );

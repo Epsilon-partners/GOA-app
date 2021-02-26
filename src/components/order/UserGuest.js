@@ -1,24 +1,40 @@
 import React, { useState } from "react";
-import { Card, Col, Row, Form, Button, Alert } from "react-bootstrap";
+import { Card, Col, Row, Form, Button, Alert, Modal } from "react-bootstrap";
 import SignUp from "../auth/SignUp";
 import SignIn from "../auth/SignIn";
 import firebase from '../../firebase';
+import { useOrder } from '../contexts/OrderContext';
+import { useHistory } from 'react-router-dom';
 
-const UserGuest = ({ validateUser }) => {
-  const [name, setName] = useState('');
+const UserGuest = ({ order }) => {
+  const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [conditions, setConditions] = useState(false);
+  
+  const history = useHistory();
 
-  const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
+  const [validateOrder, setValidateOrder] = useState(false);
+  const [errorOrder, setErrorOrder] = useState(false);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => {
+    setShow(false)
+    history.push('/')
+  };
+
+  const handleShow = () => setShow(true);
+
+  const {addOrder} = useOrder();
 
 
   const handleSubmit = e => {
     e.preventDefault();
 
     const userGuest = {
-      name,
+      firstName,
       email,
       phone,
       conditions
@@ -32,12 +48,23 @@ const UserGuest = ({ validateUser }) => {
     })
     .then(() => {
       setShowFailed(false);
-      setShowSuccess(true);
-      validateUser(userGuest);
+      const finalOrder = {
+        order,
+        user: userGuest,
+        confirmed: false,
+        orderNumber: Date.now()
+      };
+      addOrder(finalOrder)
+      .then(() => {
+        localStorage.setItem('recapArray', JSON.stringify([]));
+        setErrorOrder(false);
+        setValidateOrder(true);
+        handleShow()
+      })
+      .catch();
     })
     .catch(err => {
       console.error(err);
-      setShowSuccess(false);
       setShowFailed(true);
     });
 
@@ -59,14 +86,14 @@ const UserGuest = ({ validateUser }) => {
             <Form className="d-flex flex-column justify-content-center" onSubmit={handleSubmit}>
               <Form.Group as={Row} controlId="name">
                 <Form.Label column sm="4">
-                  Nom
+                  Prénom
                 </Form.Label>
                 <Col sm="8">
                   <Form.Control
                     type="text"
                     placeholder="Jean"
-                    value={name}
-                    onChange={e => setName(e.target.value)}
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}
                     required
                   />
                 </Col>
@@ -119,7 +146,7 @@ const UserGuest = ({ validateUser }) => {
                     la notice de données personnelles.
                   </a>
                 </label>
-              </div>
+              </div> 
               <Button
                 variant="success"
                 type="submit"
@@ -151,11 +178,25 @@ const UserGuest = ({ validateUser }) => {
               />
             </div>
           </Col>
-          {showSuccess &&
-            <Alert variant="success" className="my-4 ml-3">Vous êtes bien enregistré en tant qu'invité !</Alert>
+          {validateOrder &&
+          <>
+            <Modal show={show} onHide={handleClose} animation={false}>
+              <Modal.Body>
+                Votre commande a été prise en charge
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="success" onClick={handleClose}>
+                  Retour à l'accueil
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
           }
           {showFailed &&
             <Alert variant="danger" className="my-4 ml-3">Un problème est survenu ! Veuillez réessayer</Alert>
+          }
+          {errorOrder &&
+            <Alert variant="danger" className="my-4 ml-3">Un problème est survenu avec votre commande</Alert>
           }
         </Card.Text>
       </Card.Body>

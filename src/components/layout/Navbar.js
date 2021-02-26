@@ -27,7 +27,7 @@ const NavBar = () => {
   const handleLogOut = async () => {
     try {
       await logout();
-      localStorage.removeItem("isUser");
+      localStorage.setItem("recapArray", JSON.stringify([]));
       history.push("/");
     } catch (e) {
       console.error(e);
@@ -52,7 +52,12 @@ const NavBar = () => {
             <a href="#footer">Contact</a>
             {!currentUser ? (
               <div className="icon" style={{ marginLeft: "16px" }}>
-                  <FontAwesomeIcon icon={faUser} size="lg" cursor="pointer" onClick={() => setShowModal(true)} />
+                <FontAwesomeIcon
+                  icon={faUser}
+                  size="lg"
+                  cursor="pointer"
+                  onClick={() => setShowModal(true)}
+                />
               </div>
             ) : (
               <a href="#deconnexion" onClick={handleLogOut}>
@@ -85,11 +90,28 @@ const NavBar = () => {
           </Alert>
         </>
       )}
-      <Modal show={showModal} onHide={() => setShowModal(false)} id="user-modal" className="border border-dark rounded modal-custom">
-        <Modal.Header closeButton className="h2 border-0">S'identifier</Modal.Header>
+      <Modal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        id="user-modal"
+        className="border border-dark rounded modal-custom"
+      >
+        <Modal.Header closeButton className="h2 border-0">
+          S'identifier
+        </Modal.Header>
         <Modal.Body className="d-flex flex-column justify-content-between">
-          <SignIn text="Se connecter" classStyle="btn btn-outline-success rounded-pill mb-4" directTo='/dashboard' closeModal={closeModal} />
-          <SignUp text="Créer un compte" classStyle="btn btn-success rounded-pill" directTo='/dashboard' closeModal={closeModal} />
+          <SignIn
+            text="Se connecter"
+            classStyle="btn btn-outline-success rounded-pill mb-4"
+            directTo="/dashboard"
+            closeModal={closeModal}
+          />
+          <SignUp
+            text="Créer un compte"
+            classStyle="btn btn-success rounded-pill"
+            directTo="/dashboard"
+            closeModal={closeModal}
+          />
         </Modal.Body>
       </Modal>
     </>

@@ -70,7 +70,7 @@ const MenuItem = () => {
 
             }
         )
-        const recapArray = localStorage.getItem('recapArray') ? JSON.parse(localStorage.getItem('recapArray')) : [];
+        const recapArray = localStorage.getItem('recapArray') !== null ? JSON.parse(localStorage.getItem('recapArray')) : [];
         recapArray.push(shoppingCart);
         localStorage.setItem('recapArray', JSON.stringify(recapArray));
         // redirect user to validate order
