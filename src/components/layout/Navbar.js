@@ -55,7 +55,7 @@ const NavBar = () => {
               spy={true}
               smooth={true}
               to="footer"
-              style={{ cursor: "pointer" }}
+              className="navbar-contact"
             >
               Contact
             </ScrollLink>

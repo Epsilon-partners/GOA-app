@@ -154,3 +154,20 @@ label a:hover {
   font-weight: 600;
 }
 /* Admin */
+
+/* Navbar */
+
+.navbar-contact {
+  color: #0B6C13;
+  font-size: 20px;
+  font-family: 'El Messiri', sans-serif;
+  margin-left: 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navbar-contact:hover {
+  color: #a7c83a;
+}
+
+/* Navbar */

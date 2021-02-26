@@ -32,6 +32,7 @@ const Contact = () => {
           </a>{" "}
           <br />
           <FontAwesomeIcon icon={faClock} color="black" className="mr-2" />{" "}
+          Tous les jours: <br />
           11H30 - 15H00 <br />
           18H00-1H00
         </Card.Text>

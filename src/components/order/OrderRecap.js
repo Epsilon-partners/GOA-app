@@ -3,6 +3,7 @@ import uniqid from 'uniqid';
 import { Card, Button, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 const OrderRecap = ({ sendValidateOrder }) => {
   const [recapArray, setRecapArray] = useState(JSON.parse(localStorage.getItem('recapArray')));
@@ -93,9 +94,10 @@ const OrderRecap = ({ sendValidateOrder }) => {
           )}
         </Card.Text>
         <Card.Footer className="d-flex justify-content-center bg-white border-0">
-          <Button variant="success" className="rounded-pill w-75 mx-auto" onClick={() => { createOrder(recapArray) }}>
+          <Button variant="success" className="rounded-pill w-25 mx-auto" onClick={() => { createOrder(recapArray) }}>
             Valider
           </Button>
+          <Link to='/menu-list' className="btn btn-outline-success rounded-pill mx-auto w-25">Revenir à la carte</Link>
         </Card.Footer>
       </Card.Body>
     </Card >
