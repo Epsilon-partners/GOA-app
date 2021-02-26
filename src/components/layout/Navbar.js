@@ -13,6 +13,7 @@ import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import { Alert, Nav, Navbar, Modal } from "react-bootstrap";
 import React, { useState } from "react";
+import { Link as ScrollLink } from "react-scroll";
 
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
@@ -49,7 +50,15 @@ const NavBar = () => {
           <Nav className="links d-flex justify-content-end w-100">
             <Link to="/">Goa Food</Link>
             <Link to="/menu-list">La carte</Link>
-            <a href="#footer">Contact</a>
+            <ScrollLink
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              to="footer"
+              style={{ cursor: "pointer" }}
+            >
+              Contact
+            </ScrollLink>
             {!currentUser ? (
               <div className="icon" style={{ marginLeft: "16px" }}>
                 <FontAwesomeIcon

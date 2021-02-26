@@ -4,7 +4,7 @@ import { ExternalLink } from 'react-external-link';
 
 const Delivery = () => {
     return (
-        <div className="delivery">
+        <div className="delivery" id="delivery">
             <div className="delivery-content">
                 <div className="delivery-text">
                     <h2>N’attendez plus !  </h2>

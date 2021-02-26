@@ -24,12 +24,10 @@ function App() {
               <Route exact path="/">
                 <Home />
                 <MenuList />
+                <Delivery />
               </Route>
               <Route exact path="/admin-panel">
                 <Admin />
-              </Route>
-              <Route exact path="/delivery">
-                <Delivery></Delivery>
               </Route>
               <PrivateRoute exact path="/dashboard" component={Profile} />
               <Route exact path="/valider-commande">

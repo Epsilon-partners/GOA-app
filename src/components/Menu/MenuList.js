@@ -36,7 +36,7 @@ const MenuList = () => {
 
     return (
 
-        <div className="menu-list">
+        <div className="menu-list" id="menu-list">
             <div className="menu-list-content">
                 <div className="menu-list-header">
                     <h2 className="menu-list-title">La carte</h2>
