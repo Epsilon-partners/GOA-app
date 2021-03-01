@@ -17,9 +17,9 @@ const Naan = ({ menuList }) => {
 
 
     return (
-        <div className="naan menu-items">
+        <div className="naan menu-items border border-dark" id="naanSection" style={{paddingTop: '122px'}}>
             <Container>
-                <h3 className="menuDescription">Vous avez la possibilitée de choisir votre Naan avec ou sans fromage</h3>
+                <h3 className="menuDescription my-4">Vous avez la possibilitée de choisir votre Naan avec ou sans fromage</h3>
                 <Row>
                     {
                         menuItems.map((item) => (

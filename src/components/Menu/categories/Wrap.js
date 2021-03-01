@@ -17,7 +17,7 @@ const Wrap = ({ menuList }) => {
     })
 
     return (
-        <div className="wrap menu-items">
+        <div className="wrap menu-items border border-dark" id="wrapSection" style={{paddingTop: '122px'}}>
             <Container>
                 <Row>
                     {
