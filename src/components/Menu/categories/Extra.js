@@ -20,8 +20,9 @@ const Extra = ({ menuList }) => {
     let petitPlus = menuItems.filter(item => item.sousType === 'Petit plus')
     let dessert = menuItems.filter(item => item.sousType === 'Desserts')
     let brochettes = menuItems.filter(item => item.sousType === 'Brochettes')
+
     return (
-        <div className="extra menu-items">
+        <div className="extra menu-items border border-dark" id="extraSection" style={{paddingTop: '122px'}}>
             <Container>
                 <h2>Petites faims</h2>
                 <Row>

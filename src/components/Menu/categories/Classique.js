@@ -15,7 +15,7 @@ const Classique = ({ menuList }) => {
         return 0
     })
     return (
-        <div className="classique menu-items">
+        <div className="classique menu-items border border-dark" id="classiqueSection" style={{paddingTop: '122px'}}>
             <Container>
                 <Row>
                     {

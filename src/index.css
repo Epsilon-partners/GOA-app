@@ -140,8 +140,8 @@ h1, h2 {
 /* ---------------------Menu------------------------- */
 
 .menu-list-content{
+  width: 100%;
   padding-top: 70px;
-  max-width: 980px;
   justify-content: center;
   margin: 0px auto;
 }
@@ -289,7 +289,9 @@ h1, h2 {
   text-align: center;
   color: #0B6C13;
   font-size: 35px;
-  padding-top: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 0;
   
 }
 .list-group-item{
@@ -306,15 +308,11 @@ h1, h2 {
 
 
 .menu-list-item:hover{
-  border-bottom: 2px solid  #A7C83A  !important;
+  border-bottom: 3px solid  #A7C83A  !important;
 }
 
 .menu-list-item-active {
-  border-bottom: 2px solid  #A7C83A  !important;
-}
-
-.list-group{
-  justify-content: center;
+  border-bottom: 3px solid  #A7C83A  !important;
 }
 
 .card{

@@ -23,9 +23,9 @@ const Assiettes = ({ menuList }) => {
     }, [])
 
     return (
-        <div className="assiettes menu-items">
+        <div className="assiettes menu-items border border-dark" id="assiettesSection" style={{paddingTop: '122px'}}>
             <Container>
-                <h3 className="menuDescription">Toutes nos assiettes sont accompagnées <br /> d'une galette de Naan ou Cheese Naan</h3>
+                <h3 className="menuDescription my-4">Toutes nos assiettes sont accompagnées <br /> d'une galette de Naan ou Cheese Naan</h3>
                 <Row>
 
                     {menuItems.length ?
