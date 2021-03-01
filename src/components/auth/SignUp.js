@@ -58,6 +58,16 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
     
   };
 
+  const allowOnlyLetters = e => {
+    let value = e.target.value;
+    return value.replace(/[^A-Za-z\s]/gi, "");
+  };
+
+  const allowOnlyNumbers = e => {
+    let value = e.target.value;
+    return value.replace(/[^0-9]*$/gi, "");
+  }
+
   return (
     <>
       <a href="#creer-un-compte" onClick={handleShow} className={classStyle}>
@@ -88,7 +98,7 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
                   type="text"
                   placeholder="Prénom"
                   value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(allowOnlyLetters(e))}
                   name="nameCreateAccount"
                   required
                 />
@@ -110,7 +120,7 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
                   minLength="10"
                   maxLength="10"
                   value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
+                  onChange={(e) => setPhone(allowOnlyNumbers(e))}
                   name="phone"
                   required
                 />

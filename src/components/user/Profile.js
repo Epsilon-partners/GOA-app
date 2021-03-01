@@ -26,15 +26,25 @@ const Profile = () => {
   const addressRef = useRef();
   const zipCodeRef = useRef();
   const cityRef = useRef();
+  const [civilite, setCivilite] = useState("");
 
+  const [validated, setValidated] = useState(false);
   const [error, setError] = useState(false);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [updateFailed, setUpdateFailed] = useState(false);
   const history = useHistory();
   const [user, setUser] = useState();
 
+  let today = new Date();
+  today = today = today.toISOString().slice(0, 10);
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    if (form.checkValidity() === false) {
+      setValidated(true);
+      return;
+    }
     if (password !== confirmPassword) {
       setPasswordEqual(true);
       e.preventDefault();
@@ -61,6 +71,7 @@ const Profile = () => {
       address: addressRef.current.value,
       zipCode: zipCodeRef.current.value,
       city: cityRef.current.value,
+      civilite,
     };
 
     const db = firebase.firestore();
@@ -73,15 +84,25 @@ const Profile = () => {
         setUpdateFailed(false);
         setUpdateSuccess(true);
       })
-      .catch(err => {
+      .catch((err) => {
         setUpdateSuccess(false);
         setUpdateFailed(true);
         console.error(err);
       });
 
     Promise.all(promises)
-      .then(() => setTimeout(() => history.push('/'), 3000))
+      .then(() => setTimeout(() => history.push("/"), 3000))
       .catch(() => setError(true));
+  };
+
+  const allowOnlyLetters = ref => e => {
+    let value = e.target.value;
+    ref.current.value = value.replace(/[^A-Za-z\s]/gi, "");
+  };
+
+  const allowOnlyNumbers = ref => e => {
+    let value = e.target.value;
+    ref.current.value = value.replace(/[^0-9]*$/gi, "");
   };
 
   useEffect(() => {
@@ -101,10 +122,10 @@ const Profile = () => {
 
   return (
     <>
-      <Container className="h-100" fluid>
+      <Container className="h-auto mb-5" fluid>
         {user ? (
-          <Row className="h-100">
-            <Col className="h-100 d-flex flex-column align-items-center">
+          <Row className="h-auto">
+            <Col className="h-auto mb-5 d-flex flex-column align-items-center">
               {error && (
                 <Alert variant="danger" className="my-4">
                   Un problème est survenu pour la modification de votre email ou
@@ -130,8 +151,8 @@ const Profile = () => {
                     Mes informations personnelles
                   </Card.Title>
                   <Card.Text as="div">
-                    <Form className="row" onSubmit={handleSubmit}>
-                      <Col sm='12' md='6'>
+                    <Form className="row" onSubmit={handleSubmit} validated={validated} noValidate>
+                      <Col sm="12" md="6">
                         <h6 className="font-weight-bold mb-4 text-center">
                           Votre identité
                         </h6>
@@ -147,6 +168,14 @@ const Profile = () => {
                               id="monsieur"
                               inline
                               value="monsieur"
+                              onChange={(e) => setCivilite(e.target.value)}
+                              checked={
+                                user.civilite === "monsieur"
+                                  ? true
+                                  : (civilite === "monsieur"
+                                  ? true
+                                  : false)
+                              }
                             />
                             <Form.Check
                               type="radio"
@@ -155,7 +184,19 @@ const Profile = () => {
                               id="madame"
                               inline
                               value="madame"
+                              onChange={(e) => setCivilite(e.target.value)}
+                              checked={
+                                user.civilite === "madame"
+                                  ? true
+                                  : (civilite === "madame"
+                                  ? true
+                                  : false)
+                              }
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="lastName">
@@ -168,7 +209,12 @@ const Profile = () => {
                               placeholder="Dupont"
                               defaultValue={user.name}
                               ref={nameRef}
+                              onChange={allowOnlyLetters(nameRef)}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="firstName">
@@ -181,7 +227,13 @@ const Profile = () => {
                               placeholder="Jean"
                               defaultValue={user.firstName}
                               ref={firstNameRef}
+                              onChange={allowOnlyLetters(firstNameRef)}
+                              required
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="birthday">
@@ -194,7 +246,13 @@ const Profile = () => {
                               placeholder="XX/XX/XXXX"
                               defaultValue={user.birthday}
                               ref={birthdayRef}
+                              min="1900-01-01"
+                              max={today}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="phone">
@@ -207,7 +265,16 @@ const Profile = () => {
                               placeholder="XX.XX.XX.XX.XX"
                               defaultValue={user.phone}
                               ref={phoneRef}
+                              required
+                              pattern="[0-9]{10}"
+                              min="10"
+                              max="10"
+                              onChange={allowOnlyNumbers(phoneRef)}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="email">
@@ -220,11 +287,16 @@ const Profile = () => {
                               placeholder="exemple@gmail.com"
                               ref={emailRef}
                               defaultValue={currentUser.email}
+                              required
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                       </Col>
-                      <Col sm='12' md='6'>
+                      <Col sm="12" md="6">
                         <h6 className="font-weight-bold mb-4 text-center">
                           Votre adresse de livraison
                         </h6>
@@ -239,6 +311,10 @@ const Profile = () => {
                               defaultValue={user.address}
                               ref={addressRef}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="code-postal">
@@ -252,7 +328,14 @@ const Profile = () => {
                               max="99999"
                               defaultValue={user.zipCode}
                               ref={zipCodeRef}
+                              min="00000"
+                              maxLength="5"
+                              onChange={allowOnlyNumbers(zipCodeRef)}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="city">
@@ -265,7 +348,12 @@ const Profile = () => {
                               placeholder="Grenoble"
                               defaultValue={user.city}
                               ref={cityRef}
+                              onChange={allowOnlyLetters(cityRef)}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <h6 className="font-weight-bold mb-4 text-center">
@@ -282,6 +370,10 @@ const Profile = () => {
                               value={password}
                               onChange={(e) => setPassword(e.target.value)}
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                           </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId="confirmPassword">
@@ -297,6 +389,10 @@ const Profile = () => {
                                 setConfirmPassword(e.target.value)
                               }
                             />
+                            <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                            <Form.Control.Feedback type="invalid">
+                              Non valide
+                            </Form.Control.Feedback>
                             {passwordEqual && (
                               <div className="text-danger">
                                 Les mots de passe ne sonts pas égaux !
@@ -321,7 +417,7 @@ const Profile = () => {
         ) : (
           <Row className="h-100">
             <Col className="d-flex justify-content-center h-100">
-              <Spinner animation="grow" className="my-auto"/>
+              <Spinner animation="grow" className="my-auto" />
             </Col>
           </Row>
         )}

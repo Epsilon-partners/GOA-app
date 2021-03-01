@@ -70,6 +70,16 @@ const UserGuest = ({ order }) => {
 
   }
 
+  const allowOnlyLetters = e => {
+    let value = e.target.value;
+    return value.replace(/[^A-Za-z\s]/gi, "");
+  };
+
+  const allowOnlyNumbers = e => {
+    let value = e.target.value;
+    return value.replace(/[^0-9]*$/gi, "");
+  }
+
   return (
     <Card className="card-order">
       <Card.Body>
@@ -93,7 +103,7 @@ const UserGuest = ({ order }) => {
                     type="text"
                     placeholder="Jean"
                     value={firstName}
-                    onChange={e => setFirstName(e.target.value)}
+                    onChange={e => setFirstName(allowOnlyLetters(e))}
                     required
                   />
                 </Col>
@@ -107,7 +117,7 @@ const UserGuest = ({ order }) => {
                     type="tel"
                     placeholder="0123456789"
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}
+                    onChange={e => setPhone(allowOnlyNumbers(e))}
                     required
                   />
                 </Col>

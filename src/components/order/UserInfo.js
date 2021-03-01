@@ -122,6 +122,16 @@ const UserInfo = ({ userID, order }) => {
     getuser();
   }, [userID]);
 
+  const allowOnlyLetters = ref => e => {
+    let value = e.target.value;
+    ref.current.value = value.replace(/[^A-Za-z\s]/gi, "");
+  };
+
+  const allowOnlyNumbers = ref => e => {
+    let value = e.target.value;
+    ref.current.value = value.replace(/[^0-9]*$/gi, "");
+  };
+
   return (
     <Card className="card-order">
       <Card.Body>
@@ -147,6 +157,7 @@ const UserInfo = ({ userID, order }) => {
                     ref={phoneRef}
                     className="modif-input"
                     defaultValue={user.phone}
+                    onChange={allowOnlyNumbers(phoneRef)}
                   />
                 </>
               )}
@@ -195,6 +206,7 @@ const UserInfo = ({ userID, order }) => {
                     ref={zipCodeRef}
                     className="modif-input mb-3"
                     defaultValue={user.zipCode}
+                    onChange={allowOnlyNumbers(zipCodeRef)}
                   />
                   <FormControl
                     type="text"
@@ -202,6 +214,7 @@ const UserInfo = ({ userID, order }) => {
                     ref={cityRef}
                     className="modif-input"
                     defaultValue={user.city}
+                    onChange={allowOnlyLetters(cityRef)}
                   />
                 </>
               )}
