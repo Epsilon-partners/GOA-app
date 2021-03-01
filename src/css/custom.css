@@ -177,6 +177,7 @@ label a:hover {
 .menu-list-aligned {
   width: 20%;
   text-align: center;
+  padding: 0;
 }
 
 .menu-links {
@@ -184,6 +185,10 @@ label a:hover {
   text-decoration: none;
   width: 100%;
   height: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-links:hover {

@@ -51,6 +51,7 @@ const MenuList = () => {
               href="#assiettesSection"
               className="menu-links"
               onClick={() => {
+                setAssiettes(false);
                 setNaan(false);
                 setClassique(false);
                 setExtra(false);
@@ -71,11 +72,12 @@ const MenuList = () => {
           >
             <a href="#naanSection" className="menu-links"
             onClick={() => {
-                setNaan(true);
+                setNaan(false);
                 setClassique(false);
                 setExtra(false);
                 setWrap(false);
                 setAssiettes(false);
+                setNaan(true);
               }}>
                 Naan
             </a>
@@ -90,11 +92,12 @@ const MenuList = () => {
           >
             <a href="#wrapSection" className="menu-links"
             onClick={() => {
+                setWrap(false);
                 setNaan(false);
                 setClassique(false);
                 setExtra(false);
-                setWrap(true);
                 setAssiettes(false);
+                setWrap(true);
               }}>
                 Wrap
             </a>
@@ -109,11 +112,12 @@ const MenuList = () => {
           >
             <a href="#classiqueSection" className="menu-links"
             onClick={() => {
+                setClassique(false);
                 setNaan(false);
-                setClassique(true);
                 setExtra(false);
                 setWrap(false);
                 setAssiettes(false);
+                setClassique(true);
               }}>
                 Classiques
             </a>
@@ -128,11 +132,12 @@ const MenuList = () => {
           >
             <a href="#extraSection" className="menu-links"
             onClick={() => {
+                setExtra(false);
                 setNaan(false);
                 setClassique(false);
-                setExtra(true);
                 setWrap(false);
                 setAssiettes(false);
+                setExtra(true);
               }}>
                   Extras
             </a>

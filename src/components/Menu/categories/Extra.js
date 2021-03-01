@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import uniqid from 'uniqid';
 import { ListGroup, Card, ListGroupItem, Button, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,21 +8,28 @@ let slugify = require('slugify')
 
 
 const Extra = ({ menuList }) => {
-    let menuItems = []
-    menuList.map(element => {
-        if (element.type === 'extra') {
-            menuItems.push(element)
-        }
-        return 0;
-    })
+    const [menuItems, setMenuItems] = useState([]);
+    
     let lassi = menuItems.filter(item => item.sousType === 'Lassi')
     let petitesFaims = menuItems.filter(item => item.sousType === 'Petites Faims')
     let petitPlus = menuItems.filter(item => item.sousType === 'Petit plus')
     let dessert = menuItems.filter(item => item.sousType === 'Desserts')
     let brochettes = menuItems.filter(item => item.sousType === 'Brochettes')
 
+    useEffect(() => {
+        const getExtras = () => {
+            menuList.map(element => {
+                if (element.type === 'extra') {
+                    setMenuItems(prevState => [...prevState, element]);
+                }
+                return 0;
+            })
+        };
+        getExtras();
+    }, []);
+
     return (
-        <div className="extra menu-items border border-dark" id="extraSection" style={{paddingTop: '122px'}}>
+        <div className="extra menu-items border border-dark" id="extraSection" style={{paddingTop: '122px', paddingBottom: '122px'}}>
             <Container>
                 <h2>Petites faims</h2>
                 <Row>
