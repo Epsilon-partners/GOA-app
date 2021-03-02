@@ -254,3 +254,59 @@ label a:hover {
 }
 
 /* Menu List */
+
+/* Footer */
+
+#footer a {
+  color: black;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+.info-footer-icons path {
+  color: #a7c83a;
+}
+
+.goa-footer-title {
+  color: black;
+  font-family: 'El Missiri';
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.footer-border-icons {
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 1.5rem;
+}
+
+.brand-fb {
+  border-color: #4267B2;
+}
+.brand-fb svg path {
+  color: #4267B2;
+}
+
+.brand-ig {
+  border-color: #E1306C;
+}
+.brand-ig svg path {
+  color: #E1306C;
+}
+
+.footer-list-copyright {
+  font-weight: 300 !important;
+}
+
+.mandala-footer {
+  height: 400px;
+  width: 400px;
+  position: relative;
+  left: -220px;
+}
+
+/* Footer */

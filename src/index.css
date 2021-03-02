@@ -337,50 +337,6 @@ h1, h2 {
   
 }
 
-/* footer */
-.footer-h2 {
-  color: #0b6c13;
-  
-}
-
-.card-title-footer {
-  color: #a7c83a;
-}
-
-.card-text-footer {
-  color: #707070;
-}
-
-#footer a {
-  color: #707070;
-}
-
-#footer a:hover {
-  color: #707070;
-  text-decoration: none;
-}
-
-
-.card-text-footer{
-  text-align: left;
-}
-
-.copyright-item{
-  color: black !important;
-}
-#footer .copyright-item{
-  color: black !important;
-  font-weight: normal;
-  font-size: 14px;
-  
-}
-
-@media screen and (max-width: 720px) {
-  .copyright-item {
-    text-align: center;
-  }
-}
-
 
 /* MenuItem */
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
+import Footer from './components/layout/Footer';
 import { AuthProvider } from "./components/contexts/AuthContext";
 import Profile from "./components/user/Profile";
 import PrivateRoute from "./components/PrivateRoute";
