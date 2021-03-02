@@ -143,14 +143,14 @@ label a:hover {
   margin-bottom: -0.79rem;
 }
 
-.command-btn-order button {
+.command-btn-order a {
   background-color: #0B6C13;
   color: white;
   border: 1px solid #0B6C13;
   font-family: 'El Missiri';
 }
 
-.command-btn-order button:hover {
+.command-btn-order a:hover {
   background-color: #0B6C13;
   color: white;
   border: 1px solid #0B6C13;

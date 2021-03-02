@@ -23,15 +23,17 @@ function Order() {
           <h4 className="panier-order mt-4 mb-0">Votre panier</h4>
           <OrderRecap sendValidateOrder={validateOrder} />
         </Col>
-        {orderEnd &&
-        <Col sm={12} className="px-0 mt-4">
-          {currentUser ? (
-            <UserInfo userID={currentUser.uid} order={order} />
-          ) : (
-            <UserGuest order={order} />
-          )} 
+        <Col sm={12} className="px-0 mt-4" id="beforeSendOrder">
+          {orderEnd &&
+            <>
+              {currentUser ? (
+                <UserInfo userID={currentUser.uid} order={order} />
+              ) : (
+                <UserGuest order={order} />
+              )} 
+            </>
+          }
         </Col>
-        }
       </Row>
     </Container>
   );

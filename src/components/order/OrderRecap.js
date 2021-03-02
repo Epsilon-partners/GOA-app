@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import uniqid from 'uniqid';
-import { Card, Button, ListGroup, Row, Col } from "react-bootstrap";
+import { Card, ListGroup, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link as ScrollLink } from 'react-scroll';
 
 const OrderRecap = ({ sendValidateOrder }) => {
   const [recapArray, setRecapArray] = useState(JSON.parse(localStorage.getItem('recapArray')));
@@ -42,7 +43,16 @@ const OrderRecap = ({ sendValidateOrder }) => {
             <>
             <Card.Header className="bg-white d-flex justify-content-end">
               <div className="d-flex flex-row command-btn-order mr-4">
-                <Button variant="success" className="rounded-0" onClick={() => createOrder(recapArray)}>Commander</Button>
+                <ScrollLink className="btn btn-success rounded-0" 
+                onClick={() => createOrder(recapArray)}
+                activeClass="active"
+                spy={true}
+                smooth={true}
+                to="beforeSendOrder"
+                style={{ cursor: "pointer" }}
+                offset={-122}>
+                  Commander
+                </ScrollLink>
                 <div>{totalPrice(recapArray)}€</div>
               </div>
             </Card.Header>
