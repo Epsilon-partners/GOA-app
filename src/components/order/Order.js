@@ -17,13 +17,14 @@ function Order() {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
-        <Col md={12} sm={12}>
+        <Col sm={12} className="p-0">
+          <h4 className="panier-order mt-4 mb-0">Votre panier</h4>
           <OrderRecap sendValidateOrder={validateOrder} />
         </Col>
         {orderEnd &&
-        <Col md={12} sm={12}>
+        <Col sm={12} className="px-0 mt-4">
           {currentUser ? (
             <UserInfo userID={currentUser.uid} order={order} />
           ) : (

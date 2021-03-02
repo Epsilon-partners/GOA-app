@@ -61,7 +61,7 @@ const MenuItem = () => {
             {
                 name: menuItem.name,
                 prix: prix,
-                // quantity: quantity,
+                image: menuItem.imageUrl,
                 menu: menu,
                 supplement: supplement,
                 boisson: boisson,

@@ -12,11 +12,13 @@ import MenuItem from "./components/Menu/MenuItem";
 import Delivery from "./components/home/Delivery";
 import Admin from "./components/admin/Admin";
 import { OrderProvider } from "./components/contexts/OrderContext";
+import ScrollToTop from './components/contexts/ScrollToTop';
 
 function App() {
   return (
     <>
       <BrowserRouter>
+      <ScrollToTop />
         <Switch>
           <AuthProvider>
             <OrderProvider>

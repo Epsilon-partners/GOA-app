@@ -12,21 +12,7 @@ body,
 body {
   padding-top: 122px;
 }
- 
-.btn-success {
-  background-color: #a7c83a;
-  border-color: #a7c83a;
-}
 
-.btn-outline-sucess {
-  border-color: #a7c83a;
-  color: #a7c83a;
-}
-
-.btn-outline-sucess:hover {
-  border-color: #a7c83a;
-  background-color: #a7c83a;
-}
 
 /* General */
 
@@ -85,9 +71,11 @@ label a:hover {
 }
 
 .card-order {
-  border: 1px solid black !important;
-  border-radius: 33px !important;
-  border-collapse: collapse;
+  border: 1px solid #a7c83a ;
+  width: 100%;
+  border-radius: 0;
+  border-top: none;
+  margin-top: 0 !important;
 }
 
 .border-styled {
@@ -117,6 +105,75 @@ label a:hover {
   .modif-input {
     width: 100%;
   }
+}
+
+.recap-elements {
+  color: #a7c83a;
+  font-size: 14px;
+}
+
+.recap-elements span {
+  color: #7f7f7f;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.price-element {
+  margin-bottom: -0.75rem;
+  border: 1px solid #0B6C13;
+  padding: 3px 16px;
+  font-size: 16px;
+  background-color: #0B6C13;
+  color: white;
+  font-family: 'El Messiri';
+}
+
+.img-recap-order {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+}
+
+.icon-recap path {
+  cursor: pointer;
+  color: #B2AFAF;
+}
+
+.command-btn-order {
+  margin-bottom: -0.79rem;
+}
+
+.command-btn-order button {
+  background-color: #0B6C13;
+  color: white;
+  border: 1px solid #0B6C13;
+  font-family: 'El Missiri';
+}
+
+.command-btn-order button:hover {
+  background-color: #0B6C13;
+  color: white;
+  border: 1px solid #0B6C13;
+  font-family: 'El Missiri';
+}
+
+.command-btn-order div {
+  border: 1px solid #a7c83a;
+  background-color: white;
+  color: #a7c83a;
+  font-family: 'El Missiri';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 5px;
+  font-weight: 800;
+}
+
+.panier-order {
+  text-align: center;
+  color: black;
+  font-weight: 200;
+  font-family: 'El Missiri';
 }
 
 /* OrderRecap */

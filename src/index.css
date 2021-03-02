@@ -295,7 +295,7 @@ h1, h2 {
   
 }
 .list-group-item{
-  border: none !important;
+  border: none;
 }
 .menu-list-item{
  color: #A7C83A;

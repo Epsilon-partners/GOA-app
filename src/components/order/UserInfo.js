@@ -133,7 +133,7 @@ const UserInfo = ({ userID, order }) => {
   };
 
   return (
-    <Card className="card-order">
+    <Card className="card-order border border-dark w-100">
       <Card.Body>
         <Card.Title className="text-center mb-5">Vos coordonnées</Card.Title>
         {user ? (
