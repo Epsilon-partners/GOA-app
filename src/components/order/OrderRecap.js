@@ -43,7 +43,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
             <Card.Header className="bg-white d-flex justify-content-end">
               <div className="d-flex flex-row command-btn-order mr-4">
                 <Button variant="success" className="rounded-0" onClick={() => createOrder(recapArray)}>Commander</Button>
-                <div>{totalPrice(recapArray)}</div>
+                <div>{totalPrice(recapArray)}€</div>
               </div>
             </Card.Header>
               <ListGroup>
