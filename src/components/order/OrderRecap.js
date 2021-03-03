@@ -87,6 +87,9 @@ const OrderRecap = ({ sendValidateOrder }) => {
     }
     setItemToModify(item);
     setSupplement(item.supplement);
+    setBoisson(item.boisson);
+    setSauce(item.sauce);
+    setMenu(item.menu);
     setShowModal(true);
     let index = array.indexOf(recapItem);
     setIndexOfItem(index);
