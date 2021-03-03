@@ -79,8 +79,10 @@ const MenuItem = () => {
     shoppingCart.push({
       name: menuItem.name,
       accompMenu: accompMenu,
-      prix: prix,
-      prixNoMenu: menuItem.priceNoMenu,
+      prix: (prix + (supplement.length * 0.50)),
+      prixOriginal: prix,
+      prixNoMenuOriginal: menuItem.priceNoMenu,
+      prixNoMenu: (menuItem.priceNoMenu + (supplement.length * 0.50)),
       type: menuItem.type,
       image: menuItem.imageUrl,
       description: menuItem.description,

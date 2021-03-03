@@ -100,6 +100,8 @@ const OrderRecap = ({ sendValidateOrder }) => {
     
     const newItem = [{
       ...itemToModify,
+      prix: (itemToModify.prixOriginal + (supplement.length * 0.50)),
+      prixNoMenu: (itemToModify.prixNoMenuOriginal + (supplement.length * 0.50)),
       menu,
       supplement,
       boisson,
