@@ -139,6 +139,11 @@ label a:hover {
   color: #B2AFAF;
 }
 
+.icon-recap path:hover {
+  cursor: pointer;
+  color: black;
+}
+
 .command-btn-order {
   margin-bottom: -0.79rem;
 }
@@ -175,6 +180,32 @@ label a:hover {
   font-weight: 200;
   font-family: 'El Missiri';
 }
+
+#modal-recap-order .modal-content {
+  min-width: 700px;
+  max-width: 900px;
+}
+
+@media (min-width: 576px) {
+.modal-dialog {
+    max-width: 900px;
+    margin: 1.75rem auto;
+}
+}
+
+#modal-recap-order .card-img-top {
+  height: 150px;
+  width: 150px;
+}
+
+#modal-recap-order h3 {
+  font-weight: 300;
+  font-family: 'El Messiri';
+  font-size: 20px;
+  color: black;
+}
+
+
 
 /* OrderRecap */
 
@@ -313,5 +344,5 @@ label a:hover {
 .footer-wrapper-icon {
   width: 30px !important;
 }
-
+ 
 /* Footer */

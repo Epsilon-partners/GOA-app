@@ -109,7 +109,7 @@ const Footer = () => {
             </Col>
           </Row>
         </Col>
-        <Col md={4} className="d-flex flex-column border-left border-dark pl-4 mt-4 mt-md-0">
+        <Col md={4} className="d-flex flex-column border-left border-dark pl-4 mt-3 mt-md-0">
           <h5 className="goa-footer-title mb-4">Suivez-nous</h5>
           <div className="d-flex flex-row justify-content-start">
             <div className="footer-border-icons brand-fb mr-3">
