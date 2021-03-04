@@ -17,6 +17,7 @@ const UserGuest = ({ order }) => {
   const [showFailed, setShowFailed] = useState(false);
   const [validateOrder, setValidateOrder] = useState(false);
   const [errorOrder, setErrorOrder] = useState(false);
+  const [orderNumber, setOrderNumber] = useState();
 
   const [show, setShow] = useState(false);
 
@@ -48,20 +49,24 @@ const UserGuest = ({ order }) => {
     })
     .then(() => {
       setShowFailed(false);
-      const finalOrder = {
-        order,
-        user: userGuest,
-        confirmed: false,
-        orderNumber: Date.now()
-      };
-      addOrder(finalOrder)
-      .then(() => {
-        localStorage.setItem('recapArray', JSON.stringify([]));
-        setErrorOrder(false);
-        setValidateOrder(true);
-        handleShow()
-      })
-      .catch();
+      const dbRef = firebase.database().ref('orders');
+      dbRef.once('value', snapshot => {
+        setOrderNumber(snapshot.numChildren());
+        const finalOrder = {
+          order,
+          user: userGuest,
+          confirmed: false,
+          orderNumber: `E-Goa-${snapshot.numChildren()}`
+        };
+        addOrder(finalOrder)
+        .then(() => {
+          localStorage.setItem('recapArray', JSON.stringify([]));
+          setErrorOrder(false);
+          setValidateOrder(true);
+          handleShow()
+        })
+        .catch();
+      });
     })
     .catch(err => {
       console.error(err);
@@ -192,7 +197,9 @@ const UserGuest = ({ order }) => {
           <>
             <Modal show={show} onHide={handleClose} animation={false}>
               <Modal.Body>
-                Votre commande a été prise en charge
+                Votre commande a été prise en charge.<br />
+                Votre numéro de commande est E-Goa-{orderNumber}.<br />
+                Une notification vous sera envoyé lorsque la commande sera validé avec le temps d'estimation.
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="success" onClick={handleClose}>

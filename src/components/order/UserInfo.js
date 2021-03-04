@@ -17,6 +17,8 @@ const UserInfo = ({ userID, order }) => {
   const [validateOrder, setValidateOrder] = useState(false);
   const [errorOrder, setErrorOrder] = useState(false);
 
+  const [orderNumber, setOrderNumber] = useState();
+
   const history = useHistory();
   const { addOrder } = useOrder();
 
@@ -38,22 +40,27 @@ const UserInfo = ({ userID, order }) => {
   const handleShow = () => setShow(true);
 
   const createOrder = user => {
-    const finalOrder = {
-      order,
-      user,
-      confirmed: false,
-      orderNumber: Date.now()
-    };
-    addOrder(finalOrder)
-    .then(() => {
-      localStorage.setItem('recapArray', JSON.stringify([]));
-      setErrorOrder(false);
-      setValidateOrder(true);
-      handleShow()
-    })
-    .catch(err => {
-      console.error(err);
-      setShowFailed(true);
+    const dbRef = firebase.database().ref('orders');
+    dbRef.once('value')
+    .then(snapshot => {
+      setOrderNumber(snapshot.numChildren());
+      const finalOrder = {
+        order,
+        user,
+        confirmed: false,
+        orderNumber: `E-Goa-${snapshot.numChildren()}`
+      };
+      addOrder(finalOrder)
+      .then(() => {
+        localStorage.setItem('recapArray', JSON.stringify([]));
+        setErrorOrder(false);
+        setValidateOrder(true);
+        handleShow()
+      })
+      .catch(err => {
+        console.error(err);
+        setShowFailed(true);
+      });
     });
   } 
  
@@ -258,7 +265,9 @@ const UserInfo = ({ userID, order }) => {
           <>
             <Modal show={show} onHide={handleClose} animation={false}>
               <Modal.Body>
-                Votre commande a été prise en charge
+                Votre commande a été prise en charge.<br />
+                Votre numéro de commande est E-Goa-{orderNumber}.<br />
+                Une notification vous sera envoyé lorsque la commande sera validé avec le temps d'estimation.
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="success" onClick={handleClose}>

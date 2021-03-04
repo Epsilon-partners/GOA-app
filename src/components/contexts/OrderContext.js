@@ -17,6 +17,7 @@ export function OrderProvider({ children }) {
   const [showToast, setShowToast] = useState(false);
   const [isOrderRefused, setIsOrderRefused] = useState(false);
   const [showToastRefused, setShowToastRefused] = useState(false);
+  const [orderNumber, setOrderNumber] = useState();
 
   const addOrder = (order) => {
     setOrder(order);
@@ -34,13 +35,17 @@ export function OrderProvider({ children }) {
         orderEstimationRef.on("value", (snapshot) => {
           const newOrder = snapshot.val();
           if (newOrder !== undefined && newOrder !== null) {
-            setOrder(null);
-            setOrderId(null);
-            setTimeOrder(newOrder);
-            setIsOrderConfirmed(true);
-            setShowToast(true);
-            const audio = new Audio(ding);
-            audio.play();
+            const orderNumberRef = firebase.database().ref("orders").child(`${orderId}/orderNumber`);
+            orderNumberRef.on("value", snapshotOrder => {
+              setOrderNumber(snapshotOrder.val());
+              setOrder(null);
+              setOrderId(null);
+              setTimeOrder(newOrder);
+              setIsOrderConfirmed(true);
+              setShowToast(true);
+              const audio = new Audio(ding);
+              audio.play();
+            });
           }
         });
         const orderRef = firebase.database().ref("orders").child(orderId);
@@ -82,7 +87,7 @@ export function OrderProvider({ children }) {
             </small>
           </Toast.Header>
           <Toast.Body className="bg-white">
-            Commande validé ! Elle sera prête dans {timeOrder}
+            Votre commande {orderNumber} a été validé ! Elle sera prête dans {timeOrder}
           </Toast.Body>
         </Toast>
       )}
