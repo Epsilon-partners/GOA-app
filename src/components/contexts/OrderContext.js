@@ -49,6 +49,12 @@ export function OrderProvider({ children }) {
           }
         });
         const orderRef = firebase.database().ref("orders").child(orderId);
+        const orderNumberRefDelete = firebase.database().ref(`orders/${orderId}/orderNumber`);
+        orderNumberRefDelete.once('value', snapshotRef => {
+          setOrderNumber(snapshotRef.val());
+          console.log(orderNumber);
+          console.log(snapshotRef.val());
+        });
         orderRef.on("value", (snapshot) => {
           if (snapshot.val() === null || snapshot.val() === undefined) {
             setOrder(null);
@@ -103,7 +109,7 @@ export function OrderProvider({ children }) {
                 </small>
             </Toast.Header>
             <Toast.Body className="bg-white">
-                Commande refusée par le restaurant.
+                La commande {orderNumber} a été refusée par le restaurant.
             </Toast.Body>
         </Toast>
       }
