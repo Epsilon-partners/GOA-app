@@ -20,6 +20,8 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
   const [stayConnected, setStayConnected] = useState(false);
   const [conditions, setConditions] = useState(false);
 
+  const [isInvalidPassword, setIsInvalidPassword] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -27,16 +29,20 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
     e.preventDefault();
     const form = e.currentTarget;
     if (form.checkValidity() === false) {
-      if (password !== confirmPassword) setPasswordEqual(true);
+      if (password !== confirmPassword) {
+        setPasswordEqual(true);
+        setIsInvalidPassword(true);
+      }
       setValidated(true);
       return;
     }
     if (password !== confirmPassword) {
       setPasswordEqual(true);
+      setIsInvalidPassword(true);
       setValidated(true);
       return;
     }
-
+    setIsInvalidPassword(false);
     setValidated(true);
     setPasswordEqual(false);
 
@@ -158,14 +164,20 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
                   type="password"
                   placeholder="xxxxxxxxxx"
                   value={password}
+                  minLength={6}
                   onChange={(e) => setPassword(e.target.value)}
                   name="password"
                   required
+                  isInvalid={isInvalidPassword}
+                  className={isInvalidPassword ? "is-not-valid" : ""}
                 />
-                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
+                {isInvalidPassword ? (
+                  <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
+                ) : (
+                  <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                )}
                 <div className="text-right text-small">
                   6 caractères minimum
                 </div>
@@ -180,17 +192,23 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
                   type="password"
                   placeholder="xxxxxxxxxx"
                   value={confirmPassword}
+                  className={isInvalidPassword ? "is-not-valid" : ""}
+                  minLength={6}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   name="confirmPassword"
                   required
+                  isInvalid={isInvalidPassword}
                 />
-                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
-                <Form.Control.Feedback type="invalid">
+                {isInvalidPassword ? (
+                  <Form.Control.Feedback type="invalid">
                   Non valide
                 </Form.Control.Feedback>
+                ) : (
+                  <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                )}
                 {passwordEqual && (
                   <div className="text-danger">
-                    Les mots de passe ne sonts pas égaux !
+                    Les mots de passe ne sont pas égaux !
                   </div>
                 )}
               </Col>

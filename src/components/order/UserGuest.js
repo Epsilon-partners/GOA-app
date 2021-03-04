@@ -121,6 +121,9 @@ const UserGuest = ({ order }) => {
                   <Form.Control
                     type="tel"
                     placeholder="0123456789"
+                    pattern="[0-9]{10}"
+                    minLength="10"
+                    maxLength="10"
                     value={phone}
                     onChange={e => setPhone(allowOnlyNumbers(e))}
                     required
