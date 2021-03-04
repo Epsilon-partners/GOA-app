@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faShoppingBasket,
@@ -18,6 +18,7 @@ import { Link as ScrollLink } from "react-scroll";
 const NavBar = () => {
   const { currentUser, logout } = useAuth();
   const history = useHistory();
+  const location = useLocation();
   const [errorMessage, setErrorMessage] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -40,16 +41,27 @@ const NavBar = () => {
     <>
       <Navbar expand="lg" bg="white" className="w-100" fixed="top">
         <Link to="/">
-          <div className="logo d-flex">
-            <img src={Goalogo} alt="Logo" />
-            <img src={Goatitle} alt="Name" />
+          <div className="brand-logo-container">
+            <img src={Goalogo} alt="Logo" className="goa-logo" />
+            <img src={Goatitle} alt="Name" className="goa-title" />
           </div>
         </Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navabr-nav">
           <Nav className="links d-flex justify-content-end w-100">
             <Link to="/">Goa Food</Link>
-            <Link to="/menu-list">La carte</Link>
+            {location.pathname === '/' ? (
+              <ScrollLink 
+              to="menu-list"
+              offset={-122}
+              activeClass="active"
+              spy={true}
+              smooth={true}
+              className="navbar-contact"
+              >La carte</ScrollLink>
+            ) : (
+              <Link to="/menu-list">La carte</Link>
+            )}
             <ScrollLink
               activeClass="active"
               spy={true}

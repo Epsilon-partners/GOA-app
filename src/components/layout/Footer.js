@@ -26,30 +26,35 @@ const Footer = () => {
           <h5 className="goa-footer-title mb-3">Goa restaurant</h5>
           <Row>
             <Col md={7} className="mb-4">
-              <FontAwesomeIcon
-                icon={faPhoneAlt}
-                color="black"
-                className="mr-3 info-footer-icons"
-                size="lg"
-              />{" "}
-              <a href="tel:+33980842949">09 80 84 29 49</a> <br />
-              <FontAwesomeIcon
-                icon={faEnvelope}
-                color="black"
-                className="mr-3 info-footer-icons"
-                size="lg"
-              />{" "}
-              <a href="mailto:contact@goa-indian-fastfood.com">
-                contact@goa-indian-fastfood.com
-              </a>{" "}
-              <br />
-              <FontAwesomeIcon
-                icon={faLocationArrow}
-                color="black"
-                className="mr-3 info-footer-icons"
-                size="lg"
-              />{" "}
-              14 rue Brocherie, 38000 Grenoble
+              <div className="mb-2">
+                <FontAwesomeIcon
+                  icon={faPhoneAlt}
+                  color="black"
+                  className="mr-3 info-footer-icons"
+                  size="lg"
+                />{" "}
+                <a href="tel:+33980842949">09 80 84 29 49</a> 
+              </div>
+              <div className="mb-2">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  color="black"
+                  className="mr-3 info-footer-icons"
+                  size="lg"
+                />{" "}
+                <a href="mailto:contact@goa-indian-fastfood.com">
+                  contact@goa-indian-fastfood.com
+                </a>
+              </div>
+              <div>
+                <FontAwesomeIcon
+                  icon={faLocationArrow}
+                  color="black"
+                  className="mr-3 info-footer-icons"
+                  size="lg"
+                />{" "}
+                14 rue Brocherie, 38000 Grenoble
+              </div>
             </Col>
             <Col md={5} className="d-flex">
               <div>
@@ -69,10 +74,10 @@ const Footer = () => {
             <Col md={7}>
               <Maps />
             </Col>
-            <Col md={5}>
+            <Col md={5} className="d-flex flex-column justify-content-center">
               <h5 className="goa-footer-title mb-3">Equipements</h5>
               <div>
-                <div className="d-flex justify-content-start">
+                <div className="d-flex justify-content-start mb-2">
                   <div className="footer-wrapper-icon">
                     <FontAwesomeIcon
                       icon={faWifi}
@@ -83,7 +88,7 @@ const Footer = () => {
                   </div>
                   <div className="ml-2">Wifi</div>
                 </div>
-                <div className="d-flex justify-content-start">
+                <div className="d-flex justify-content-start mb-2">
                   <div className="footer-wrapper-icon">
                     <FontAwesomeIcon
                       icon={faTv}

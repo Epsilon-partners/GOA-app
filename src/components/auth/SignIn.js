@@ -139,19 +139,19 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                   </Col>
                 </Form.Group>
                 <Form.Group as={Row} controlId="password" className="mt-4">
+                  <Col md={12} className="d-flex justify-content-end mb-0">
+                    <Button
+                      variant="link"
+                      onClick={() => setForgotPassword(true)}
+                      className="btn-password"
+                    >
+                      Mot de passe oublié ?
+                    </Button>
+                  </Col>
                   <Form.Label column sm="4">
                     Mot de passe
                   </Form.Label>
                   <Col sm="8">
-                    <div className="d-flex justify-content-end mb-0">
-                      <Button
-                        variant="link"
-                        onClick={() => setForgotPassword(true)}
-                        className="btn-password"
-                      >
-                        Mot de passe oublié ?
-                      </Button>
-                    </div>
                     <Form.Control
                       type="password"
                       placeholder="xxxxxxxxxx"

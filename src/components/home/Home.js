@@ -12,10 +12,10 @@ const Home = () => {
           <div className="home-logo">
             <img src={goaImage} alt="Elephnat" />
             <img src={logo} alt="Logo" />
-            <h2>Indian Fast-Food</h2>
+            <h2 className="text-black">Indian Fast-Food</h2>
           </div>
           <div className="home-order">
-            <h2>Commandez en ligne</h2>
+            <h2 className="text-black">Commandez en ligne</h2>
             <div className="home-order-content">
               <Link
                 activeClass="active"
@@ -29,7 +29,7 @@ const Home = () => {
                   <div>
                     <img src={delivery} alt="food delivery" />
                   </div>
-                  <p style={{ color: "#333" }}>Livraison</p>
+                  <p className="text-black">Livraison</p>
                 </div>
               </Link>
               <Link
@@ -44,7 +44,7 @@ const Home = () => {
                   <div>
                     <img src={takeAway} alt="food delivery" />
                   </div>
-                  <p style={{ color: "#333" }}>A emporter</p>
+                  <p className="text-black">A emporter</p>
                 </div>
               </Link>
             </div>
