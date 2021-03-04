@@ -44,7 +44,8 @@ export function OrderProvider({ children }) {
               setIsOrderConfirmed(true);
               setShowToast(true);
               const audio = new Audio(ding);
-              audio.play();
+              audio.play()
+              .catch(err => console.error("Votre n'avigateur n'autorise pas les lectures audios", err));
             });
           }
         });
@@ -62,7 +63,8 @@ export function OrderProvider({ children }) {
             setIsOrderRefused(true);
             setShowToastRefused(true);
             const audio = new Audio(ding);
-            audio.play();
+            audio.play()
+            .catch(err => console.error("Votre n'avigateur n'autorise pas les lectures audios", err));
           }
         });
       }
