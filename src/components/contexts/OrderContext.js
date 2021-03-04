@@ -68,7 +68,7 @@ export function OrderProvider({ children }) {
       }
     };
     getOrder();
-  }, [order, orderId]);
+  }, [order, orderId, orderNumber]);
 
   const value = {
     order,
