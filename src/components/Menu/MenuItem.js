@@ -118,13 +118,21 @@ const MenuItem = ({ item }) => {
               <Card.Img variant="top" src={`/images/${menuItem.imageUrl}`} className="mx-auto"
               style={{height: 'auto', maxWidth: '100%'}} />
               <Card.Body>
-                <Card.Title>
-                  Avec menu: {menuItem.price.toFixed(2)} €
-                </Card.Title>
-                {menuItem.priceNoMenu && (
+                {menuItem.type === "extra" ? (
+                  <Card.Title>
+                    {menuItem.price.toFixed(2)}€
+                  </Card.Title>
+                ) : (
+                  <>
+                  <Card.Title>
+                    Avec menu: {menuItem.price.toFixed(2)} €
+                  </Card.Title>
+                  {menuItem.priceNoMenu && (
                   <Card.Title>
                     Sans menu: {typeof menuItem.priceNoMenu === 'number' ? menuItem.priceNoMenu.toFixed(2) : menuItem.priceNoMenu} €
                   </Card.Title>
+                )}
+                  </>
                 )}
                 <Card.Text className="text-dark">
                   {menuItem.description}
