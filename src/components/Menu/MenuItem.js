@@ -1,5 +1,4 @@
-import { Card, Button, Container, Row, Col, Form, Modal } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { Card, Button, Row, Col, Form, Modal } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -7,8 +6,7 @@ import { useHistory } from "react-router-dom";
 const MenuItem = ({ item }) => {
   let shoppingCart = [];
   const history = useHistory();
-  const location = useLocation();
-  const [menuItem, setMenuItem] = useState(item);
+  const [menuItem] = useState(item);
   const [cdtAssiettes, setCdtAssiettes] = useState(false);
   const [cdtMenu, setCdtMenu] = useState(false);
   const [cdtWrap, setCdtWrap] = useState(false);
@@ -18,7 +16,7 @@ const MenuItem = ({ item }) => {
   const [accompMenu, setAccompMenu] = useState("");
   const [boisson, setBoisson] = useState("");
   const [sauce, setSauce] = useState("");
-  let [prix, setPrix] = useState(menuItem.price);
+  let [prix] = useState(menuItem.price);
   const [showModal, setShowModal] = useState(false);
 
   const addSupplements = e => {
@@ -112,7 +110,7 @@ const MenuItem = ({ item }) => {
       Ajouter au panier
     </Button>
 
-      <Modal className="mt-5" show={showModal} onHide={() => setShowModal(false)}>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Row>
           <Col className="border-right d-flex flex-column justify-content-center">
             <h2 className="text-center">{menuItem.name}</h2>
