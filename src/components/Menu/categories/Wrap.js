@@ -22,8 +22,10 @@ const Wrap = ({ menuList }) => {
   useEffect(() => {
       const getWraps = () => {
         menuList.map((element) => {
-            if (element.type === "wrap") {
+            if (element.type === "wrap" && element.imageUrl === "wrap.svg") {
                 setMenuItems(prevState => [...prevState, element]);
+            } else if (element.type === "wrap" && element.imageUrl !== "wrap.svg") {
+                setMenuItems(prevState => [element, ...prevState]);
             }
             return 0;
         });

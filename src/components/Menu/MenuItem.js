@@ -306,7 +306,7 @@ const MenuItem = ({ item }) => {
                 </>
               )}
 
-              <div className="addToCart mt-5">
+              <div className="addToCart mt-5 d-flex justify-content-center">
                 <Button
                   variant="success"
                   type="submit"
