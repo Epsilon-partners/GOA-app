@@ -48,7 +48,9 @@ const UserInfo = ({ userID, order }) => {
         order,
         user,
         confirmed: false,
-        orderNumber: `E-Goa-${snapshot.numChildren()}`
+        orderNumber: `E-Goa-${snapshot.numChildren()}`,
+        finished: false,
+        delivred: false
       };
       addOrder(finalOrder)
       .then(() => {

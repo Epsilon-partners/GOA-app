@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import uniqid from "uniqid";
-import {
-  Container,
-  Row,
-  Col,
-  Table
-} from "react-bootstrap";
+import { Container, Row, Col, Table, Tabs, Tab } from "react-bootstrap";
 import firebase from "../../firebase";
-import OrderList from './OrderList';
-
-
+import OrderList from "./OrderList";
+import OrdersConfirmed from './OrdersConfirmed';
+import OrdersFinished from './OrdersFinished';
+import OrdersDelivred from './OrdersDelivred';
 
 const Admin = () => {
   const [ordersListed, setOrdersListed] = useState();
+  const [confirmOrder, setConfirmOrder] = useState();
+  const [finishOrders, setFinishOrders] = useState();
+  const [deliverOrders, setDeliverOrders] = useState();
 
   useEffect(() => {
     const orderRef = firebase.database().ref("orders");
@@ -21,23 +20,30 @@ const Admin = () => {
       //display latest item
       if (orders) {
         let { [Object.keys(orders).pop()]: lastItem } = orders;
-        console.log('last item', lastItem);
+        console.log("last item", lastItem);
       }
 
       const ordersList = [];
-      const confirmedOrder = []
+      const confirmedOrder = [];
+      const finishedOrder = [];
+      const delivredOrders = [];
       for (let id in orders) {
-        if (orders[id].confirmed) {
+        if (orders[id].delivred) {
+          delivredOrders.push({ id, ...orders[id] })
+        } else if (orders[id].confirmed && !orders[id].finished) {
           confirmedOrder.push({ id, ...orders[id] });
+        } else if (orders[id].finished) {
+          finishedOrder.push({ id, ...orders[id] });
         } else {
           ordersList.push({ id, ...orders[id] });
         }
       }
       setOrdersListed(ordersList);
-      console.log('confirmed order', confirmedOrder);
-
+      setConfirmOrder(confirmedOrder);
+      setFinishOrders(finishedOrder);
+      setDeliverOrders(delivredOrders);
+      console.log("confirmed order", confirmedOrder);
     });
-
   }, []);
 
   return (
@@ -49,28 +55,85 @@ const Admin = () => {
       </Row>
       <Row>
         <Col sm={12}>
-          <h3>Les commandes</h3>
+          <h3 className="modal-title-style">Les commandes</h3>
         </Col>
         <Col>
-          {ordersListed ? (
-            <Table>
-              <thead>
-                <tr>
-                  <th className="text-center">Numéro de commande</th>
-                  <th className="text-center">Informations du client</th>
-                  <th className="text-center">Commande</th>
-                  <th className="text-center">Prix</th>
-                </tr>
-              </thead>
-              {ordersListed.map((order) => (
-                <OrderList order={order} key={uniqid()} />
-              ))}
-            </Table>
+          {ordersListed || confirmOrder || finishOrders || deliverOrders ? (
+            <>
+              <Tabs defaultActiveKey="a-valider" id="orders-tab-admin">
+                <Tab eventKey="a-valider" title="À valider">
+                  <p className="text-black text-center">Nouvelles commandes à valider</p>
+                  <Table responsive>
+                    <thead>
+                      <tr>
+                        <th className="text-center">Numéro de commande</th>
+                        <th className="text-center">Informations du client</th>
+                        <th className="text-center">Commande</th>
+                        <th className="text-center">Prix</th>
+                      </tr>
+                    </thead>
+                    {ordersListed.map((order) => (
+                      <OrderList order={order} key={uniqid()} />
+                    ))}
+                  </Table>
+                </Tab>
+                <Tab eventKey="en-cours" title="En cours de préparation">
+                  <p className="text-black text-center">
+                    Commandes en cours de préparation
+                  </p>
+                  <Table responsive>
+                    <thead>
+                      <tr>
+                        <th className="text-center">Numéro de commande</th>
+                        <th className="text-center">Informations du client</th>
+                        <th className="text-center">Commande</th>
+                        <th className="text-center">Prix</th>
+                      </tr>
+                    </thead>
+                    {confirmOrder && confirmOrder.map((order) => (
+                      <OrdersConfirmed order={order} key={uniqid()} />
+                    ))}
+                  </Table>
+                </Tab>
+                <Tab eventKey="terminer" title="Commandes prêtes">
+                  <p className="text-black text-center">Commandes prêtes</p>
+                  <Table responsive>
+                    <thead>
+                      <tr>
+                        <th className="text-center">Numéro de commande</th>
+                        <th className="text-center">Informations du client</th>
+                        <th className="text-center">Commande</th>
+                        <th className="text-center">Prix</th>
+                      </tr>
+                    </thead>
+                    {finishOrders && finishOrders.map((order) => (
+                      <OrdersFinished order={order} key={uniqid()} />
+                    ))}
+                  </Table>
+                </Tab>
+                <Tab eventKey="livrer" title="Commandes livrés">
+                      <p>Commandes récupéres par le client.</p>
+                      <Table responsive>
+                        <thead>
+                          <tr>
+                            <th className="text-center">Numéro de commande</th>
+                            <th className="text-center">Informations du client</th>
+                            <th className="text-center">Commande</th>
+                            <th className="text-center">Prix</th>
+                          </tr>
+                        </thead>
+                        {deliverOrders && deliverOrders.map((order) => (
+                          <OrdersDelivred order={order} key={uniqid()} />
+                        ))}
+                      </Table>
+                </Tab>
+              </Tabs>
+            </>
           ) : (
-              <p className="text-dark">
-                Il n'y a pas de commandes pour l'instant.
-              </p>
-            )}
+            <p className="text-dark">
+              Il n'y a pas de commandes pour l'instant.
+            </p>
+          )}
         </Col>
       </Row>
     </Container>
