@@ -2,7 +2,7 @@ import React from "react";
 import { ListGroup } from "react-bootstrap";
 import uniqid from "uniqid";
 
-const OrdersDelivred = ({ order }) => {
+const OrdersDeleted = ({ order }) => {
   const capitalize = (s) => {
     if (typeof s !== "string" || s.length === 0) return "Aucun";
     return s.charAt(0).toUpperCase() + s.slice(1);
@@ -71,4 +71,4 @@ const OrdersDelivred = ({ order }) => {
   );
 };
 
-export default OrdersDelivred;
+export default OrdersDeleted;

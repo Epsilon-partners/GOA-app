@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ListGroup, Button, Alert } from "react-bootstrap";
 import uniqid from "uniqid";
 import firebase from "../../firebase";
+import DeleteOrder from './DeleteOrder';
 
 const OrdersConfirmed = ({ order }) => {
   const [success, setSuccess] = useState(false);
@@ -37,11 +38,6 @@ const OrdersConfirmed = ({ order }) => {
       });
   };
 
-  const handleOrderCanceled = (order) => {
-    const orderRef = firebase.database().ref("orders").child(order.id);
-    orderRef.remove();
-  };
-
   return (
     <tbody>
       <tr>
@@ -65,6 +61,12 @@ const OrdersConfirmed = ({ order }) => {
                 <ListGroup.Item className="list-group-admin">
                   <strong>Menu:</strong> {item.menu ? "Oui" : "Non"}
                 </ListGroup.Item>
+                <ListGroup.Item className="list-group-admin" style={{width: 'min-content'}}>
+                  <strong>Accompagnement:</strong> {item.type === "assiettes" ? capitalize(item.accompAssiette) : capitalize(item.accompMenu)}
+                </ListGroup.Item>
+                <ListGroup.Item className="list-group-admin">
+                  <strong>Sauce:</strong> {capitalize(item.sauce)}
+                </ListGroup.Item>
                 <ListGroup.Item className="list-group-admin">
                   <strong>Suppléments:</strong>{" "}
                   {item.supplement ? item.supplement.join(", ") : "Aucun"}
@@ -73,13 +75,13 @@ const OrdersConfirmed = ({ order }) => {
                   <strong>Boissons:</strong> {capitalize(item.boisson)}
                 </ListGroup.Item>
                 <ListGroup.Item className="list-group-admin">
-                  <strong>Prix:</strong> {item.prix}€
+                  <strong>Prix:</strong> {item.prix.toFixed(2)}€
                 </ListGroup.Item>
               </ListGroup>
             ))
           )}
         </td>
-        <td>Prix total: {totalPrice(order.order)}</td>
+        <td>Prix total: {totalPrice(order.order)}€</td>
         <td>
           <Button
             variant="success"
@@ -89,14 +91,7 @@ const OrdersConfirmed = ({ order }) => {
           >
             Commande prête
           </Button>
-          <Button
-            variant="danger"
-            type="button"
-            className="w-100"
-            onClick={() => handleOrderCanceled(order)}
-          >
-            Refuser la commande
-          </Button>
+          <DeleteOrder order={order} />
           {success && (
             <Alert variant="success" className="mt-3">
               Commande bien mise à jour

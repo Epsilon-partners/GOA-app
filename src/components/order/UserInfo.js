@@ -50,7 +50,8 @@ const UserInfo = ({ userID, order }) => {
         confirmed: false,
         orderNumber: `E-Goa-${snapshot.numChildren()}`,
         finished: false,
-        delivred: false
+        delivred: false,
+        deleted: false
       };
       addOrder(finalOrder)
       .then(() => {
