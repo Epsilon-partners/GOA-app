@@ -1,14 +1,14 @@
-import { Card, Button, Container, Row, Col, Form } from "react-bootstrap";
+import { Card, Button, Container, Row, Col, Form, Modal } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 //get ALL data
-const MenuItem = () => {
+const MenuItem = ({ item }) => {
   let shoppingCart = [];
   const history = useHistory();
   const location = useLocation();
-  let menuItem = location.state.item;
+  const [menuItem, setMenuItem] = useState(item);
   const [cdtAssiettes, setCdtAssiettes] = useState(false);
   const [cdtMenu, setCdtMenu] = useState(false);
   const [cdtWrap, setCdtWrap] = useState(false);
@@ -19,6 +19,7 @@ const MenuItem = () => {
   const [boisson, setBoisson] = useState("");
   const [sauce, setSauce] = useState("");
   let [prix, setPrix] = useState(menuItem.price);
+  const [showModal, setShowModal] = useState(false);
 
   const addSupplements = e => {
       let supplementsList = supplement;
@@ -106,20 +107,25 @@ const MenuItem = () => {
   };
 
   return (
-    <div className="menu-item">
-      <Container className="mt-5">
+    <>
+    <Button type="button" className="addToCartBtn mx-auto" onClick={() => setShowModal(true)}>
+      Ajouter au panier
+    </Button>
+
+      <Modal className="mt-5" show={showModal} onHide={() => setShowModal(false)}>
         <Row>
-          <Col className="right-section justify-content-center">
-            <h2>{menuItem.name}</h2>
-            <Card style={{ width: "20rem" }} className="text-center">
-              <Card.Img variant="top" src={`/images/${menuItem.imageUrl}`} />
+          <Col className="border-right d-flex flex-column justify-content-center">
+            <h2 className="text-center">{menuItem.name}</h2>
+            <Card className="text-center">
+              <Card.Img variant="top" src={`/images/${menuItem.imageUrl}`} className="mx-auto"
+              style={{height: 'auto', maxWidth: '100%'}} />
               <Card.Body>
                 <Card.Title>
                   Avec menu: {menuItem.price.toFixed(2)} €
                 </Card.Title>
                 {menuItem.priceNoMenu && (
                   <Card.Title>
-                    Sans menu: {menuItem.priceNoMenu.toFixed(2)} €
+                    Sans menu: {typeof menuItem.priceNoMenu === 'number' ? menuItem.priceNoMenu.toFixed(2) : menuItem.priceNoMenu} €
                   </Card.Title>
                 )}
                 <Card.Text className="text-dark">
@@ -133,7 +139,7 @@ const MenuItem = () => {
             <Form onSubmit={addToCart}>
               {cdtMenu && (
                 <>
-                  <h3>Menu</h3>
+                  <h3 className="modal-title-style">Menu</h3>
                   <Form.Group as={Row}>
                     <Col sm={10}>
                       <Form.Check
@@ -158,7 +164,7 @@ const MenuItem = () => {
               {/* accompagnement assiettes */}
               {cdtAssiettes && (
                 <>
-                  <h3>Accompagnement assiettes</h3>
+                  <h3 className="modal-title-style">Accompagnement assiettes</h3>
                   <Form.Group as={Row}>
                     <Col sm={10}>
                       <Form.Check
@@ -177,7 +183,7 @@ const MenuItem = () => {
                       />
                     </Col>
                   </Form.Group>
-                  <h3>Boisson</h3>
+                  <h3 className="modal-title-style">Boisson</h3>
                   <Form.Group controlId="exampleForm.SelectCustom">
                     <Form.Label>Selectionnez votre boisson</Form.Label>
                     <Form.Control
@@ -199,7 +205,7 @@ const MenuItem = () => {
               {cdtMenu && (
                 <>
                   {/* accompagnement menu */}
-                  <h3>Accompagnement Menu</h3>
+                  <h3 className="modal-title-style">Accompagnement Menu</h3>
                   <Form.Group as={Row}>
                     <Col sm={10}>
                       <Form.Check
@@ -219,7 +225,7 @@ const MenuItem = () => {
                     </Col>
                   </Form.Group>
                   {/* sace menu */}
-                  <h3>Sauce</h3>
+                  <h3 className="modal-title-style">Sauce</h3>
                   <Form.Group controlId="exampleForm.SelectCustom">
                     <Form.Label>Selectionnez votre sauce</Form.Label>
                     <Form.Control
@@ -237,7 +243,7 @@ const MenuItem = () => {
                     </Form.Control>
                   </Form.Group>
                   {/* boisson menu */}
-                  <h3>Boisson</h3>
+                  <h3 className="modal-title-style">Boisson</h3>
                   <Form.Group controlId="exampleForm.SelectCustom">
                     <Form.Label>Selectionnez votre boisson</Form.Label>
                     <Form.Control
@@ -258,7 +264,7 @@ const MenuItem = () => {
 
               {cdtWrap && (
                 <>
-                  <h3>Suppléments (0.50 )</h3>
+                  <h3 className="modal-title-style">Suppléments (+0.50€)</h3>
                   <Form.Group controlId="formBasicCheckbox">
                     <Form.Check
                       type="checkbox"
@@ -306,8 +312,8 @@ const MenuItem = () => {
             </Form>
           </Col>
         </Row>
-      </Container>
-    </div>
+      </Modal>
+      </>
   );
 };
 

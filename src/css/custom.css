@@ -388,3 +388,14 @@ label a:hover {
 }
 
 /* Home */
+
+/* MenuItem */
+
+.modal-title-style {
+  font-weight: 300;
+  font-family: 'El Messiri';
+  font-size: 20px;
+  color: black;
+}
+
+/* MenuItem */
