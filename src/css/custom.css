@@ -13,6 +13,14 @@ body {
   padding-top: 122px;
 }
 
+.btn-custom-white {
+  color: #fff !important;
+}
+
+.btn-outline-custom-white:hover {
+  color: #fff !important;
+}
+
 
 /* General */
 
@@ -242,6 +250,14 @@ label a:hover {
   font-weight: 600;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  background-color: #a7c83a !important;
+  color: #fff !important;
+}
+
+.nav-justified > .nav-link, .nav-justified .nav-item a {
+  color: #0B6C13 !important;
+}
 
 /* Admin */
 

@@ -171,7 +171,7 @@ const UserGuest = ({ order }) => {
               <Button
                 variant="success"
                 type="submit"
-                className="mx-auto w-75 rounded-pill"
+                className="mx-auto w-75 rounded-pill btn-custom-white"
               >
                 Valider
               </Button>
@@ -208,7 +208,7 @@ const UserGuest = ({ order }) => {
                 Une notification vous sera envoyé lorsque la commande sera validé avec le temps d'estimation.
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="success" onClick={handleClose}>
+                <Button variant="success" onClick={handleClose} className="btn-custom-white">
                   Retour à l'accueil
                 </Button>
               </Modal.Footer>

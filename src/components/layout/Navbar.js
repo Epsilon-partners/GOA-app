@@ -123,13 +123,13 @@ const NavBar = () => {
         <Modal.Body className="d-flex flex-column justify-content-between">
           <SignIn
             text="Se connecter"
-            classStyle="btn btn-outline-success rounded-pill mb-4"
+            classStyle="btn btn-outline-success btn-outline-custom-white rounded-pill mb-4"
             directTo="/dashboard"
             closeModal={closeModal}
           />
           <SignUp
             text="Créer un compte"
-            classStyle="btn btn-success rounded-pill"
+            classStyle="btn btn-success btn-custom-white rounded-pill"
             directTo="/dashboard"
             closeModal={closeModal}
           />

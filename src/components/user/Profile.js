@@ -404,7 +404,7 @@ const Profile = () => {
                       <Button
                         variant="outline-success"
                         type="submit"
-                        className="mx-auto w-75 rounded-pill"
+                        className="mx-auto w-75 rounded-pill btn-outline-custom-white"
                       >
                         Valider
                       </Button>

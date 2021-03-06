@@ -63,12 +63,12 @@ const Admin = () => {
         <Col sm={12}>
           <h3 className="modal-title-style">Les commandes</h3>
         </Col>
-        <Col>
+        <Col className="mt-4">
           {ordersListed || confirmOrder || finishOrders || deliverOrders || deleteOrders ? (
             <>
-              <Tabs defaultActiveKey="a-valider" id="orders-tab-admin">
+              <Tabs variant="pills" justify defaultActiveKey="a-valider" id="orders-tab-admin">
                 <Tab eventKey="a-valider" title="À valider">
-                  <p className="text-black text-center">
+                  <p className="text-black text-center mt-4">
                     Nouvelles commandes à valider
                   </p>
                   <Table responsive>
@@ -86,7 +86,7 @@ const Admin = () => {
                   </Table>
                 </Tab>
                 <Tab eventKey="en-cours" title="En cours de préparation">
-                  <p className="text-black text-center">
+                  <p className="text-black text-center mt-4">
                     Commandes en cours de préparation
                   </p>
                   <Table responsive>
@@ -105,7 +105,7 @@ const Admin = () => {
                   </Table>
                 </Tab>
                 <Tab eventKey="terminer" title="Commandes prêtes">
-                  <p className="text-black text-center">Commandes prêtes</p>
+                  <p className="text-black text-center mt-4">Commandes prêtes</p>
                   <Table responsive>
                     <thead>
                       <tr>
@@ -122,7 +122,7 @@ const Admin = () => {
                   </Table>
                 </Tab>
                 <Tab eventKey="livrer" title="Commandes livrées">
-                  <p className="text-black text-center">Commandes récupéres par le client.</p>
+                  <p className="text-black text-center mt-4">Commandes récupéres par le client.</p>
                   <Table responsive>
                     <thead>
                       <tr>
@@ -139,7 +139,7 @@ const Admin = () => {
                   </Table>
                 </Tab>
                 <Tab eventKey="supprimer" title="Commandes annulées">
-                  <p className="text-black text-center">Commandes annulées.</p>
+                  <p className="text-black text-center mt-4">Commandes annulées.</p>
                   <Table responsive>
                     <thead>
                         <tr>

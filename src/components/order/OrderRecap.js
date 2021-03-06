@@ -438,7 +438,9 @@ const OrderRecap = ({ sendValidateOrder }) => {
                       label="Aucun"
                       value="Aucun"
                       defaultChecked={itemToModify.supplement.includes("Aucun")}
-                      onChange={(e) => addSupplements(e)}
+                      onChange={(e) => {
+                        if (e.target.checked) setSupplement([]);
+                      }}
                     />
                   </Form.Group>
                 </>
@@ -448,7 +450,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
                 <Button
                   variant="success"
                   type="submit"
-                  className="rounded-pill"
+                  className="rounded-pill btn-custom-white"
                 >
                   Ajouter au panier
                 </Button>

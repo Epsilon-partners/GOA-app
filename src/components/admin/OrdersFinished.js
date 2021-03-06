@@ -82,7 +82,7 @@ const OrdersFinished = ({ order }) => {
         </td>
         <td>Prix total: {totalPrice(order.order)}€</td>
         <td>
-          <Button variant="success" className="w-100 mb-3" type="button" onClick={() => handleOrderDelivred(order)}>
+          <Button variant="success" className="w-100 mb-3 btn-custom-white" type="button" onClick={() => handleOrderDelivred(order)}>
             Commande livré
           </Button>
           <DeleteOrder order={order} />

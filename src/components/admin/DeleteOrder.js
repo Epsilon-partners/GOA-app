@@ -35,7 +35,7 @@ const DeleteOrder = ({ order }) => {
                     <p className="text-black text-center">Êtes-vous sûr de vouloir annuler la commande ?</p>
                     <div className="d-flex justify-content-around">
                         <Button variant="danger" onClick={() => deleteOrder(order)}>Annuler la commande</Button>
-                        <Button variant="outline-success" onClick={() => setShowModal(false)}>Revenir en arrière</Button>
+                        <Button variant="outline-success" className="btn-outline-custom-white" onClick={() => setShowModal(false)}>Revenir en arrière</Button>
                     </div>
                     {success &&
                         <Alert variant="success">La commande a bien été supprimé</Alert>

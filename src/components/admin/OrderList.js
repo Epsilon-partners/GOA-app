@@ -125,7 +125,7 @@ const OrderList = ({ order }) => {
                     onChange={(e) => setTimeCustom(e.target.value)}
                   />
                 </Form.Group>
-                <Button variant="success" className="mr-3 my-2" type="submit">
+                <Button variant="success" className="mr-3 my-2 btn-custom-white" type="submit">
                   Valider la commande
                 </Button>
                 <Button
@@ -152,7 +152,7 @@ const OrderList = ({ order }) => {
             <>
               <Button
                 variant="success"
-                className="w-100 mb-3"
+                className="w-100 mb-3 btn-custom-white"
                 onClick={() => setIsValidated(true)}
               >
                 Valider

@@ -86,7 +86,7 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                   <Button
                     variant="outline-success"
                     type="button"
-                    className="mr-3 rounded-pill w-50"
+                    className="mr-3 rounded-pill w-50 btn-outline-custom-white"
                     onClick={() => setForgotPassword(false)}
                   >
                     Revenir en arrière
@@ -94,7 +94,7 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                   <Button
                     variant="success"
                     type="submit"
-                    className="rounded-pill w-50"
+                    className="rounded-pill w-50 btn-custom-white"
                   >
                     Envoyer
                   </Button>
@@ -180,7 +180,7 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
                 <Button
                   variant="success"
                   type="submit"
-                  className="mx-auto w-75 rounded-pill"
+                  className="mx-auto w-75 rounded-pill btn-custom-white"
                 >
                   Se connecter
                 </Button>

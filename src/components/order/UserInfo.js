@@ -250,7 +250,7 @@ const UserInfo = ({ userID, order }) => {
       >
         <Button
           variant="success"
-          className="rounded-pill user-info-btn mx-auto mb-4"
+          className="rounded-pill user-info-btn mx-auto mb-4 btn-custom-white"
           type="button"
           onClick={() => createOrder(user)}
         >
@@ -258,7 +258,7 @@ const UserInfo = ({ userID, order }) => {
         </Button>
         <Button
           variant="success"
-          className="rounded-pill user-info-btn mx-auto mb-4"
+          className="rounded-pill user-info-btn mx-auto mb-4 btn-custom-white"
           type="button"
           onClick={handleModifSubmit}
         >
@@ -273,7 +273,7 @@ const UserInfo = ({ userID, order }) => {
                 Une notification vous sera envoyé lorsque la commande sera validé avec le temps d'estimation.
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="success" onClick={handleClose}>
+                <Button variant="success" className="btn-custom-white" onClick={handleClose}>
                   Retour à l'accueil
                 </Button>
               </Modal.Footer>

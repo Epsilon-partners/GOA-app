@@ -85,7 +85,7 @@ const OrdersConfirmed = ({ order }) => {
         <td>
           <Button
             variant="success"
-            className="w-100 mb-3"
+            className="w-100 mb-3 btn-custom-white"
             type="button"
             onClick={() => handleOrderFinished(order)}
           >
