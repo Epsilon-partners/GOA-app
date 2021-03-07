@@ -198,7 +198,7 @@ const MenuItem = ({ item }) => {
                       custom
                       onChange={(e) => setBoisson(e.target.value)}
                     >
-                      <option value=""></option>
+                      <option value="Aucune">Aucune</option>
                       <option value="coca">Coca</option>
                       <option value="sprite">Sprite</option>
                       <option value="jus">Jus</option>
@@ -240,7 +240,7 @@ const MenuItem = ({ item }) => {
                       custom
                       onChange={(e) => setSauce(e.target.value)}
                     >
-                      <option value=""></option>
+                      <option value="Aucune">Aucune</option>
                       <option value="mayo">Mayo</option>
                       <option value="harissa">Harissa</option>
                       <option value="ketchup">Ketchup</option>
@@ -258,7 +258,7 @@ const MenuItem = ({ item }) => {
                       custom
                       onChange={(e) => setBoisson(e.target.value)}
                     >
-                      <option value=""></option>
+                      <option value="Aucune">Aucune</option>
                       <option value="coca">Coca</option>
                       <option value="sprite">Sprite</option>
                       <option value="jus">Jus</option>

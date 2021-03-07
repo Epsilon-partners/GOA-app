@@ -19,6 +19,8 @@ const UserInfo = ({ userID, order }) => {
 
   const [orderNumber, setOrderNumber] = useState();
 
+  const [isBtnDisabled, setIsBtnDisabled] = useState(false);
+
   const history = useHistory();
   const { addOrder } = useOrder();
 
@@ -40,6 +42,7 @@ const UserInfo = ({ userID, order }) => {
   const handleShow = () => setShow(true);
 
   const createOrder = user => {
+    setIsBtnDisabled(true);
     const dbRef = firebase.database().ref('orders');
     dbRef.once('value')
     .then(snapshot => {
@@ -63,6 +66,7 @@ const UserInfo = ({ userID, order }) => {
       .catch(err => {
         console.error(err);
         setShowFailed(true);
+        setIsBtnDisabled(false);
       });
     });
   } 
@@ -253,6 +257,7 @@ const UserInfo = ({ userID, order }) => {
           className="rounded-pill user-info-btn mx-auto mb-4 btn-custom-white"
           type="button"
           onClick={() => createOrder(user)}
+          disabled={isBtnDisabled}
         >
           Valider
         </Button>
@@ -261,6 +266,7 @@ const UserInfo = ({ userID, order }) => {
           className="rounded-pill user-info-btn mx-auto mb-4 btn-custom-white"
           type="button"
           onClick={handleModifSubmit}
+          disabled={isBtnDisabled}
         >
           Enregistrer mes modifications
         </Button>
