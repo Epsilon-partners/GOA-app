@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Footer from './components/layout/Footer';
 import { AuthProvider } from "./components/contexts/AuthContext";
@@ -13,8 +13,21 @@ import Delivery from "./components/home/Delivery";
 import Admin from "./components/admin/Admin";
 import { OrderProvider } from "./components/contexts/OrderContext";
 import ScrollToTop from './components/contexts/ScrollToTop';
+import firebase from './firebase';
+
 
 function App() {
+
+  useEffect(() => {
+    const msg = firebase.messaging();
+    msg.getToken().then((token) => {
+      console.warn(token);
+    })
+    .catch(err => console.log(err));
+
+    msg.onMessage(payload => console.log('payload', payload));
+  })
+
   return (
     <>
       <BrowserRouter>
