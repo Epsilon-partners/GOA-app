@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, lazy, Suspense } from "react";
 import uniqid from "uniqid";
-import { Container, Row, Col, Table, Tabs, Tab } from "react-bootstrap";
+import { Container, Row, Col, Table, Tabs, Tab, Spinner } from "react-bootstrap";
 import firebase from "../../firebase";
-import OrderList from "./OrderList";
-import OrdersConfirmed from "./OrdersConfirmed";
-import OrdersFinished from "./OrdersFinished";
-import OrdersDelivred from "./OrdersDelivred";
-import OrdersDeleted from './OrdersDeleted';
+const OrderList = lazy(() => import("./OrderList"));
+const OrdersConfirmed = lazy(() => import("./OrdersConfirmed"));
+const OrdersFinished = lazy(() => import("./OrdersFinished"));
+const OrdersDelivred = lazy(() => import("./OrdersDelivred"));
+const OrdersDeleted = lazy(() => import('./OrdersDeleted'));
 
 const Admin = () => {
   const [ordersListed, setOrdersListed] = useState();
@@ -53,6 +53,7 @@ const Admin = () => {
   }, []);
 
   return (
+    <Suspense fallback={<Spinner animation="grow" variant="dark" />}>
     <Container fluid>
       <Row>
         <Col>
@@ -67,7 +68,7 @@ const Admin = () => {
           {ordersListed || confirmOrder || finishOrders || deliverOrders || deleteOrders ? (
             <>
               <Tabs variant="pills" justify defaultActiveKey="a-valider" id="orders-tab-admin">
-                <Tab eventKey="a-valider" title="À valider">
+                <Tab eventKey="a-valider" title={`À valider (${ordersListed && ordersListed.length})`}>
                   <p className="text-black text-center mt-4">
                     Nouvelles commandes à valider
                   </p>
@@ -85,7 +86,7 @@ const Admin = () => {
                     ))}
                   </Table>
                 </Tab>
-                <Tab eventKey="en-cours" title="En cours de préparation">
+                <Tab eventKey="en-cours" title={`En cours de préparation (${confirmOrder && confirmOrder.length})`}>
                   <p className="text-black text-center mt-4">
                     Commandes en cours de préparation
                   </p>
@@ -104,7 +105,7 @@ const Admin = () => {
                       ))}
                   </Table>
                 </Tab>
-                <Tab eventKey="terminer" title="Commandes prêtes">
+                <Tab eventKey="terminer" title={`Commandes prêtes (${finishOrders && finishOrders.length})`}>
                   <p className="text-black text-center mt-4">Commandes prêtes</p>
                   <Table responsive>
                     <thead>
@@ -121,7 +122,7 @@ const Admin = () => {
                       ))}
                   </Table>
                 </Tab>
-                <Tab eventKey="livrer" title="Commandes livrées">
+                <Tab eventKey="livrer" title={`Commandes livrées (${deliverOrders && deliverOrders.length})`}>
                   <p className="text-black text-center mt-4">Commandes récupéres par le client.</p>
                   <Table responsive>
                     <thead>
@@ -138,7 +139,7 @@ const Admin = () => {
                       ))}
                   </Table>
                 </Tab>
-                <Tab eventKey="supprimer" title="Commandes annulées">
+                <Tab eventKey="supprimer" title={`Commandes annulées (${deleteOrders && deleteOrders.length})`}>
                   <p className="text-black text-center mt-4">Commandes annulées.</p>
                   <Table responsive>
                     <thead>
@@ -165,6 +166,7 @@ const Admin = () => {
         </Col>
       </Row>
     </Container>
+    </Suspense>
   );
 };
 

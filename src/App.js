@@ -1,18 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Footer from './components/layout/Footer';
 import { AuthProvider } from "./components/contexts/AuthContext";
-import Profile from "./components/user/Profile";
-import PrivateRoute from "./components/PrivateRoute";
-import NavBar from "./components/layout/Navbar";
-import Order from "./components/order/Order";
-import Home from "./components/home/Home";
-import MenuList from "./components/Menu/MenuList";
-import MenuItem from "./components/Menu/MenuItem";
-import Delivery from "./components/home/Delivery";
-import Admin from "./components/admin/Admin";
 import { OrderProvider } from "./components/contexts/OrderContext";
+import PrivateRoute from "./components/PrivateRoute";
 import ScrollToTop from './components/contexts/ScrollToTop';
+import { Spinner } from 'react-bootstrap';
+const Footer = lazy(() => import('./components/layout/Footer'));
+const Profile = lazy(() => import("./components/user/Profile"));
+const NavBar = lazy(() => import("./components/layout/Navbar"));
+const Order = lazy(() => import("./components/order/Order"));
+const Home = lazy(() => import("./components/home/Home"));
+const MenuList = lazy(() => import("./components/Menu/MenuList"));
+const MenuItem = lazy(() => import("./components/Menu/MenuItem"));
+const Delivery = lazy(() => import("./components/home/Delivery"));
+const Admin = lazy(() => import("./components/admin/Admin"));
+
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
     <>
       <BrowserRouter>
       <ScrollToTop />
+      <Suspense fallback={<Spinner variant="dark" animation="grow" />}>
         <Switch>
           <AuthProvider>
             <OrderProvider>
@@ -45,14 +48,15 @@ function App() {
               <Route exact path="/valider-commande">
                 <Order />
               </Route>
-              <Route exact path="/menu/:id" component={MenuItem}></Route>
+              <Route exact path="/menu/:id" component={MenuItem} />
               <Route exact path="/menu-list">
-                <MenuList></MenuList>
+                <MenuList />
               </Route>
               <Footer />
             </OrderProvider>
           </AuthProvider>
         </Switch>
+        </Suspense>
       </BrowserRouter>
     </>
   );

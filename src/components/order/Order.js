@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import React, { useState, lazy, Suspense } from "react";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
-import OrderRecap from "./OrderRecap";
-import UserInfo from "./UserInfo";
-import UserGuest from "./UserGuest";
+const OrderRecap = lazy(() => import("./OrderRecap"));
+const UserInfo = lazy(() => import("./UserInfo"));
+const UserGuest = lazy(() => import("./UserGuest"));
 
 function Order() {
   //get menu item
@@ -17,6 +17,7 @@ function Order() {
   }
 
   return (
+    <Suspense fallback={<Spinner animation="grow" variant="dark" />}>
     <Container fluid>
       <Row>
         <Col sm={12} className="p-0">
@@ -36,6 +37,7 @@ function Order() {
         </Col>
       </Row>
     </Container>
+    </Suspense>
   );
 }
 
