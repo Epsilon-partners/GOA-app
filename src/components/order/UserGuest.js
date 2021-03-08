@@ -63,7 +63,6 @@ const UserGuest = ({ order }) => {
         };
         addOrder(finalOrder)
         .then(() => {
-          localStorage.setItem('recapArray', JSON.stringify([]));
           setErrorOrder(false);
           setValidateOrder(true);
           handleShow()

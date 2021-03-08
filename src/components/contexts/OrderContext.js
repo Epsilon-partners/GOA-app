@@ -91,6 +91,7 @@ export function OrderProvider({ children }) {
             console.log(snapshot.val());
             setIsOrderDelivred(true);
             setShowToastDelivred(true);
+            localStorage.setItem('recapArray', '[]');
             setOrder(null);
             setOrderId(null);
             const audio = new Audio(ding);
@@ -118,6 +119,7 @@ export function OrderProvider({ children }) {
           if (snapshot.val() === true) {
             setOrder(null);
             setOrderId(null);
+            localStorage.setItem('recapArray', '[]');
             setIsOrderRefused(true);
             setShowToastRefused(true);
             const audio = new Audio(ding);
