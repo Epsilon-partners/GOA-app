@@ -34,7 +34,7 @@ const Classique = ({ menuList }) => {
     <div
       className="classique menu-items border border-dark"
       id="classiqueSection"
-      style={{ paddingTop: "122px", paddingBottom: "122px" }}
+      style={{ paddingBottom: "122px" }}
     >
       <Container>
         <Row className="justify-content-around">

@@ -6,6 +6,7 @@ import Wrap from "./categories/Wrap";
 import Extra from "./categories/Extra";
 import Classique from "./categories/Classique";
 import firebase from "../../firebase";
+import { Link as ScrollLink } from 'react-scroll';
 
 const MenuList = () => {
   const [assiettes, setAssiettes] = useState(true);
@@ -47,8 +48,7 @@ const MenuList = () => {
             }
             id="assiettes"
           >
-            <a
-              href="#assiettesSection"
+            <ScrollLink
               className="menu-links"
               onClick={() => {
                 setAssiettes(false);
@@ -58,9 +58,14 @@ const MenuList = () => {
                 setWrap(false);
                 setAssiettes(true);
               }}
+              to='menu-list'
+              smooth={true}
+              spy={true}
+              activeClass="active"
+              offset={-122}
             >
               Nos assiettes
-            </a>
+            </ScrollLink>
           </ListGroup.Item>
           <ListGroup.Item
             className={
@@ -70,7 +75,8 @@ const MenuList = () => {
             }
             id="naan"
           >
-            <a href="#naanSection" className="menu-links"
+            <ScrollLink 
+            className="menu-links"
             onClick={() => {
                 setNaan(false);
                 setClassique(false);
@@ -78,9 +84,14 @@ const MenuList = () => {
                 setWrap(false);
                 setAssiettes(false);
                 setNaan(true);
-              }}>
+              }}
+              to='menu-list'
+              smooth={true}
+              spy={true}
+              activeClass="active"
+              offset={-122}>
                 Naan
-            </a>
+            </ScrollLink>
           </ListGroup.Item>
           <ListGroup.Item
             className={
@@ -90,7 +101,8 @@ const MenuList = () => {
             }
             id="wrap"
           >
-            <a href="#wrapSection" className="menu-links"
+            <ScrollLink 
+            className="menu-links"
             onClick={() => {
                 setWrap(false);
                 setNaan(false);
@@ -98,9 +110,14 @@ const MenuList = () => {
                 setExtra(false);
                 setAssiettes(false);
                 setWrap(true);
-              }}>
+              }}
+              to='menu-list'
+              smooth={true}
+              spy={true}
+              activeClass="active"
+              offset={-122}>
                 Wrap
-            </a>
+            </ScrollLink>
           </ListGroup.Item>
           <ListGroup.Item
             className={
@@ -110,7 +127,8 @@ const MenuList = () => {
             }
             id="classique"
           >
-            <a href="#classiqueSection" className="menu-links"
+            <ScrollLink 
+            className="menu-links"
             onClick={() => {
                 setClassique(false);
                 setNaan(false);
@@ -118,9 +136,14 @@ const MenuList = () => {
                 setWrap(false);
                 setAssiettes(false);
                 setClassique(true);
-              }}>
+              }}
+              to='menu-list'
+              smooth={true}
+              spy={true}
+              activeClass="active"
+              offset={-122}>
                 Classiques
-            </a>
+            </ScrollLink>
           </ListGroup.Item>
           <ListGroup.Item
             className={
@@ -130,7 +153,8 @@ const MenuList = () => {
             }
             id="extra"
           >
-            <a href="#extraSection" className="menu-links"
+            <ScrollLink 
+            className="menu-links"
             onClick={() => {
                 setExtra(false);
                 setNaan(false);
@@ -138,9 +162,14 @@ const MenuList = () => {
                 setWrap(false);
                 setAssiettes(false);
                 setExtra(true);
-              }}>
+              }}
+              to='menu-list'
+              smooth={true}
+              spy={true}
+              activeClass="active"
+              offset={-122}>
                   Extras
-            </a>
+            </ScrollLink>
           </ListGroup.Item>
         </ListGroup>
         {assiettes && !isLoading && <Assiettes menuList={menuList}></Assiettes>}

@@ -17,9 +17,12 @@ import ScrollToTop from './components/contexts/ScrollToTop';
 function App() {
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('recapArray')) === null || JSON.parse(localStorage.getItem('recapArray')) === undefined) {
-      localStorage.setItem('recapArray', '[]');
-    }
+    const verifyLocalStorage = () => {
+      if (JSON.parse(localStorage.getItem('recapArray')) === null || JSON.parse(localStorage.getItem('recapArray')) === undefined) {
+        localStorage.setItem('recapArray', '[]');
+      }
+    };
+    verifyLocalStorage();
   }, []);
 
   return (

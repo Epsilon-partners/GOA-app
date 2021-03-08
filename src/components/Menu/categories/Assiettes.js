@@ -37,7 +37,7 @@ const Assiettes = ({ menuList }) => {
     <div
       className="assiettes menu-items border border-dark"
       id="assiettesSection"
-      style={{ paddingTop: "122px", paddingBottom: "122px" }}
+      style={{ paddingBottom: "122px" }}
     >
       <Container>
         <h3 className="menuDescription my-4">

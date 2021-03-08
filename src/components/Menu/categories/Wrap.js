@@ -13,31 +13,30 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import MenuItem from '../MenuItem';
+import MenuItem from "../MenuItem";
 
 const Wrap = ({ menuList }) => {
   const [menuItems, setMenuItems] = useState([]);
-  
 
   useEffect(() => {
-      const getWraps = () => {
-        menuList.map((element) => {
-            if (element.type === "wrap" && element.imageUrl === "wrap.svg") {
-                setMenuItems(prevState => [...prevState, element]);
-            } else if (element.type === "wrap" && element.imageUrl !== "wrap.svg") {
-                setMenuItems(prevState => [element, ...prevState]);
-            }
-            return 0;
-        });
-      };
-      getWraps();
+    const getWraps = () => {
+      menuList.map((element) => {
+        if (element.type === "wrap" && element.imageUrl === "wrap.svg") {
+          setMenuItems((prevState) => [...prevState, element]);
+        } else if (element.type === "wrap" && element.imageUrl !== "wrap.svg") {
+          setMenuItems((prevState) => [element, ...prevState]);
+        }
+        return 0;
+      });
+    };
+    getWraps();
   }, [menuList]);
 
   return (
     <div
       className="wrap menu-items border border-dark"
       id="wrapSection"
-      style={{ paddingTop: "122px", paddingBottom: "122px" }}
+      style={{ paddingBottom: "122px" }}
     >
       <Container>
         <Row className="justify-content-around">
@@ -67,9 +66,9 @@ const Wrap = ({ menuList }) => {
                       </OverlayTrigger>
                     </h5>
                   </Card.Title>
-                <ListGroup className="list-group-flush">
-                  <ListGroupItem>{item.price.toFixed(2)} €</ListGroupItem>
-                </ListGroup>
+                  <ListGroup className="list-group-flush">
+                    <ListGroupItem>{item.price.toFixed(2)} €</ListGroupItem>
+                  </ListGroup>
                   <MenuItem item={item} />
                 </Card.Body>
               </Card>
