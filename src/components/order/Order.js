@@ -17,7 +17,11 @@ function Order() {
   }
 
   return (
-    <Suspense fallback={<Spinner animation="grow" variant="dark" />}>
+    <Suspense fallback={
+      <div className="d-flex justify-content-center align-items-center m-auto">
+       Chargement...  <Spinner variant="dark" animation="grow" />
+      </div>
+     }>
     <Container fluid>
       <Row>
         <Col sm={12} className="p-0">

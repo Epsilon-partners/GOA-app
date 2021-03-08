@@ -31,7 +31,11 @@ function App() {
     <>
       <BrowserRouter>
       <ScrollToTop />
-      <Suspense fallback={<Spinner variant="dark" animation="grow" />}>
+      <Suspense fallback={
+       <div className="d-flex justify-content-center align-items-center m-auto">
+        Chargement...  <Spinner variant="dark" animation="grow" />
+       </div>
+      }>
         <Switch>
           <AuthProvider>
             <OrderProvider>
