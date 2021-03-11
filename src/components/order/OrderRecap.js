@@ -12,9 +12,8 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link as ScrollLink } from "react-scroll";
-import Extra from "./Extra";
 
-const OrderRecap = ({ sendValidateOrder, extras }) => {
+const OrderRecap = ({ sendValidateOrder }) => {
   const [recapArray, setRecapArray] = useState(
     JSON.parse(localStorage.getItem("recapArray"))
   );
@@ -30,30 +29,7 @@ const OrderRecap = ({ sendValidateOrder, extras }) => {
   const [sauce, setSauce] = useState("");
   const [itemToModify, setItemToModify] = useState();
   const [indexOfItem, setIndexOfItem] = useState();
-  const [extrasItems, setExtrasItems] = useState([]);
-  const [extrasToMap, setExtrasToMap] = useState();
 
-  const addExtrasItems = (extraItem, quantityToSend) => {
-    let index = extrasItems.indexOf(extraItem);
-    console.log('index', index);
-    index === -1 ? pushExtraToArray(extraItem, quantityToSend) : extrasItems[index].quantity = quantityToSend;
-    console.log('array', extrasItems);
-  };
-
-  const pushExtraToArray = (extra, quantityToSend) => {
-    extra.quantity = quantityToSend;
-    extrasItems.push(extra);
-  };
-
-  const subExtrasItems = (extraItem, quantityToSend) => {
-    let index = extrasItems.indexOf(extraItem);
-    if (quantityToSend === 0) {
-      if (index > -1) extrasItems.splice(index, 1);
-    } else {
-      index === -1 ? console.log('element not in array') : extrasItems[index].quantity = quantityToSend;
-    }
-    console.log('array after sub', extrasItems);
-  };
 
   const totalPrice = (array) => {
     let total = 0;
@@ -167,11 +143,7 @@ const OrderRecap = ({ sendValidateOrder, extras }) => {
 
   useEffect(() => {
     localStorage.setItem("recapArray", JSON.stringify(recapArray));
-    const fnExtrasToMap = () => {
-      setExtrasToMap(extras.sort(() => 0.5 - Math.random()).slice(0, 4));
-    };
-    fnExtrasToMap();
-  }, []);
+  });
 
   return (
     <Card className="card-order mb-4">
@@ -281,17 +253,6 @@ const OrderRecap = ({ sendValidateOrder, extras }) => {
                       </div>
                     </Col>
                   </ListGroup.Item>
-                  {i === 0 && (
-                    <ListGroup.Item  className="bg-success d-flex flex-column justify-content-center align-items-center">
-                      <h4 className="heading-card-extra">Un petit extra ?</h4>
-                      <div className="d-flex flex-row justify-content-between bg-success">
-                        {extrasToMap && extrasToMap
-                          .map((extra) => (
-                            <Extra extra={extra} key={uniqid()} addExtraItem={addExtrasItems} subExtrasItems={subExtrasItems}/>
-                          ))}
-                      </div>
-                    </ListGroup.Item>
-                  )}
                 </>
               ))
             )}

@@ -16,6 +16,7 @@ const Delivery = lazy(() => import("./components/home/Delivery"));
 const Admin = lazy(() => import("./components/admin/Admin"));
 
 function App() {
+
   useEffect(() => {
     const verifyLocalStorage = () => {
       if (
@@ -53,7 +54,7 @@ function App() {
                 </Route>
                 <PrivateRoute exact path="/dashboard" component={Profile} />
                 <Route exact path="/valider-commande">
-                  <Order />
+                    <Order />
                 </Route>
                 <Route exact path="/menu/:id" component={MenuItem} />
                 <Route exact path="/menu-list">

@@ -213,36 +213,6 @@ label a:hover {
   color: black;
 }
 
-.btn-extra {
-  border: 1px solid #a7c83a;
-  border-radius: 50%;
-  color: #000;
-  height: fit-content;
-  width: fit-content;
-}
-
-.card-extras {
-  margin-right: 10px;
-  border: 1px solid black !important;
-  border-radius: 33px;
-  max-width: 25%;
-}
-
-.width-max-size {
-  width: -webkit-fill-available;
-  width: fill-availble;
-  width: -moz-available;
-}
-
-.heading-card-extra {
-  color: white;
-  font-family: 'El Messiri';
-  
-}
-
-
-
-
 /* OrderRecap */
 
 
