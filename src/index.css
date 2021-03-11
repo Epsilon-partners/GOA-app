@@ -212,8 +212,7 @@ h1, h2 {
   background-color: #0B6C13;
   width: 100vw;
   margin:0px auto;
-  padding-top:  50px;
-  padding-bottom: 50px;
+  height: 50vh;
 }
 
 .insta-feed-content{
@@ -223,30 +222,14 @@ h1, h2 {
   width: 800px;
 }
 
-.insta-feed-left {
- width: 350px;
- margin: auto;
-  width: 50%;
-  padding: 10px;
-}
-.insta-feed-left img {
+
+.insta-feed-left-img {
   width: 50px;
   height: 50px;
   margin-left:40%;
   margin-top: 20px;
 }
 
-.insta-feed-right {
-  width: 700px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-}
-.insta-feed-right img {
-  height: 150px;
-  width: 150px;
-  margin: 5px;
-}
 
 /* Menu items */
 .menu-list{

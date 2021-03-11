@@ -14,6 +14,7 @@ const MenuList = lazy(() => import("./components/Menu/MenuList"));
 const MenuItem = lazy(() => import("./components/Menu/MenuItem"));
 const Delivery = lazy(() => import("./components/home/Delivery"));
 const Admin = lazy(() => import("./components/admin/Admin"));
+const InstaFeed = lazy(() => import("./components/home/InstaFeed"));
 
 function App() {
 
@@ -48,6 +49,7 @@ function App() {
                   <Home />
                   <MenuList />
                   <Delivery />
+                  <InstaFeed />
                 </Route>
                 <Route exact path="/admin-panel">
                   <Admin />
