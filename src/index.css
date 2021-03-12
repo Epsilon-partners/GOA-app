@@ -75,7 +75,7 @@ h1, h2 {
 
 @media screen and (min-width: 720px) {
   .home {
-    min-height: 800px;
+    min-height: 120vh;
   }
 }
 
@@ -212,7 +212,7 @@ h1, h2 {
   background-color: #0B6C13;
   width: 100vw;
   margin:0px auto;
-  height: 50vh;
+  height: auto;
 }
 
 .insta-feed-content{

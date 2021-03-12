@@ -369,9 +369,7 @@ label a:hover {
   width: 400px;
   position: relative;
   left: -220px;
-  margin-top: -3rem;
-  margin-bottom: -3rem;
-  height: 500px;
+  height: 100%;
 }
 
 .footer-wrapper-icon {
@@ -392,7 +390,7 @@ label a:hover {
 }
 
 #user-modal {
-  width: 50%;
+  width: 35%;
 }
 
 /* Sign In */
