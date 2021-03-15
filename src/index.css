@@ -79,64 +79,10 @@ h1, h2 {
   }
 }
 
-.home-content{
-  width: 700px;
-  height: 100%;
-  margin: auto;
-  align-items: center;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
- justify-content: space-around;
-}
-.home-logo{
-  width:300px;
-  align-items: center;
-
-}
-.home-logo img {
-  width: 80%;
+.home-logo-img {
+  width: 240px;
 }
 
-.home-order{
-  width:300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  padding-top: 20%;
-}
-.home-order-content{
-  display: flex;
-  flex-direction: row;
-}
-.home-order-content a{
-  margin:15px;
-}
-.home-order-content a:hover{
-  text-decoration: none;
-}
-.home-order-type{
-  margin:25px auto;
-}
-.home-order-type div{
-  width: 182px;
-  height: 182px;
-  background-color: white;
-  border-radius: 100%;
-  display: flex;
-  justify-content: center;
-}
-.home-order-type p{
-  text-align: center;
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: 600;
-}
-
-.home-order-type img{
-  width: 182px;
-  height: 182px;
-}
 /* ---------------------Menu------------------------- */
 
 .menu-list-content{
@@ -148,7 +94,7 @@ h1, h2 {
 /* ------------Delivery------------------- */
 .delivery{
   width: 100vw;
-  height: 78vh;
+  height: auto;
   /* background-image: url('./img/indian-food.jpg'); */
   background: url("./img/indian-food.jpg"), linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
   background-blend-mode: overlay;
@@ -172,13 +118,7 @@ h1, h2 {
 .delivery-content .delivery-text p {
   font-size: 18px;
 }
-
-.delivery-partners{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
+ 
 .delivery-partners_item{
   background-color: #59c269;
   display: flex;
@@ -188,7 +128,7 @@ h1, h2 {
   align-content: center;
   margin-top:70px;
   height: 70px;
-  width: 300px;
+  width: auto;
 }
 .delivery-partners  a:hover{
   text-decoration: none;

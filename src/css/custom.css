@@ -400,6 +400,12 @@ label a:hover {
 .text-black {
   color: #000 !important;
 }
+.small-text-black {
+  text-align: center;
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+}
 
 /* Home */
 
