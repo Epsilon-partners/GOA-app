@@ -175,7 +175,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
                     as={Row}
                     className="d-flex flex-row border border-success width-max-size"
                   >
-                    <Col md={3} className="d-flex justify-content-center">
+                    <Col md={3} sm={12} className="d-flex justify-content-center mb-4 mb-md-0">
                       <img
                         src={`/images/${item.image}`}
                         alt={item.name}

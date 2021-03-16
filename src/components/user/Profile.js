@@ -143,7 +143,7 @@ const Profile = () => {
                 </Alert>
               )}
               <Card
-                className="border-dark mx-auto card-order"
+                className="border-dark border mx-auto card-order"
                 style={{ borderRadius: "33px" }}
               >
                 <Card.Body>

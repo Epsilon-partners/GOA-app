@@ -12,16 +12,16 @@ import insta7 from '../../img/insta7.jpeg';
 
 const InstaFeed = () => {
     return (
-        <Container fluid className="insta-feed py-5 d-flex flex-column justify-content-center">
-            <Row className="h-auto">
+        <Container fluid className="insta-feed py-5 d-flex flex-column justify-content-center align-items-center">
+            <Row className="h-auto align-items-center">
                 <Col md={4} className="d-flex flex-column justify-content-center align-items-center">
                     <h3>Découvrez plus de photos de nos plats sur notre page Instagram</h3>
                     <a href="https://www.instagram.com/goaindianfastfood/?hl=fr" target="_blank" rel="noreferrer">
                         <img src={instaIcon} alt="Instagram logo" className="insta-feed-left-img" />
                     </a>
                 </Col>
-                <Col md={8} as={Row}>
-                    <Col as={Row} md={4} sm={12} className="mr-md-2 mr-0 mb-md-0 mb-3">
+                <Col md={8} as={Row} className="mx-auto mt-md-0 mt-4">
+                    <Col as={Row} md={4} sm={12} className="mr-md-0 ml-md-0 mb-md-0 mb-3 mx-auto">
                         <Col md={6} sm={12} className="px-0 mb-md-0 mb-2">
                             <div className="w-100 h-100 mr-1">
                                 <img src={insta1} alt="Plat Indien" className="img-insta-feed" />
@@ -36,10 +36,10 @@ const InstaFeed = () => {
                             <img src={insta3} alt="Poulet Tikka Massala" className="img-insta-feed" />
                         </Col>
                     </Col>
-                    <Col className="mr-md-2 mr-0 mb-md-0 mb-3 px-0" as={Row} md={4} sm={12}>
+                    <Col className="mr-md-0 ml-md-0 mb-md-0 mb-3 px-0 mx-auto" as={Row} md={4} sm={12}>
                         <img src={insta2} alt="Goa Food" className="img-insta-feed" />
                     </Col>
-                    <Col as={Row} md={4} sm={12}>
+                    <Col as={Row} md={4} sm={12} className="mx-auto mx-md-0">
                         <Col md={12} sm={12} className="mb-2 px-0">
                             <img src={insta5} alt="Crevettes Massala" className="img-insta-feed" />
                         </Col>

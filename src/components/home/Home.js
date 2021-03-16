@@ -16,7 +16,7 @@ const Home = () => {
         <Col
           sm={12}
           md={6}
-          className="d-flex flex-column justify-content-center align-items-center"
+          className="d-flex flex-column justify-content-center align-items-center pr-0"
         >
           <img src={goaImage} alt="Elephnat" className="home-logo-img" />
           <img src={logo} alt="Logo" className="home-logo-img" />
@@ -25,7 +25,7 @@ const Home = () => {
         <Col
           sm={12}
           md={6}
-          className="pt-5 d-flex flex-column justify-content-center"
+          className="pt-5 d-flex flex-column justify-content-center pr-0"
         >
           <h2 className="text-black text-center text-md-start my-5">Commandez en ligne</h2>
           <Row className="d-flex flex-row justify-content-center mx-auto" style={{width: 'max-content'}}>

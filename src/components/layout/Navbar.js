@@ -39,6 +39,8 @@ const NavBar = () => {
 
   return (
     <>
+    {location.pathname === "/admin-panel" ? null : (
+      <>
       <Navbar expand="lg" bg="white" className="w-100" fixed="top">
         <Link to="/">
           <div className="brand-logo-container">
@@ -68,6 +70,7 @@ const NavBar = () => {
               smooth={true}
               to="footer"
               className="navbar-contact"
+              offset={-122}
             >
               Contact
             </ScrollLink>
@@ -135,6 +138,9 @@ const NavBar = () => {
           />
         </Modal.Body>
       </Modal>
+      </>
+    )}
+      
     </>
   );
 };

@@ -39,7 +39,7 @@ const MenuList = () => {
         <div className="menu-list-header">
           <h2 className="menu-list-title">LA CARTE</h2>
         </div>
-        <ListGroup horizontal className="d-flex justify-content-center">
+        <ListGroup className="d-flex flex-md-row flex-column justify-content-center">
           <ListGroup.Item
             className={
               assiettes

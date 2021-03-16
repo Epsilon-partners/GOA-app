@@ -23,9 +23,9 @@ const Footer = () => {
           <img src={background} alt="Mandala" className="mandala-footer" />
         </Col>
         <Col md={6}>
-          <h5 className="goa-footer-title mb-3">Goa restaurant</h5>
+          <h5 className="goa-footer-title mb-3 text-md-left text-center">Goa restaurant</h5>
           <Row>
-            <Col md={7} className="mb-4">
+            <Col md={7} sm={12} className="mb-4">
               <div className="mb-2">
                 <FontAwesomeIcon
                   icon={faPhoneAlt}
@@ -56,7 +56,7 @@ const Footer = () => {
                 14 rue Brocherie, 38000 Grenoble
               </div>
             </Col>
-            <Col md={5} className="d-flex">
+            <Col md={5} sm={12} className="d-flex">
               <div>
                 <FontAwesomeIcon
                   icon={faClock}
@@ -71,10 +71,10 @@ const Footer = () => {
                 18h00 - 01h00
               </div>
             </Col>
-            <Col md={7}>
+            <Col md={7} sm={12}>
               <Maps />
             </Col>
-            <Col md={5} className="d-flex flex-column justify-content-center">
+            <Col md={5} sm={12} className="d-flex flex-column justify-content-center">
               <h5 className="goa-footer-title mb-3">Equipements</h5>
               <div>
                 <div className="d-flex justify-content-start mb-2">
@@ -115,16 +115,16 @@ const Footer = () => {
           </Row>
         </Col>
         <Col md={4} className="d-flex flex-column border-left border-dark pl-4 mt-3 mt-md-0">
-          <h5 className="goa-footer-title mb-4">Suivez-nous</h5>
-          <div className="d-flex flex-row justify-content-start">
-            <div className="footer-border-icons brand-fb mr-3">
+          <h5 className="goa-footer-title mb-4 text-md-left text-center">Suivez-nous</h5>
+          <div className="d-flex flex-md-row flex-column justify-content-md-start justify-content-center align-items-center">
+            <div className="footer-border-icons brand-fb mr-md-3 mr-0 mb-2 mb-md-0">
               <FontAwesomeIcon
                 icon={faFacebookF}
                 style={{ height: "48px", width: "48px" }}
                 className="mx-1"
               />
             </div>
-            <div className="footer-border-icons brand-ig mr-3">
+            <div className="footer-border-icons brand-ig mr-md-3 mr-0 mb-2 mb-md-0">
               <img
                 src={instagram}
                 alt="Instagram Logo"
@@ -143,7 +143,7 @@ const Footer = () => {
               />
             </div>
           </div>
-          <ListGroup className="border-0 my-5">
+          <ListGroup className="border-0 my-5 align-items-center align-items-md-start">
             <ListGroup.Item className="footer-list-copyright p-0">
               <a href="#mentions-légales">Mentions légales</a>
             </ListGroup.Item>
