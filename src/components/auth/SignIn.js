@@ -3,6 +3,7 @@ import { Modal, Button, Form, Col, Row, Alert } from "react-bootstrap";
 import { useAuth } from "../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import firebase from "../../firebase";
 
 const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
   const [show, setShow] = useState(false);
@@ -27,11 +28,25 @@ const SignIn = ({ text, classStyle, directTo, icon, closeModal }) => {
     e.preventDefault();
 
     try {
-      await login(email, password);
-      setShow(false);
-      closeModal();
-      history.push(directTo);
-    } catch {
+      await login(email, password)
+      .then(cred => {
+        const db = firebase.firestore();
+        db.collection("users").doc(cred.user.uid).get()
+        .then(doc => {
+          let user = doc.data();
+          setShow(false);
+          closeModal();
+          if (user._IS_ADMIN_) {
+            history.push('/admin-panel')
+          } else {
+            history.push(directTo);
+          }
+        })
+        .catch(err => console.error(err));
+      })
+      .catch(err => console.error(err));
+    } catch (e) {
+      console.log('error', e);
       setError(true);
     }
   };

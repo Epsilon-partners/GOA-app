@@ -15,16 +15,15 @@ const Delivery = () => {
                     <ExternalLink href="https://www.ubereats.com/grenoble/food-delivery/goa-indian-fast-food/68kvwm2KRsK0OSOZe2Rj1w">
                         <div className="delivery-partners_item">
                             <img src={uberIcon} alt="uber eats logo" />
-                            <p>Commander via <br />UberEats</p>
+                            <p>Commander via<br /> UberEats</p>
                         </div>
                     </ExternalLink>
                     <ExternalLink href="https://deliveroo.fr/fr/menu/grenoble/grenoble-centre/goa-indian-fast-food">
                         <div className="delivery-partners_item deliveroo">
                             <img src={deliverooIcon} alt="deliveroo logo" className="deliveroo-icon" />
-                            <p>Commander via <br />Deliveroo</p>
+                            <p>Commander via<br /> Deliveroo</p>
                         </div>
                     </ExternalLink>
-
                 </div>
             </div>
 

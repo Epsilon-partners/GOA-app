@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { AuthProvider } from "./components/contexts/AuthContext";
 import { OrderProvider } from "./components/contexts/OrderContext";
 import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/AdminRoute";
 import ScrollToTop from "./components/contexts/ScrollToTop";
 import { Spinner } from "react-bootstrap";
 const Footer = lazy(() => import("./components/layout/Footer"));
@@ -50,10 +51,13 @@ function App() {
                   <Delivery />
                   <InstaFeed />
                 </Route>
-                <Route exact path="/admin-panel">
-                  <Admin />
-                </Route>
+                {/*
+                  <Route exact path="/admin-panel">
+                    <Admin />
+                  </Route>
+                */}
                 <PrivateRoute exact path="/dashboard" component={Profile} />
+                <AdminRoute exact path='/admin-panel' component={Admin} />
                 <Route exact path="/valider-commande">
                   <Order />
                 </Route>

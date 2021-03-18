@@ -26,13 +26,13 @@ export function AuthProvider({ children }) {
           .set({
             ...user,
             email,
-          });
+          })
       })
       .catch((err) => console.error('envoyé', err));
   };
 
   const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+    return auth.signInWithEmailAndPassword(email, password)
   };
 
   const logout = () => {

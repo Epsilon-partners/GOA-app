@@ -123,11 +123,11 @@ h1, h2 {
   background-color: #59c269;
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: left; /* left */
   border-radius: 76px;
   align-content: center;
   margin-top:70px;
-  height: 70px;
+  height: 70px; /* 70px */
   width: auto;
 }
 .delivery-partners  a:hover{
@@ -145,6 +145,20 @@ h1, h2 {
 .deliveroo-icon{
   border: 2px white solid;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 1024px) {
+  .delivery-partners_item {
+    justify-content: space-between;
+    height: auto;
+  }
+  .delivery-partners_item p {
+    padding-left: 0;
+    align-self: center;
+    margin-right: 50px;
+    margin-left: 20px;
+    margin-bottom: 0;
+  }
 }
 
 /* Instagram feed */
