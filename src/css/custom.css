@@ -138,6 +138,7 @@ label a:hover {
   background-color: #0B6C13;
   color: white;
   font-family: 'El Messiri';
+  
 }
 
 .img-recap-order {
@@ -165,6 +166,7 @@ label a:hover {
   color: white;
   border: 1px solid #0B6C13;
   font-family: 'El Missiri';
+  
 }
 
 
@@ -173,6 +175,7 @@ label a:hover {
   color: white;
   border: 1px solid #0B6C13;
   font-family: 'El Missiri';
+  
 }
 
 .command-btn-order button {
@@ -180,6 +183,7 @@ label a:hover {
   color: white;
   border: 1px solid #0B6C13;
   font-family: 'El Missiri';
+  
 }
 
 .command-btn-order button:hover {
@@ -187,12 +191,14 @@ label a:hover {
   color: white;
   border: 1px solid #0B6C13;
   font-family: 'El Missiri';
+  
 }
 .command-btn-order div {
   border: 1px solid #a7c83a;
   background-color: white;
   color: #a7c83a;
   font-family: 'El Missiri';
+  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -205,6 +211,7 @@ label a:hover {
   color: black;
   font-weight: 200;
   font-family: 'El Missiri';
+  
 }
 
 #modal-recap-order .modal-content {
@@ -227,6 +234,7 @@ label a:hover {
 #modal-recap-order h3 {
   font-weight: 300;
   font-family: 'El Messiri';
+  
   font-size: 20px;
   color: black;
 }
@@ -283,6 +291,7 @@ label a:hover {
   color: #0B6C13;
   font-size: 20px;
   font-family: 'El Messiri', sans-serif;
+  
   margin-left: 16px;
   text-decoration: none;
   cursor: pointer;
@@ -354,6 +363,7 @@ label a:hover {
 .goa-footer-title {
   color: black;
   font-family: 'El Missiri';
+  
   font-weight: 300;
   font-size: 24px;
 }
@@ -440,6 +450,7 @@ label a:hover {
 .modal-title-style {
   font-weight: 300;
   font-family: 'El Messiri';
+  
   font-size: 20px;
   color: black;
 }

@@ -5,9 +5,11 @@
   margin: 0;
   font-family: 'Roboto', sans-serif;
   color: #333;
+  
 }
 h1, h2 {
   font-family: 'El Messiri', sans-serif;
+  
 }
 .app{
   margin:0;
@@ -42,6 +44,7 @@ h1, h2 {
   color: #0B6C13;
   font-size: 20px;
   font-family: 'El Messiri', sans-serif;
+  
   margin-left: 16px;
   text-decoration: none;
   
@@ -235,6 +238,7 @@ h1, h2 {
 .menu-list-item{
  color: #A7C83A;
  font-family: 'El Messiri', sans-serif;
+ 
  font-size: 30px;
  border: none;
  cursor: pointer;
