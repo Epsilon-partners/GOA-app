@@ -167,6 +167,7 @@ label a:hover {
   font-family: 'El Missiri';
 }
 
+
 .command-btn-order a:hover {
   background-color: #0B6C13;
   color: white;
@@ -174,6 +175,19 @@ label a:hover {
   font-family: 'El Missiri';
 }
 
+.command-btn-order button {
+  background-color: #0B6C13;
+  color: white;
+  border: 1px solid #0B6C13;
+  font-family: 'El Missiri';
+}
+
+.command-btn-order button:hover {
+  background-color: #0B6C13;
+  color: white;
+  border: 1px solid #0B6C13;
+  font-family: 'El Missiri';
+}
 .command-btn-order div {
   border: 1px solid #a7c83a;
   background-color: white;

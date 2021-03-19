@@ -8,10 +8,13 @@ import {
   Modal,
   Button,
   Form,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { Link as ScrollLink } from "react-scroll";
+import { useOrder } from "../contexts/OrderContext";
 
 const OrderRecap = ({ sendValidateOrder }) => {
   const [recapArray, setRecapArray] = useState(
@@ -29,7 +32,8 @@ const OrderRecap = ({ sendValidateOrder }) => {
   const [sauce, setSauce] = useState("");
   const [itemToModify, setItemToModify] = useState();
   const [indexOfItem, setIndexOfItem] = useState();
-
+  const { order } = useOrder();
+  console.log(order)
 
   const totalPrice = (array) => {
     let total = 0;
@@ -138,6 +142,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
 
   const createOrder = (orderArray) => {
     if (orderArray === null || orderArray === undefined) return;
+    if (order !== null && order !== undefined) return;
     sendValidateOrder(orderArray);
   };
 
@@ -151,18 +156,45 @@ const OrderRecap = ({ sendValidateOrder }) => {
         <>
           <Card.Header className="bg-white d-flex justify-content-end">
             <div className="d-flex flex-row command-btn-order mr-4">
-              <ScrollLink
-                className="btn btn-success rounded-0"
-                onClick={() => createOrder(recapArray)}
-                activeClass="active"
-                spy={true}
-                smooth={true}
-                to="beforeSendOrder"
-                style={{ cursor: "pointer" }}
-                offset={-122}
-              >
-                Commander
-              </ScrollLink>
+              {order !== undefined && order !== null ? (
+                <>
+                  <OverlayTrigger
+                    placement="top"
+                    overlay={
+                      <Tooltip id="tooltip-wait-order">
+                        Votre commande est bien arrivé chez Goa Food. Vous serez
+                        prévenu avec une notification de l'avancée de votre
+                        commande.
+                      </Tooltip>
+                    }
+                  >
+                    <span className="d-inline-block">
+                      <button
+                        className="btn rounded-0"
+                        style={{ cursor: "not-allowed" }}
+                        disabled
+                      >
+                        Commander
+                      </button>
+                    </span>
+                  </OverlayTrigger>
+                </>
+              ) : (
+                <>
+                  <ScrollLink
+                    className="btn btn-success rounded-0"
+                    onClick={() => createOrder(recapArray)}
+                    activeClass="active"
+                    spy={true}
+                    smooth={true}
+                    to="beforeSendOrder"
+                    style={{ cursor: "pointer" }}
+                    offset={-122}
+                  >
+                    Commander
+                  </ScrollLink>
+                </>
+              )}
               <div>{totalPrice(recapArray)}€</div>
             </div>
           </Card.Header>
@@ -175,7 +207,11 @@ const OrderRecap = ({ sendValidateOrder }) => {
                     as={Row}
                     className="d-flex flex-row border border-success width-max-size"
                   >
-                    <Col md={3} sm={12} className="d-flex justify-content-center mb-4 mb-md-0">
+                    <Col
+                      md={3}
+                      sm={12}
+                      className="d-flex justify-content-center mb-4 mb-md-0"
+                    >
                       <img
                         src={`/images/${item.image}`}
                         alt={item.name}
