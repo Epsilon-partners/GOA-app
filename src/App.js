@@ -6,6 +6,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import AdminRoute from "./components/AdminRoute";
 import ScrollToTop from "./components/contexts/ScrollToTop";
 import { Spinner } from "react-bootstrap";
+import CookieConsent from "react-cookie-consent";
 const Footer = lazy(() => import("./components/layout/Footer"));
 const Profile = lazy(() => import("./components/user/Profile"));
 const NavBar = lazy(() => import("./components/layout/Navbar"));
@@ -57,7 +58,7 @@ function App() {
                   </Route>
                 */}
                 <PrivateRoute exact path="/dashboard" component={Profile} />
-                <AdminRoute exact path='/admin-panel' component={Admin} />
+                <AdminRoute exact path="/admin-panel" component={Admin} />
                 <Route exact path="/valider-commande">
                   <Order />
                 </Route>
@@ -69,6 +70,15 @@ function App() {
               </OrderProvider>
             </AuthProvider>
           </Switch>
+          <CookieConsent
+            buttonText="Je comprends"
+            buttonStyle={{ backgroundColor: "#0B6C13", color: "white" }}
+            style={{ backgroundColor: "white" }}
+          >
+            Nous utilisons les cookies afin de fournir les services et
+            fonctionnalités proposés sur notre site et afin d’améliorer
+            l’expérience de nos utilisateurs.
+          </CookieConsent>
         </Suspense>
       </BrowserRouter>
     </>
