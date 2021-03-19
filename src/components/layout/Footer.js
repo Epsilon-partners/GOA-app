@@ -117,6 +117,7 @@ const Footer = () => {
         <Col md={4} className="d-flex flex-column border-left border-dark pl-4 mt-3 mt-md-0">
           <h6 className="goa-footer-title mb-4 text-md-left text-center">Suivez-nous</h6>
           <div className="d-flex flex-md-row flex-column justify-content-md-start justify-content-center align-items-center">
+            <a href="https://www.facebook.com/goaindianfastfood" target="_blank" rel="noreferrer">
             <div className="footer-border-icons brand-fb mr-md-3 mr-0 mb-2 mb-md-0">
               <FontAwesomeIcon
                 icon={faFacebookF}
@@ -124,6 +125,8 @@ const Footer = () => {
                 className="mx-1"
               />
             </div>
+            </a>
+            <a href="https://www.instagram.com/goaindianfastfood/" target="_blank" rel="noreferrer">
             <div className="footer-border-icons brand-ig mr-md-3 mr-0 mb-2 mb-md-0">
               <img
                 src={instagram}
@@ -133,6 +136,8 @@ const Footer = () => {
                 className="mx-1"
               />
             </div>
+            </a>
+            <a href="https://www.tripadvisor.fr/Restaurant_Review-g187264-d9581254-Reviews-Goa_Indian_Fast_Food-Grenoble_Isere_Auvergne_Rhone_Alpes.html" target="_blank" rel="noreferrer">
             <div className="footer-border-icons brand-ta">
               <img
                 src={tripadvisor}
@@ -142,6 +147,7 @@ const Footer = () => {
                 className="mx-1"
               />
             </div>
+            </a>
           </div>
           <ListGroup className="border-0 my-5 align-items-center align-items-md-start">
             <ListGroup.Item className="footer-list-copyright p-0">

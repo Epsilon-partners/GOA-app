@@ -157,6 +157,15 @@ label a:hover {
   color: black;
 }
 
+.icon-recap-disabled path {
+  cursor: not-allowed;
+  color: #B2AFAF;
+}
+.icon-recap-disabled path:hover {
+  cursor: not-allowed;
+  color: #B2AFAF;
+}
+
 .command-btn-order {
   margin-bottom: -0.79rem;
 }

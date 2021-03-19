@@ -8,8 +8,6 @@ import {
   Modal,
   Button,
   Form,
-  OverlayTrigger,
-  Tooltip,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
@@ -33,7 +31,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
   const [itemToModify, setItemToModify] = useState();
   const [indexOfItem, setIndexOfItem] = useState();
   const { order } = useOrder();
-  console.log(order)
+  console.log(order);
 
   const totalPrice = (array) => {
     let total = 0;
@@ -158,17 +156,7 @@ const OrderRecap = ({ sendValidateOrder }) => {
             <div className="d-flex flex-row command-btn-order mr-4">
               {order !== undefined && order !== null ? (
                 <>
-                  <OverlayTrigger
-                    placement="top"
-                    overlay={
-                      <Tooltip id="tooltip-wait-order">
-                        Votre commande est bien arrivé chez Goa Food. Vous serez
-                        prévenu avec une notification de l'avancée de votre
-                        commande.
-                      </Tooltip>
-                    }
-                  >
-                    <span className="d-inline-block">
+                  
                       <button
                         className="btn rounded-0"
                         style={{ cursor: "not-allowed" }}
@@ -176,8 +164,6 @@ const OrderRecap = ({ sendValidateOrder }) => {
                       >
                         Commander
                       </button>
-                    </span>
-                  </OverlayTrigger>
                 </>
               ) : (
                 <>
@@ -227,22 +213,38 @@ const OrderRecap = ({ sendValidateOrder }) => {
                           {item.menu ? "Menu " : ""}
                           {item.name}
                         </h5>
-                        {item.type === "extra" ? null : (
-                          <FontAwesomeIcon
-                            icon={faPencilAlt}
-                            className="mr-3 icon-recap"
-                            onClick={(e) =>
-                              modifyItem(item, recapItem, recapArray)
-                            }
-                          />
-                        )}
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          className="icon-recap"
-                          onClick={() => {
-                            deleteItem(recapArray, recapItem);
-                          }}
-                        />
+                        {order !== undefined && order !== null ?
+                          <>
+                            {item.type === "extra" ? null : (
+                              <FontAwesomeIcon
+                                icon={faPencilAlt}
+                                className="mr-3 icon-recap-disabled"
+                              />
+                            )}
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="icon-recap-disabled"
+                            />
+                          </> : 
+                          <>
+                            {item.type === "extra" ? null : (
+                              <FontAwesomeIcon
+                                icon={faPencilAlt}
+                                className="mr-3 icon-recap"
+                                onClick={(e) =>
+                                  modifyItem(item, recapItem, recapArray)
+                                }
+                              />
+                            )}
+                            <FontAwesomeIcon
+                              icon={faTrash}
+                              className="icon-recap"
+                              onClick={() => {
+                                deleteItem(recapArray, recapItem);
+                              }}
+                            />
+                          </>
+                        }
                       </div>
                       <Row>
                         <Col md={6} className="d-flex justify-content-start">
