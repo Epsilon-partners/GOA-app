@@ -49,7 +49,7 @@ const Assiettes = ({ menuList }) => {
             menuItems.map((item) => (
               <Col key={uniqid()} md={3} className="mb-2">
                 <Card className="text-center h-100">
-                  <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
+                  <Card.Img variant="top" src={`/images/${item.imageUrl}`} alt={item.name} />
                   <Card.Body className="d-flex flex-column justify-content-between">
                     <Card.Title>
                       <h5>
@@ -63,7 +63,7 @@ const Assiettes = ({ menuList }) => {
                             </Tooltip>
                           }
                         >
-                          <Button variant="secondary" className="infoBtn">
+                          <Button aria-label="Description" variant="secondary" className="infoBtn">
                             <FontAwesomeIcon
                               icon={faInfoCircle}
                               className="infoIcon"

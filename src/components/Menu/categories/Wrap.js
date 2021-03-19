@@ -43,7 +43,7 @@ const Wrap = ({ menuList }) => {
           {menuItems.map((item) => (
             <Col key={uniqid()} md={3}>
               <Card className="text-center h-100">
-                <Card.Img variant="top" src={`/images/${item.imageUrl}`} />
+                <Card.Img variant="top" src={`/images/${item.imageUrl}`} alt={item.name} />
                 <Card.Body className="d-flex flex-column justify-content-between">
                   <Card.Title>
                     <h5>
@@ -57,7 +57,7 @@ const Wrap = ({ menuList }) => {
                           </Tooltip>
                         }
                       >
-                        <Button variant="secondary" className="infoBtn">
+                        <Button variant="secondary" aria-label="Description" className="infoBtn">
                           <FontAwesomeIcon
                             icon={faInfoCircle}
                             className="infoIcon"

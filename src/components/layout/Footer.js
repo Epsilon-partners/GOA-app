@@ -23,7 +23,7 @@ const Footer = () => {
           <img src={background} alt="Mandala" className="mandala-footer" />
         </Col>
         <Col md={6}>
-          <h5 className="goa-footer-title mb-3 text-md-left text-center">Goa restaurant</h5>
+          <h6 className="goa-footer-title mb-3 text-md-left text-center">Goa restaurant</h6>
           <Row>
             <Col md={7} sm={12} className="mb-4">
               <div className="mb-2">
@@ -75,7 +75,7 @@ const Footer = () => {
               <Maps />
             </Col>
             <Col md={5} sm={12} className="d-flex flex-column justify-content-center">
-              <h5 className="goa-footer-title mb-3">Equipements</h5>
+              <h6 className="goa-footer-title mb-3">Equipements</h6>
               <div>
                 <div className="d-flex justify-content-start mb-2">
                   <div className="footer-wrapper-icon">
@@ -115,7 +115,7 @@ const Footer = () => {
           </Row>
         </Col>
         <Col md={4} className="d-flex flex-column border-left border-dark pl-4 mt-3 mt-md-0">
-          <h5 className="goa-footer-title mb-4 text-md-left text-center">Suivez-nous</h5>
+          <h6 className="goa-footer-title mb-4 text-md-left text-center">Suivez-nous</h6>
           <div className="d-flex flex-md-row flex-column justify-content-md-start justify-content-center align-items-center">
             <div className="footer-border-icons brand-fb mr-md-3 mr-0 mb-2 mb-md-0">
               <FontAwesomeIcon
