@@ -14,6 +14,7 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
 
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -48,6 +49,7 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
 
     const user = {
       firstName,
+      lastName,
       phone,
       stayConnected,
       conditions,
@@ -106,6 +108,25 @@ const SignUp = ({ text, classStyle, directTo, icon, closeModal }) => {
                   value={firstName}
                   onChange={(e) => setFirstName(allowOnlyLetters(e))}
                   name="nameCreateAccount"
+                  required
+                />
+                <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
+                <Form.Control.Feedback type="invalid">
+                  Non valide
+                </Form.Control.Feedback>
+              </Col>
+            </Form.Group>
+            <Form.Group as={Row} controlId="lastNameCreateAccount">
+              <Form.Label column sm="4">
+                Nom
+              </Form.Label>
+              <Col sm="8">
+                <Form.Control
+                  type="text"
+                  placeholder="Nom"
+                  value={lastName}
+                  onChange={(e) => setLastName(allowOnlyLetters(e))}
+                  name="lastNameCreateAccount"
                   required
                 />
                 <Form.Control.Feedback type="valid">Valide</Form.Control.Feedback>
