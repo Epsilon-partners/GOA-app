@@ -12,7 +12,7 @@ const Delivery = () => {
                     <p>20 mins de livraison <br /> 09 80 84 29 49<br />Rayon de 10 km autour de Grenoble</p>
                 </div>
                 <div className="d-flex flex-md-row flex-column justify-content-between delivery-partners align-items-center pb-5">
-                    <ExternalLink href="https://www.ubereats.com/grenoble/food-delivery/goa-indian-fast-food/68kvwm2KRsK0OSOZe2Rj1w">
+                    <ExternalLink href="https://www.ubereats.com/fr/lyon/food-delivery/goa-indian-fast-food/68kvwm2KRsK0OSOZe2Rj1w">
                         <div className="delivery-partners_item">
                             <img src={uberIcon} alt="uber eats logo" />
                             <p>Commander via<br /> UberEats</p>
