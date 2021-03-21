@@ -71,13 +71,14 @@ function App() {
             </AuthProvider>
           </Switch>
           <CookieConsent
-            buttonText="Je comprends"
+            buttonText="Accepter"
             buttonStyle={{ backgroundColor: "#0B6C13", color: "white" }}
             style={{ backgroundColor: "white" }}
           >
-            Nous utilisons les cookies afin de fournir les services et
-            fonctionnalités proposés sur notre site et afin d’améliorer
-            l’expérience de nos utilisateurs.
+            Des cookies sont utilisés sur notre site pour vous offrir la
+            meilleure expérience en sauvegardant vos préférences et visites. En
+            cliquant sur "Accepter", vous consentez l'utilisation de TOUS les
+            cookies.
           </CookieConsent>
         </Suspense>
       </BrowserRouter>

@@ -28,7 +28,9 @@ export function AuthProvider({ children }) {
             email,
           })
       })
-      .catch((err) => console.error('envoyé', err));
+      .catch((err) => {
+        throw err;
+      }); 
   };
 
   const login = (email, password) => {
